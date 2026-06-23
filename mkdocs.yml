@@ -1,0 +1,131 @@
+site_name: Cohort Discovery Service
+site_description: Implementation and onboarding documentation for the HDR UK Cohort Discovery Service
+site_url: https://hdruk.github.io/cohort-discovery-service-docs/
+repo_url: https://github.com/HDRUK/cohort-discovery-service-docs
+repo_name: HDRUK/cohort-discovery-service-docs
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    scheme: hdruk
+  logo: images/logo.png
+  favicon: images/favicon.png
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - content.action.edit
+    - content.action.view
+
+extra_css:
+  - stylesheets/custom.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/HDRUK
+      name: HDR UK on GitHub
+    - icon: fontawesome/solid/globe
+      link: https://www.hdruk.ac.uk
+      name: HDR UK Website
+  version:
+    provider: mike
+
+plugins:
+  - search:
+      separator: '[\s​\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - tags:
+      tags_file: tags.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - def_list
+  - tables
+  - footnotes
+  - pymdownx.arithmatex:
+      generic: true
+  - meta
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - getting-started/index.md
+    - Prerequisites: getting-started/prerequisites.md
+    - Onboarding Overview: getting-started/onboarding-overview.md
+  - Architecture:
+    - architecture/index.md
+    - Platform Architecture: architecture/platform.md
+    - Mapping to OMOP: architecture/omop-mapping.md
+    - Data Governance & Security: architecture/governance.md
+  - OMOP Requirements:
+    - omop/index.md
+    - Minimum Dataset: omop/minimum-dataset.md
+    - CDM Schema Reference: omop/schema.md
+    - Mapping Tools: omop/mapping-tools.md
+  - Connecting Bunny:
+    - bunny/index.md
+    - Step-by-Step Setup: bunny/setup.md
+    - Configuration Reference: bunny/configuration.md
+    - Two-Instance Pattern: bunny/two-instance-pattern.md
+  - Workstreams:
+    - workstreams/index.md
+    - Governance: workstreams/governance.md
+    - Data: workstreams/data.md
+    - Infrastructure: workstreams/infrastructure.md
+  - Reference:
+    - Glossary: reference/glossary.md
+    - Query Retrieval Tools: reference/tools.md
+    - Support: reference/support.md
+  - Tags: tags.md
