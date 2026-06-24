@@ -1543,37 +1543,45 @@
 <p>The Cohort Discovery Service operates across multiple organisational boundaries using a federated model. Each Data Custodian maintains full control of their data within their own infrastructure.</p>
 <hr />
 <h2 id="high-level-architecture">High-level architecture</h2>
-<pre class="mermaid"><code>graph TD
-    subgraph Researcher Side
-        Browser[Researcher Browser]
-    end
+<pre class="mermaid"><code>%%{init: {'flowchart': {'nodeSpacing': 40, 'rankSpacing': 70, 'padding': 20}}}%%
+flowchart TD
+    Browser[Researcher Browser]
 
-    subgraph HDR UK
+    subgraph HDRUK["HDR UK"]
         GW[Health Data Research Gateway]
         CDS[Cohort Discovery Service API]
     end
 
-    subgraph Custodian A Infrastructure
-        B_A[Bunny Instance A+B]
-        OMOP_A[(OMOP Database A)]
-        SNA_A[Secure Network Area]
+    subgraph CustodianX["Custodian X Infrastructure"]
+        BUNNY_XA[BUNNY A]
+        BUNNY_XB[BUNNY B]
+        OMOP_X[(OMOP Database X)]
     end
 
-    subgraph Custodian B Infrastructure
-        B_B[Bunny Instance A+B]
-        OMOP_B[(OMOP Database B)]
-        SNA_B[Secure Network Area]
+    subgraph CustodianY["Custodian Y Infrastructure"]
+        BUNNY_Y1A[BUNNY A]
+        BUNNY_Y1B[BUNNY B]
+        OMOP_Y1[(OMOP Database Y1)]
+        BUNNY_Y2A[BUNNY A]
+        BUNNY_Y2B[BUNNY B]
+        OMOP_Y2[(OMOP Database Y2)]
     end
 
     Browser --&gt; GW
     GW --&gt; CDS
-    CDS --&gt;|"HTTPS outbound (port 443)"| B_A
-    CDS --&gt;|"HTTPS outbound (port 443)"| B_B
-    B_A --&gt; OMOP_A
-    B_B --&gt; OMOP_B
-    B_A --&gt; SNA_A
-    B_B --&gt; SNA_B</code></pre>
-<p><em>Figure 1 — Cohort Discovery Federated Platform Architecture (50,000 ft view)</em></p>
+    CDS --&gt; BUNNY_XA
+    CDS --&gt; BUNNY_XB
+    CDS --&gt; BUNNY_Y1A
+    CDS --&gt; BUNNY_Y1B
+    CDS --&gt; BUNNY_Y2A
+    CDS --&gt; BUNNY_Y2B
+    BUNNY_XA --&gt; OMOP_X
+    BUNNY_XB --&gt; OMOP_X
+    BUNNY_Y1A --&gt; OMOP_Y1
+    BUNNY_Y1B --&gt; OMOP_Y1
+    BUNNY_Y2A --&gt; OMOP_Y2
+    BUNNY_Y2B --&gt; OMOP_Y2</code></pre>
+<p><em>Figure 1 — Cohort Discovery Federated Platform Architecture</em></p>
 <p><img alt="Cohort Discovery federated platform architecture showing the researcher browser connecting through the HDR UK Gateway and Cohort Discovery Service to Bunny instances and OMOP databases within individual Custodian infrastructure" src="../../images/figures/figure-1-platform-architecture.png" /></p>
 <hr />
 <h2 id="secure-network-area">Secure Network Area</h2>
@@ -1782,6 +1790,8 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/tags-to-bottom.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       
