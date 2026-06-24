@@ -15,39 +15,47 @@ The Cohort Discovery Service operates across multiple organisational boundaries 
 ## High-level architecture
 
 ```mermaid
-graph TD
-    subgraph Researcher Side
-        Browser[Researcher Browser]
-    end
+%%{init: {'flowchart': {'nodeSpacing': 40, 'rankSpacing': 70, 'padding': 20}}}%%
+flowchart TD
+    Browser[Researcher Browser]
 
-    subgraph HDR UK
+    subgraph HDRUK["HDR UK"]
         GW[Health Data Research Gateway]
         CDS[Cohort Discovery Service API]
     end
 
-    subgraph Custodian A Infrastructure
-        B_A[Bunny Instance A+B]
-        OMOP_A[(OMOP Database A)]
-        SNA_A[Secure Network Area]
+    subgraph CustodianX["Custodian X Infrastructure"]
+        BUNNY_XA[BUNNY A]
+        BUNNY_XB[BUNNY B]
+        OMOP_X[(OMOP Database X)]
     end
 
-    subgraph Custodian B Infrastructure
-        B_B[Bunny Instance A+B]
-        OMOP_B[(OMOP Database B)]
-        SNA_B[Secure Network Area]
+    subgraph CustodianY["Custodian Y Infrastructure"]
+        BUNNY_Y1A[BUNNY A]
+        BUNNY_Y1B[BUNNY B]
+        OMOP_Y1[(OMOP Database Y1)]
+        BUNNY_Y2A[BUNNY A]
+        BUNNY_Y2B[BUNNY B]
+        OMOP_Y2[(OMOP Database Y2)]
     end
 
     Browser --> GW
     GW --> CDS
-    CDS -->|"HTTPS outbound (port 443)"| B_A
-    CDS -->|"HTTPS outbound (port 443)"| B_B
-    B_A --> OMOP_A
-    B_B --> OMOP_B
-    B_A --> SNA_A
-    B_B --> SNA_B
+    CDS --> BUNNY_XA
+    CDS --> BUNNY_XB
+    CDS --> BUNNY_Y1A
+    CDS --> BUNNY_Y1B
+    CDS --> BUNNY_Y2A
+    CDS --> BUNNY_Y2B
+    BUNNY_XA --> OMOP_X
+    BUNNY_XB --> OMOP_X
+    BUNNY_Y1A --> OMOP_Y1
+    BUNNY_Y1B --> OMOP_Y1
+    BUNNY_Y2A --> OMOP_Y2
+    BUNNY_Y2B --> OMOP_Y2
 ```
 
-*Figure 1 — Cohort Discovery Federated Platform Architecture (50,000 ft view)*
+*Figure 1 — Cohort Discovery Federated Platform Architecture*
 
 ![Cohort Discovery federated platform architecture showing the researcher browser connecting through the HDR UK Gateway and Cohort Discovery Service to Bunny instances and OMOP databases within individual Custodian infrastructure](../images/figures/figure-1-platform-architecture.png)
 
