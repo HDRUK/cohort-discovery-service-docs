@@ -51,10 +51,10 @@ tags:
 
 Before connecting Bunny, ensure you have:
 
-- [ ] Cohort Discovery access approved and a Gateway account
-- [ ] An OMOP database set up in your secure network area (see [OMOP Requirements](../omop/index.md))
-- [ ] Docker, Podman, or Kubernetes available in your secure network area
-- [ ] Outbound HTTPS (port 443) connectivity to the Cohort Discovery Service
+- [X] Cohort Discovery access approved and a Gateway account
+- [X] An OMOP database set up in your secure network area (see [OMOP Requirements](../omop/index.md))
+- [X] Docker, Podman, or Kubernetes available in your secure network area
+- [X] Outbound HTTPS (port 443) connectivity to the Cohort Discovery Service
 
 ---
 
