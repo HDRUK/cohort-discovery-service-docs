@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document$.subscribe(function () {
   var tags = document.querySelector(".md-tags");
   var article = document.querySelector("article.md-content__inner");
   if (tags && article) {
