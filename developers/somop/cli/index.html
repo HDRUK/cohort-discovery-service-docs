@@ -6,35 +6,35 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="OMOP CDM requirements for the HDR UK Cohort Discovery Service">
+        <meta name="description" content="somop command-line reference — generate, load, run, multi">
       
       
       
-        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/omop/">
+        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/developers/somop/cli/">
       
       
-        <link rel="prev" href="../architecture/governance/">
+        <link rel="prev" href="../configuration/">
       
       
-        <link rel="next" href="minimum-dataset/">
+        <link rel="next" href="../../contributing/">
       
       
         
       
       
-      <link rel="icon" href="../images/favicon.svg">
+      <link rel="icon" href="../../../images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>OMOP Requirements - Cohort Discovery Service Documentation</title>
+        <title>CLI Reference - Cohort Discovery Service Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,9 +53,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/custom.css">
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#omop-requirements" class="md-skip">
+        <a href="#cli-reference" class="md-skip">
           Skip to content
         </a>
       
@@ -98,9 +98,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Cohort Discovery Service Documentation" class="md-header__button md-logo" aria-label="Cohort Discovery Service Documentation" data-md-component="logo">
+    <a href="../../.." title="Cohort Discovery Service Documentation" class="md-header__button md-logo" aria-label="Cohort Discovery Service Documentation" data-md-component="logo">
       
-  <img src="../images/logo.svg" alt="logo">
+  <img src="../../../images/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              OMOP Requirements
+              CLI Reference
             
           </span>
         </div>
@@ -214,9 +214,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Cohort Discovery Service Documentation" class="md-nav__button md-logo" aria-label="Cohort Discovery Service Documentation" data-md-component="logo">
+    <a href="../../.." title="Cohort Discovery Service Documentation" class="md-nav__button md-logo" aria-label="Cohort Discovery Service Documentation" data-md-component="logo">
       
-  <img src="../images/logo.svg" alt="logo">
+  <img src="../../../images/logo.svg" alt="logo">
 
     </a>
     Cohort Discovery Service Documentation
@@ -243,7 +243,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -301,7 +301,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../getting-started/" class="md-nav__link ">
+            <a href="../../../getting-started/" class="md-nav__link ">
               
   
   
@@ -345,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/prerequisites/" class="md-nav__link">
+      <a href="../../../getting-started/prerequisites/" class="md-nav__link">
         
   
   
@@ -373,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/onboarding-overview/" class="md-nav__link">
+      <a href="../../../getting-started/onboarding-overview/" class="md-nav__link">
         
   
   
@@ -439,7 +439,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../architecture/" class="md-nav__link ">
+            <a href="../../../architecture/" class="md-nav__link ">
               
   
   
@@ -483,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/platform/" class="md-nav__link">
+      <a href="../../../architecture/platform/" class="md-nav__link">
         
   
   
@@ -511,7 +511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/omop-mapping/" class="md-nav__link">
+      <a href="../../../architecture/omop-mapping/" class="md-nav__link">
         
   
   
@@ -539,7 +539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/governance/" class="md-nav__link">
+      <a href="../../../architecture/governance/" class="md-nav__link">
         
   
   
@@ -571,8 +571,6 @@
       
   
   
-    
-  
   
   
     
@@ -597,15 +595,17 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../../omop/" class="md-nav__link ">
               
   
   
@@ -623,13 +623,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -649,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="minimum-dataset/" class="md-nav__link">
+      <a href="../../../omop/minimum-dataset/" class="md-nav__link">
         
   
   
@@ -677,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="schema/" class="md-nav__link">
+      <a href="../../../omop/schema/" class="md-nav__link">
         
   
   
@@ -705,7 +705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mapping-tools/" class="md-nav__link">
+      <a href="../../../omop/mapping-tools/" class="md-nav__link">
         
   
   
@@ -771,7 +771,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../bunny/" class="md-nav__link ">
+            <a href="../../../bunny/" class="md-nav__link ">
               
   
   
@@ -815,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bunny/setup/" class="md-nav__link">
+      <a href="../../../bunny/setup/" class="md-nav__link">
         
   
   
@@ -843,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bunny/configuration/" class="md-nav__link">
+      <a href="../../../bunny/configuration/" class="md-nav__link">
         
   
   
@@ -871,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bunny/two-instance-pattern/" class="md-nav__link">
+      <a href="../../../bunny/two-instance-pattern/" class="md-nav__link">
         
   
   
@@ -903,6 +903,8 @@
       
   
   
+    
+  
   
   
     
@@ -935,17 +937,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../developers/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -971,7 +971,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -991,7 +991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/quick-start/" class="md-nav__link">
+      <a href="../../quick-start/" class="md-nav__link">
         
   
   
@@ -1019,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/api/" class="md-nav__link">
+      <a href="../../api/" class="md-nav__link">
         
   
   
@@ -1047,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/web/" class="md-nav__link">
+      <a href="../../web/" class="md-nav__link">
         
   
   
@@ -1075,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/nlp/" class="md-nav__link">
+      <a href="../../nlp/" class="md-nav__link">
         
   
   
@@ -1103,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/modes/" class="md-nav__link">
+      <a href="../../modes/" class="md-nav__link">
         
   
   
@@ -1128,6 +1128,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1149,17 +1151,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../developers/somop/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1183,7 +1183,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1203,7 +1203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/somop/installation/" class="md-nav__link">
+      <a href="../installation/" class="md-nav__link">
         
   
   
@@ -1231,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/somop/configuration/" class="md-nav__link">
+      <a href="../configuration/" class="md-nav__link">
         
   
   
@@ -1256,10 +1256,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../developers/somop/cli/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1275,6 +1302,98 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#somop-generate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        somop generate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#somop-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        somop load
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#somop-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        somop run
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="somop run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-happens-when-you-run-somop-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What happens when you run somop run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-with-local-bunny-build-and-external-postgres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example with local BUNNY build and external Postgres
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#somop-multi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        somop multi
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1295,7 +1414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/contributing/" class="md-nav__link">
+      <a href="../../contributing/" class="md-nav__link">
         
   
   
@@ -1361,7 +1480,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../workstreams/" class="md-nav__link ">
+            <a href="../../../workstreams/" class="md-nav__link ">
               
   
   
@@ -1405,7 +1524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workstreams/governance/" class="md-nav__link">
+      <a href="../../../workstreams/governance/" class="md-nav__link">
         
   
   
@@ -1433,7 +1552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workstreams/data/" class="md-nav__link">
+      <a href="../../../workstreams/data/" class="md-nav__link">
         
   
   
@@ -1461,7 +1580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workstreams/infrastructure/" class="md-nav__link">
+      <a href="../../../workstreams/infrastructure/" class="md-nav__link">
         
   
   
@@ -1558,7 +1677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/glossary/" class="md-nav__link">
+      <a href="../../../reference/glossary/" class="md-nav__link">
         
   
   
@@ -1586,7 +1705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/tools/" class="md-nav__link">
+      <a href="../../../reference/tools/" class="md-nav__link">
         
   
   
@@ -1614,7 +1733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/support/" class="md-nav__link">
+      <a href="../../../reference/support/" class="md-nav__link">
         
   
   
@@ -1649,7 +1768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tags/" class="md-nav__link">
+      <a href="../../../tags/" class="md-nav__link">
         
   
   
@@ -1696,10 +1815,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quick-summary" class="md-nav__link">
+  <a href="#somop-generate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick summary
+        somop generate
       
     </span>
   </a>
@@ -1707,10 +1826,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mandatory-tables" class="md-nav__link">
+  <a href="#somop-load" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mandatory tables
+        somop load
       
     </span>
   </a>
@@ -1718,10 +1837,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#omop-cdm-version-support" class="md-nav__link">
+  <a href="#somop-run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OMOP CDM version support
+        somop run
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="somop run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-happens-when-you-run-somop-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What happens when you run somop run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-with-local-bunny-build-and-external-postgres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example with local BUNNY build and external Postgres
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#somop-multi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        somop multi
       
     </span>
   </a>
@@ -1753,7 +1911,7 @@
   
   
     <li class="md-path__item">
-      <a href=".." class="md-path__link">
+      <a href="../../.." class="md-path__link">
         
   <span class="md-ellipsis">
     Home
@@ -1771,10 +1929,28 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../../" class="md-path__link">
           
   <span class="md-ellipsis">
-    OMOP Requirements
+    Developer Guide
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Synthetic Data (somop)
   </span>
 
         </a>
@@ -1797,21 +1973,21 @@
       
       
       
-        <a href="../tags/#tag:data" class="md-tag">data</a>
+        <a href="../../../tags/#tag:cli" class="md-tag">cli</a>
       
     
       
       
       
       
-        <a href="../tags/#tag:omop" class="md-tag">omop</a>
+        <a href="../../../tags/#tag:somop" class="md-tag">somop</a>
       
     
   </nav>
 
 
   
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/omop/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/developers/somop/cli.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -1820,93 +1996,292 @@
     
       
     
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/omop/index.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/developers/somop/cli.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="omop-requirements">OMOP Requirements</h1>
-<p>The Cohort Discovery Service operates on data mapped to the <strong>OMOP Common Data Model (CDM)</strong>. This section defines the minimum set of OMOP fields that must be populated for your data to be discoverable.</p>
+<h1 id="cli-reference">CLI Reference</h1>
+<p>somop has four top-level commands: <code>generate</code>, <code>load</code>, <code>run</code>, and <code>multi</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>somop<span class="w"> </span>--help
+</span></code></pre></div>
+<hr />
+<h2 id="somop-generate"><code>somop generate</code></h2>
+<p>Generates synthetic OMOP CDM CSV files from a YAML config without starting any containers.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>somop<span class="w"> </span>generate<span class="w"> </span>--config<span class="w"> </span>configs/conditions.yaml<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span></code></pre></div>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--config</code></td>
+<td>required</td>
+<td>Path to YAML configuration file</td>
+</tr>
+<tr>
+<td><code>--out-dir</code></td>
+<td>from config</td>
+<td>Override the output directory</td>
+</tr>
+<tr>
+<td><code>--n-people</code></td>
+<td>from config</td>
+<td>Override <code>person.n_people</code></td>
+</tr>
+<tr>
+<td><code>--seed</code></td>
+<td>from config</td>
+<td>Override the random seed</td>
+</tr>
+<tr>
+<td><code>--chunk-size</code></td>
+<td>from config</td>
+<td>Override chunk size</td>
+</tr>
+<tr>
+<td><code>--concepts</code></td>
+<td>—</td>
+<td>Path to a <code>CONCEPT.csv</code> to copy into the output directory</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Output:</strong> Tab-separated CSV files in <code>out_dir</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>PERSON.csv
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>CONDITION_OCCURRENCE.csv
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>DRUG_EXPOSURE.csv
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>MEASUREMENT.csv
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>OBSERVATION.csv
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>PROCEDURE_OCCURRENCE.csv
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>SPECIMEN.csv
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>DEATH.csv
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>LOCATION.csv
+</span></code></pre></div>
+<p><strong>Example:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>somop<span class="w"> </span>generate<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--config<span class="w"> </span>configs/conditions.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--n-people<span class="w"> </span><span class="m">50000</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--seed<span class="w"> </span><span class="m">99</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--out-dir<span class="w"> </span>./data/test_run
+</span></code></pre></div>
+<hr />
+<h2 id="somop-load"><code>somop load</code></h2>
+<p>Loads generated CSV files into a PostgreSQL database using <a href="https://github.com/health-Informatics-UoN/omop-lite">omop-lite</a> via Docker Compose. Use this when you want a persistent database you can query directly.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>somop<span class="w"> </span>load<span class="w"> </span>--config<span class="w"> </span>configs/conditions.yaml<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span></code></pre></div>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--config</code></td>
+<td>required</td>
+<td>Path to YAML configuration file</td>
+</tr>
+<tr>
+<td><code>--db-name</code></td>
+<td>config file stem</td>
+<td>Postgres database name</td>
+</tr>
+<tr>
+<td><code>--db-password</code></td>
+<td><code>postgres</code></td>
+<td>Postgres password (also reads <code>DB_PASSWORD</code> env var)</td>
+</tr>
+<tr>
+<td><code>--db-url</code></td>
+<td>—</td>
+<td>Use an existing Postgres instance: <code>postgresql://user:pass@host:port/db</code> (also reads <code>DATABASE_URL</code> env var)</td>
+</tr>
+<tr>
+<td><code>--db-port</code></td>
+<td>—</td>
+<td>Expose the containerised Postgres on this host port</td>
+</tr>
+<tr>
+<td><code>--drop-db / --no-drop-db</code></td>
+<td>drop</td>
+<td>Drop and recreate the DB before loading (when using <code>--db-url</code>)</td>
+</tr>
+<tr>
+<td><code>--concepts</code></td>
+<td>—</td>
+<td>Path to a <code>CONCEPT.csv</code> to copy into the data directory</td>
+</tr>
+<tr>
+<td><code>--compose-out</code></td>
+<td><code>&lt;out_dir&gt;/docker-compose.load.yaml</code></td>
+<td>Where to write the generated Compose file</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Containerised Postgres (default):</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>somop<span class="w"> </span>load<span class="w"> </span>--config<span class="w"> </span>configs/simple.yaml<span class="w"> </span>--db-port<span class="w"> </span><span class="m">5433</span>
+</span></code></pre></div>
+<p>A Postgres container is started, data is loaded via omop-lite, then the containers stop.</p>
+<p><strong>External Postgres:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>somop<span class="w"> </span>load<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>--config<span class="w"> </span>configs/simple.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>--db-url<span class="w"> </span>postgresql://postgres:postgres@localhost:5432/my_omop
+</span></code></pre></div>
+<hr />
+<h2 id="somop-run"><code>somop run</code></h2>
+<p>The main end-to-end command. Generates data, writes a Docker Compose file, and starts a full stack: PostgreSQL + omop-lite + two BUNNY instances. Press <code>Ctrl+C</code> to stop and remove all containers.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>somop<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--config<span class="w"> </span>configs/conditions.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span>--collection-id<span class="w"> </span>&lt;uuid&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span>--api-url<span class="w"> </span>http://host.docker.internal:8100/api/v1<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span>--api-username<span class="w"> </span>admin@example.com<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span>--api-password<span class="w"> </span>yourpassword
+</span></code></pre></div>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--config</code></td>
+<td>required</td>
+<td>Path to YAML configuration file</td>
+</tr>
+<tr>
+<td><code>--collection-id</code></td>
+<td>required</td>
+<td>BUNNY collection UUID registered in the API</td>
+</tr>
+<tr>
+<td><code>--api-url</code></td>
+<td>required</td>
+<td>API base URL — use <code>host.docker.internal</code> to reach the host from inside Docker</td>
+</tr>
+<tr>
+<td><code>--api-username</code></td>
+<td>required</td>
+<td>API username (also reads <code>TASK_API_USERNAME</code> env var)</td>
+</tr>
+<tr>
+<td><code>--api-password</code></td>
+<td>required</td>
+<td>API password (also reads <code>TASK_API_PASSWORD</code> env var)</td>
+</tr>
+<tr>
+<td><code>--db-name</code></td>
+<td>config stem</td>
+<td>Postgres database name</td>
+</tr>
+<tr>
+<td><code>--db-password</code></td>
+<td><code>postgres</code></td>
+<td>Postgres password (also reads <code>DB_PASSWORD</code> env var)</td>
+</tr>
+<tr>
+<td><code>--db-url</code></td>
+<td>—</td>
+<td>Use an external Postgres instead of a container</td>
+</tr>
+<tr>
+<td><code>--db-port</code></td>
+<td>—</td>
+<td>Expose containerised Postgres on this host port</td>
+</tr>
+<tr>
+<td><code>--drop-db / --no-drop-db</code></td>
+<td>drop</td>
+<td>Drop and recreate DB before loading (with <code>--db-url</code>)</td>
+</tr>
+<tr>
+<td><code>--concepts</code></td>
+<td>—</td>
+<td>Path to a <code>CONCEPT.csv</code></td>
+</tr>
+<tr>
+<td><code>--bunny-build</code></td>
+<td>—</td>
+<td>Path to a local BUNNY Dockerfile directory — builds instead of pulling from the registry</td>
+</tr>
+<tr>
+<td><code>--compose-out</code></td>
+<td><code>&lt;out_dir&gt;/docker-compose.run.yaml</code></td>
+<td>Where to write the generated Compose file</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-happens-when-you-run-somop-run">What happens when you run <code>somop run</code></h3>
+<pre class="mermaid"><code>flowchart TD
+    A["somop run ..."] --&gt; B["Load YAML config"]
+    B --&gt; C["Generate OMOP CSV files\n(somop.generate)"]
+    C --&gt; D["Build docker-compose.run.yaml"]
+    D --&gt; E["docker compose down\n(clean up previous run)"]
+    E --&gt; F["docker compose up --build"]
+    F --&gt; db["db (Postgres 16)\n⬛ healthcheck: pg_isready"]
+    db --&gt; loader["loader (omop-lite)\n creates schema, loads CSVs"]
+    loader --&gt; bunny_a["bunny-a\n TASK_API_TYPE=a"]
+    loader --&gt; bunny_b["bunny-b\n TASK_API_TYPE=b"]
+    bunny_a --&gt; poll["Poll API for tasks"]
+    bunny_b --&gt; poll</code></pre>
+<p>Services start in dependency order:</p>
+<ol>
+<li><strong><code>db</code></strong> — Postgres 16; waits for <code>pg_isready</code> healthcheck</li>
+<li><strong><code>loader</code></strong> — omop-lite; waits for <code>db</code> to be healthy, creates the OMOP schema and loads the CSVs</li>
+<li><strong><code>bunny-a</code></strong> and <strong><code>bunny-b</code></strong> — both wait for <code>loader</code> to complete, then register with the API and begin polling for tasks</li>
+</ol>
+<p>Press <code>Ctrl+C</code> to trigger a graceful shutdown: <code>docker compose down</code>.</p>
+<h3 id="example-with-local-bunny-build-and-external-postgres">Example with local BUNNY build and external Postgres</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>somop<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--config<span class="w"> </span>configs/uk_t2d_primary_care.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--collection-id<span class="w"> </span>e2da6447-8e9b-444a-845b-501a206c0199<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--api-url<span class="w"> </span>http://host.docker.internal:8100/api/v1<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span>--api-username<span class="w"> </span>admin@example.com<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span>--api-password<span class="w"> </span>secret<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span>--db-url<span class="w"> </span>postgresql://postgres:postgres@host.docker.internal:5435/t2d_primary_care<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span>--bunny-build<span class="w"> </span>../hutch-bunny
+</span></code></pre></div>
 <div class="admonition info">
-<p class="admonition-title">What is OMOP?</p>
-<p>OMOP (Observational Medical Outcomes Partnership) CDM is a global standard for observational health data. It is patient-centric, tabular, extendable, built for analytics, and has a relational design. For background, see the <a href="https://ohdsi.github.io/CommonDataModel/">OHDSI OMOP CDM documentation</a>.</p>
+<p class="admonition-title"><code>host.docker.internal</code></p>
+<p>When BUNNY runs inside Docker and needs to reach the API running on your host machine, use <code>host.docker.internal</code> instead of <code>localhost</code>. This resolves to the host machine's IP from within a Docker container on macOS and Windows. On Linux, add <code>--add-host host.docker.internal:host-gateway</code> to the container, or use your host's LAN IP directly.</p>
 </div>
 <hr />
-<h2 id="quick-summary">Quick summary</h2>
-<div class="grid cards">
-<ul>
-<li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span> <strong>Mandatory tables</strong></p>
-<hr />
-<p><strong>Person</strong> and <strong>Concept</strong> must be populated for all collections.</p>
-</li>
-<li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg></span> <strong>Minimum dataset</strong></p>
-<hr />
-<p>8 additional tables cover conditions, procedures, drugs, observations, measurements, death, visits, and specimens.</p>
-<p><a href="minimum-dataset/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> View minimum dataset</a></p>
-</li>
-<li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> <strong>CDM versions</strong></p>
-<hr />
-<p>OMOP CDM <strong>5.3</strong> (supported) and <strong>5.4</strong> (recommended for new mappings).</p>
-</li>
-<li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg></span> <strong>Mapping tools</strong></p>
-<hr />
-<p>White Rabbit + Carrot Mapper + Carrot-CDM. HDR UK can assist.</p>
-<p><a href="mapping-tools/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Mapping tools</a></p>
-</li>
-</ul>
-</div>
-<hr />
-<h2 id="mandatory-tables">Mandatory tables</h2>
-<p>The following two tables must be populated for all collections:</p>
-<table>
-<thead>
-<tr>
-<th>Table</th>
-<th>Required Fields</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Person</strong></td>
-<td><code>person_id</code>, <code>gender_concept_id</code>, <code>year_of_birth</code>, <code>race_concept_id</code>, <code>ethnicity_concept_id</code></td>
-</tr>
-<tr>
-<td><strong>Concept</strong></td>
-<td><code>concept_id</code>, <code>domain_id</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="omop-cdm-version-support">OMOP CDM version support</h2>
-<table>
-<thead>
-<tr>
-<th>Version</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>5.4</strong></td>
-<td>Recommended for new mappings</td>
-</tr>
-<tr>
-<td><strong>5.3</strong></td>
-<td>Fully supported — no migration required</td>
-</tr>
-<tr>
-<td>Other</td>
-<td>Contact HDR UK before proceeding</td>
-</tr>
-</tbody>
-</table>
-<p>Supported versions are ultimately constrained by Bunny's deployment requirements. See <a href="https://hutch.health/bunny/deployment/requirements">hutch.health/bunny/deployment/requirements</a> for the latest information.</p>
+<h2 id="somop-multi"><code>somop multi</code></h2>
+<p>Runs multiple datasets in a single Docker Compose stack, each with its own BUNNY instance and collection ID.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>somop<span class="w"> </span>multi<span class="w"> </span>generate<span class="w"> </span>--config<span class="w"> </span>configs/multi_example.yaml
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>somop<span class="w"> </span>multi<span class="w"> </span>run<span class="w"> </span>--config<span class="w"> </span>configs/multi_example.yaml
+</span></code></pre></div>
+<p>The multi config file references other configs by path:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># configs/multi_example.yaml</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nt">datasets</span><span class="p">:</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conditions.yaml</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nt">collection_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;uuid-1&gt;</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="nt">db_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5433</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mortality_conditions.yaml</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="nt">collection_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;uuid-2&gt;</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="nt">db_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5434</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="nt">api_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://host.docker.internal:8100/api/v1</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nt">api_username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin@example.com</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="nt">api_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="nt">bunny_build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../hutch-bunny</span><span class="w">   </span><span class="c1"># optional local BUNNY build</span>
+</span></code></pre></div>
+<p>Each dataset gets its own <code>db</code> and <code>loader</code> service, namespaced by dataset name in the Compose file.</p>
 
 
 
@@ -1947,7 +2322,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../architecture/governance/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Governance &amp; Security">
+          <a href="../configuration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Configuration">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1957,20 +2332,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Data Governance & Security
+                Configuration
               </div>
             </div>
           </a>
         
         
           
-          <a href="minimum-dataset/" class="md-footer__link md-footer__link--next" aria-label="Next: Minimum Dataset">
+          <a href="../../contributing/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Minimum Dataset
+                Contributing
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2030,14 +2405,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "content.action.edit", "content.action.view"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../javascripts/tags-to-bottom.js"></script>
+        <script src="../../../javascripts/tags-to-bottom.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="OMOP CDM requirements for the HDR UK Cohort Discovery Service">
+        <meta name="description" content="How to set up, run, and contribute to the Cohort Discovery Service full stack">
       
       
       
-        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/omop/">
+        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/developers/">
       
       
-        <link rel="prev" href="../architecture/governance/">
+        <link rel="prev" href="../bunny/two-instance-pattern/">
       
       
-        <link rel="next" href="minimum-dataset/">
+        <link rel="next" href="quick-start/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>OMOP Requirements - Cohort Discovery Service Documentation</title>
+        <title>Developer Guide - Cohort Discovery Service Documentation</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#omop-requirements" class="md-skip">
+        <a href="#developer-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              OMOP Requirements
+              Developer Guide
             
           </span>
         </div>
@@ -571,8 +571,6 @@
       
   
   
-    
-  
   
   
     
@@ -597,15 +595,17 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../omop/" class="md-nav__link ">
               
   
   
@@ -623,13 +623,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -649,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="minimum-dataset/" class="md-nav__link">
+      <a href="../omop/minimum-dataset/" class="md-nav__link">
         
   
   
@@ -677,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="schema/" class="md-nav__link">
+      <a href="../omop/schema/" class="md-nav__link">
         
   
   
@@ -705,7 +705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mapping-tools/" class="md-nav__link">
+      <a href="../omop/mapping-tools/" class="md-nav__link">
         
   
   
@@ -903,6 +903,8 @@
       
   
   
+    
+  
   
   
     
@@ -935,17 +937,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../developers/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -965,13 +965,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link md-nav__link--active" for="__nav_6" id="__nav_6_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -991,7 +991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/quick-start/" class="md-nav__link">
+      <a href="quick-start/" class="md-nav__link">
         
   
   
@@ -1019,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/api/" class="md-nav__link">
+      <a href="api/" class="md-nav__link">
         
   
   
@@ -1047,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/web/" class="md-nav__link">
+      <a href="web/" class="md-nav__link">
         
   
   
@@ -1075,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/nlp/" class="md-nav__link">
+      <a href="nlp/" class="md-nav__link">
         
   
   
@@ -1103,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/modes/" class="md-nav__link">
+      <a href="modes/" class="md-nav__link">
         
   
   
@@ -1159,7 +1159,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../developers/somop/" class="md-nav__link ">
+            <a href="somop/" class="md-nav__link ">
               
   
   
@@ -1203,7 +1203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/somop/installation/" class="md-nav__link">
+      <a href="somop/installation/" class="md-nav__link">
         
   
   
@@ -1231,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/somop/configuration/" class="md-nav__link">
+      <a href="somop/configuration/" class="md-nav__link">
         
   
   
@@ -1259,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/somop/cli/" class="md-nav__link">
+      <a href="somop/cli/" class="md-nav__link">
         
   
   
@@ -1295,7 +1295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/contributing/" class="md-nav__link">
+      <a href="contributing/" class="md-nav__link">
         
   
   
@@ -1696,10 +1696,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quick-summary" class="md-nav__link">
+  <a href="#services" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick summary
+        Services
       
     </span>
   </a>
@@ -1707,10 +1707,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mandatory-tables" class="md-nav__link">
+  <a href="#deployment-modes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mandatory tables
+        Deployment modes
       
     </span>
   </a>
@@ -1718,10 +1718,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#omop-cdm-version-support" class="md-nav__link">
+  <a href="#in-this-guide" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OMOP CDM version support
+        In this guide
       
     </span>
   </a>
@@ -1774,7 +1774,7 @@
         <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
-    OMOP Requirements
+    Developer Guide
   </span>
 
         </a>
@@ -1791,27 +1791,9 @@
                 
                   
 
-  <nav class="md-tags" >
-    
-      
-      
-      
-      
-        <a href="../tags/#tag:data" class="md-tag">data</a>
-      
-    
-      
-      
-      
-      
-        <a href="../tags/#tag:omop" class="md-tag">omop</a>
-      
-    
-  </nav>
-
 
   
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/omop/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/developers/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -1820,93 +1802,162 @@
     
       
     
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/omop/index.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/developers/index.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="omop-requirements">OMOP Requirements</h1>
-<p>The Cohort Discovery Service operates on data mapped to the <strong>OMOP Common Data Model (CDM)</strong>. This section defines the minimum set of OMOP fields that must be populated for your data to be discoverable.</p>
-<div class="admonition info">
-<p class="admonition-title">What is OMOP?</p>
-<p>OMOP (Observational Medical Outcomes Partnership) CDM is a global standard for observational health data. It is patient-centric, tabular, extendable, built for analytics, and has a relational design. For background, see the <a href="https://ohdsi.github.io/CommonDataModel/">OHDSI OMOP CDM documentation</a>.</p>
-</div>
+<h1 id="developer-guide">Developer Guide</h1>
+<p>The Cohort Discovery Service is a federated platform that lets researchers run cohort queries against pseudonymised health data held by Data Custodians — without the underlying data ever leaving a custodian's infrastructure. This guide covers everything you need to develop, run, and contribute to the three services that make it up.</p>
 <hr />
-<h2 id="quick-summary">Quick summary</h2>
+<h2 id="services">Services</h2>
+<p>Three services are actively developed in this codebase. A fourth — <strong>BUNNY</strong> — is an external dependency deployed at each custodian site.</p>
+<pre class="mermaid"><code>graph TD
+    Browser["Browser"] --&gt;|HTTPS| Web
+
+    subgraph cds-web["cohort-discovery-service-web · Next.js 16 · :3000"]
+        Web["Web"]
+    end
+
+    subgraph cds-api["cohort-discovery-service-api · Laravel 12 · :8100"]
+        API["API"]
+    end
+
+    subgraph cds-nlp["cohort-discovery-service-nlp · FastAPI · :5001"]
+        NLP["NLP"]
+    end
+
+    Web --&gt;|Server Actions| API
+    API --&gt;|POST /extract| NLP
+    API --- MySQL[("MySQL\napp DB + OMOP vocab")]
+    API --- Redis[("Redis\nqueue + cache")]
+
+    subgraph Custodian["Data Custodian Site"]
+        BUNNY["BUNNY · hutch-bunny\nPython 3.13+"] --&gt;|SQL| OMOPDB[("OMOP CDM DB\nPostgres · MSSQL · DuckDB · Snowflake")]
+    end
+
+    API &lt;--&gt;|"poll tasks / POST results"| BUNNY</code></pre>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Repo</th>
+<th>Stack</th>
+<th>Dev Port</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Web</strong></td>
+<td><code>cohort-discovery-service-web</code></td>
+<td>Next.js 16, React 18, TypeScript</td>
+<td>3000</td>
+<td>Frontend UI — App Router, Server Actions, role-based views</td>
+</tr>
+<tr>
+<td><strong>API</strong></td>
+<td><code>cohort-discovery-service-api</code></td>
+<td>Laravel 12, PHP 8.2+, MySQL, Redis</td>
+<td>8100</td>
+<td>Core backend — queries, tasks, OMOP concepts, async jobs</td>
+</tr>
+<tr>
+<td><strong>NLP</strong></td>
+<td><code>cohort-discovery-service-nlp</code></td>
+<td>FastAPI, Python 3.11, RapidFuzz</td>
+<td>5001</td>
+<td>Free-text → OMOP concept extraction via fuzzy matching</td>
+</tr>
+<tr>
+<td>BUNNY</td>
+<td><code>hutch-bunny</code> (external — Univ. Nottingham)</td>
+<td>Python 3.13+, SQLAlchemy</td>
+<td>—</td>
+<td>Custodian-side task resolver</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>Web</strong> layer calls the <strong>API</strong> only — it never contacts the NLP service or custodian databases directly. The <strong>API</strong> and <strong>NLP</strong> service both share access to the OMOP vocabulary database.</p>
+<hr />
+<h2 id="deployment-modes">Deployment modes</h2>
+<p>The platform runs in two modes, set via an environment variable in each service. Choose the right mode before you start.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>API (<code>APP_OPERATION_MODE</code>)</th>
+<th>Web (<code>APPLICATION_MODE</code>)</th>
+<th>Auth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Standalone</strong></td>
+<td><code>standalone</code></td>
+<td><code>standalone</code></td>
+<td>Laravel Passport + local JWT — self-contained, no external dependencies</td>
+</tr>
+<tr>
+<td><strong>Integrated</strong></td>
+<td><code>integrated</code></td>
+<td><code>integrated</code></td>
+<td>HDR UK Gateway OAuth2 SSO — users authenticate via the Gateway</td>
+</tr>
+</tbody>
+</table>
+<p>Use <strong>standalone</strong> for local development. Use <strong>integrated</strong> for production deployments within the HDR UK Gateway.</p>
+<p><a href="modes/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Deployment Modes — full configuration walkthrough</a></p>
+<hr />
+<h2 id="in-this-guide">In this guide</h2>
 <div class="grid cards">
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span> <strong>Mandatory tables</strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg></span> <strong>Quick Start</strong></p>
 <hr />
-<p><strong>Person</strong> and <strong>Concept</strong> must be populated for all collections.</p>
+<p>Get all three services running locally in one go.</p>
+<p><a href="quick-start/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Quick Start</a></p>
 </li>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg></span> <strong>Minimum dataset</strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1M9 5h1V3H9zm0 8h1v-2H9zm0 8h1v-2H9zM5 3v2h2V3zm0 8v2h2v-2zm0 8v2h2v-2z"/></svg></span> <strong>API Service</strong></p>
 <hr />
-<p>8 additional tables cover conditions, procedures, drugs, observations, measurements, death, visits, and specimens.</p>
-<p><a href="minimum-dataset/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> View minimum dataset</a></p>
+<p>Laravel API: env config, OMOP setup, artisan commands, testing.</p>
+<p><a href="api/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> API Service</a></p>
 </li>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> <strong>CDM versions</strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2"/></svg></span> <strong>Web Service</strong></p>
 <hr />
-<p>OMOP CDM <strong>5.3</strong> (supported) and <strong>5.4</strong> (recommended for new mappings).</p>
+<p>Next.js frontend: env config, dev server, testing, patterns.</p>
+<p><a href="web/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Web Service</a></p>
 </li>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg></span> <strong>Mapping tools</strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"/></svg></span> <strong>NLP Service</strong></p>
 <hr />
-<p>White Rabbit + Carrot Mapper + Carrot-CDM. HDR UK can assist.</p>
-<p><a href="mapping-tools/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Mapping tools</a></p>
+<p>FastAPI NLP: env config, endpoints, fuzzy matching tuning.</p>
+<p><a href="nlp/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> NLP Service</a></p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21 9-4-4v3h-7v2h7v3M7 11l-4 4 4 4v-3h7v-2H7z"/></svg></span> <strong>Deployment Modes</strong></p>
+<hr />
+<p>Standalone vs Integrated — what changes and how to configure each.</p>
+<p><a href="modes/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Deployment Modes</a></p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 22a3 3 0 0 1-3-3c0-.6.18-1.16.5-1.63L9 7.81V6a1 1 0 0 1-1-1V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v1.81l5.5 9.56c.32.47.5 1.03.5 1.63a3 3 0 0 1-3 3zm-1-3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57l-2.29-3.96L14 17l-5.07-5.07-3.75 6.5c-.11.16-.18.36-.18.57m8-9a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg></span> <strong>Synthetic Data (somop)</strong></p>
+<hr />
+<p>Generate synthetic OMOP data for local BUNNY testing without real patient records.</p>
+<p><a href="somop/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> somop</a></p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 3a3 3 0 0 1 3 3c0 1.31-.83 2.42-2 2.83v6.34c1.17.41 2 1.52 2 2.83a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-1.31.83-2.42 2-2.83V8.83A2.99 2.99 0 0 1 3 6a3 3 0 0 1 3-3m0 2a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m0 12a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m15 1a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-1.31.83-2.42 2-2.83V7h-2v3.25L10.75 6 15 1.75V5h2a2 2 0 0 1 2 2v8.17c1.17.41 2 1.52 2 2.83m-3-1a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg></span> <strong>Contributing</strong></p>
+<hr />
+<p>Branch workflow, pre-PR checks, PR title conventions, coding standards.</p>
+<p><a href="contributing/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Contributing</a></p>
 </li>
 </ul>
 </div>
-<hr />
-<h2 id="mandatory-tables">Mandatory tables</h2>
-<p>The following two tables must be populated for all collections:</p>
-<table>
-<thead>
-<tr>
-<th>Table</th>
-<th>Required Fields</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Person</strong></td>
-<td><code>person_id</code>, <code>gender_concept_id</code>, <code>year_of_birth</code>, <code>race_concept_id</code>, <code>ethnicity_concept_id</code></td>
-</tr>
-<tr>
-<td><strong>Concept</strong></td>
-<td><code>concept_id</code>, <code>domain_id</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="omop-cdm-version-support">OMOP CDM version support</h2>
-<table>
-<thead>
-<tr>
-<th>Version</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>5.4</strong></td>
-<td>Recommended for new mappings</td>
-</tr>
-<tr>
-<td><strong>5.3</strong></td>
-<td>Fully supported — no migration required</td>
-</tr>
-<tr>
-<td>Other</td>
-<td>Contact HDR UK before proceeding</td>
-</tr>
-</tbody>
-</table>
-<p>Supported versions are ultimately constrained by Bunny's deployment requirements. See <a href="https://hutch.health/bunny/deployment/requirements">hutch.health/bunny/deployment/requirements</a> for the latest information.</p>
 
 
 
@@ -1947,7 +1998,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../architecture/governance/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Governance &amp; Security">
+          <a href="../bunny/two-instance-pattern/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Two-Instance Pattern">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1957,20 +2008,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Data Governance & Security
+                Two-Instance Pattern
               </div>
             </div>
           </a>
         
         
           
-          <a href="minimum-dataset/" class="md-footer__link md-footer__link--next" aria-label="Next: Minimum Dataset">
+          <a href="quick-start/" class="md-footer__link md-footer__link--next" aria-label="Next: Quick Start">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Minimum Dataset
+                Quick Start
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="All Bunny environment variables required to connect to the Cohort Discovery Service">
+        <meta name="description" content="Developer guide for the Cohort Discovery Service Web service (Next.js)">
       
       
       
-        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/bunny/configuration/">
+        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/developers/web/">
       
       
-        <link rel="prev" href="../setup/">
+        <link rel="prev" href="../api/">
       
       
-        <link rel="next" href="../two-instance-pattern/">
+        <link rel="next" href="../nlp/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Bunny Configuration Reference - Cohort Discovery Service Documentation</title>
+        <title>Web Service - Cohort Discovery Service Documentation</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bunny-configuration-reference" class="md-skip">
+        <a href="#web-service" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bunny Configuration Reference
+              Web Service
             
           </span>
         </div>
@@ -737,8 +737,6 @@
       
   
   
-    
-  
   
   
     
@@ -763,15 +761,17 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../bunny/" class="md-nav__link ">
               
   
   
@@ -795,7 +795,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -815,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../setup/" class="md-nav__link">
+      <a href="../../bunny/setup/" class="md-nav__link">
         
   
   
@@ -823,6 +823,210 @@
     
   
     Step-by-Step Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bunny/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bunny/two-instance-pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Two-Instance Pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H3v2h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2v-2H8v-5a2 2 0 0 0-2-2 2 2 0 0 0 2-2V5h2V3m6 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Service
   
 
     
@@ -859,7 +1063,7 @@
   <span class="md-ellipsis">
     
   
-    Configuration Reference
+    Web Service
   
 
     
@@ -877,7 +1081,7 @@
   <span class="md-ellipsis">
     
   
-    Configuration Reference
+    Web Service
   
 
     
@@ -903,66 +1107,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cohort-discovery-connection-variables" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cohort Discovery connection variables
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Cohort Discovery connection variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#production-api-url" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Production API URL
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-connection-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Database connection variables
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Database connection variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#supported-database-drivers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supported database drivers
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-configurations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example configurations
+        Installation
       
     </span>
   </a>
@@ -970,10 +1118,76 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#obfuscation-settings" class="md-nav__link">
+  <a href="#environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Obfuscation settings
+        Environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npm-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        npm scripts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coding patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-title-convention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PR title convention
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-pr-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-PR checklist
       
     </span>
   </a>
@@ -996,211 +1210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../two-instance-pattern/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Two-Instance Pattern
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../developers/" class="md-nav__link ">
-              
-  
-  
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H3v2h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2v-2H8v-5a2 2 0 0 0-2-2 2 2 0 0 0 2-2V5h2V3m6 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3z"/></svg>
-  
-  <span class="md-ellipsis">
-    
-  
-    Developer Guide
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Developer Guide
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developers/quick-start/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quick Start
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developers/api/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Service
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developers/web/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Web Service
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developers/nlp/" class="md-nav__link">
+      <a href="../nlp/" class="md-nav__link">
         
   
   
@@ -1228,7 +1238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/modes/" class="md-nav__link">
+      <a href="../modes/" class="md-nav__link">
         
   
   
@@ -1284,7 +1294,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../developers/somop/" class="md-nav__link ">
+            <a href="../somop/" class="md-nav__link ">
               
   
   
@@ -1328,7 +1338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/somop/installation/" class="md-nav__link">
+      <a href="../somop/installation/" class="md-nav__link">
         
   
   
@@ -1356,7 +1366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/somop/configuration/" class="md-nav__link">
+      <a href="../somop/configuration/" class="md-nav__link">
         
   
   
@@ -1384,7 +1394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/somop/cli/" class="md-nav__link">
+      <a href="../somop/cli/" class="md-nav__link">
         
   
   
@@ -1420,7 +1430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/contributing/" class="md-nav__link">
+      <a href="../contributing/" class="md-nav__link">
         
   
   
@@ -1821,66 +1831,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cohort-discovery-connection-variables" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cohort Discovery connection variables
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Cohort Discovery connection variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#production-api-url" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Production API URL
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-connection-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Database connection variables
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Database connection variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#supported-database-drivers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supported database drivers
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-configurations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example configurations
+        Installation
       
     </span>
   </a>
@@ -1888,10 +1842,76 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#obfuscation-settings" class="md-nav__link">
+  <a href="#environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Obfuscation settings
+        Environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npm-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        npm scripts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coding patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-title-convention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PR title convention
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-pr-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-PR checklist
       
     </span>
   </a>
@@ -1944,7 +1964,7 @@
         <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
-    Connecting Bunny
+    Developer Guide
   </span>
 
         </a>
@@ -1967,28 +1987,28 @@
       
       
       
-        <a href="../../tags/#tag:bunny" class="md-tag">bunny</a>
+        <a href="../../tags/#tag:nextjs" class="md-tag">nextjs</a>
       
     
       
       
       
       
-        <a href="../../tags/#tag:configuration" class="md-tag">configuration</a>
+        <a href="../../tags/#tag:typescript" class="md-tag">typescript</a>
       
     
       
       
       
       
-        <a href="../../tags/#tag:reference" class="md-tag">reference</a>
+        <a href="../../tags/#tag:web" class="md-tag">web</a>
       
     
   </nav>
 
 
   
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/bunny/configuration.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/developers/web.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -1997,218 +2017,289 @@
     
       
     
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/bunny/configuration.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/developers/web.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="bunny-configuration-reference">Bunny Configuration Reference</h1>
-<p>Bunny is configured entirely via environment variables. This page lists the variables required to connect Bunny to the Cohort Discovery Service.</p>
-<div class="admonition info">
-<p class="admonition-title">Full Bunny docs</p>
-<p>This page covers the configuration required for Cohort Discovery integration. For full Bunny configuration documentation, see <a href="https://hutch.health/bunny/config">hutch.health/bunny/config</a>.</p>
-</div>
+<h1 id="web-service">Web Service</h1>
+<p>The Web service is a Next.js 16 application using the App Router. It renders the Cohort Discovery Service UI for three roles — admin, custodian-admin, and researcher — and communicates with the API exclusively through Next.js Server Actions.</p>
+<ul>
+<li><strong>Repo:</strong> <code>cohort-discovery-service-web</code></li>
+<li><strong>Port:</strong> 3000 (dev)</li>
+<li><strong>Stack:</strong> Next.js 16, React 18, TypeScript, Material-UI, Zustand, Storybook</li>
+</ul>
 <hr />
-<h2 id="cohort-discovery-connection-variables">Cohort Discovery connection variables</h2>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>TASK_API_BASE_URL</code></td>
-<td>✓</td>
-<td>Base URL for the Cohort Discovery Task API</td>
-</tr>
-<tr>
-<td><code>TASK_API_USERNAME</code></td>
-<td>✓</td>
-<td>Client ID from your Host in Cohort Discovery</td>
-</tr>
-<tr>
-<td><code>TASK_API_PASSWORD</code></td>
-<td>✓</td>
-<td>Client Secret from your Host in Cohort Discovery</td>
-</tr>
-<tr>
-<td><code>COLLECTION_ID</code></td>
-<td>✓</td>
-<td>Collection ID from your Collection in Cohort Discovery</td>
-</tr>
-<tr>
-<td><code>TASK_API_TYPE</code></td>
-<td>✓</td>
-<td><code>a</code> for availability queries; <code>b</code> for distribution jobs</td>
-</tr>
-</tbody>
-</table>
-<h3 id="production-api-url">Production API URL</h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>https://api.cohort-discovery.healthdatagateway.org/api/v1
+<h2 id="installation">Installation</h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>npm<span class="w"> </span>install
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
 </span></code></pre></div>
 <hr />
-<h2 id="database-connection-variables">Database connection variables</h2>
+<h2 id="environment-variables">Environment variables</h2>
 <table>
 <thead>
 <tr>
 <th>Variable</th>
 <th>Required</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>DATASOURCE_DB_HOST</code></td>
-<td>✓</td>
-<td>Hostname or IP of your OMOP database</td>
+<td><code>API_BASE_URL</code></td>
+<td>Yes</td>
+<td><code>http://localhost:8100</code></td>
+<td>API service URL — used by Server Actions</td>
 </tr>
 <tr>
-<td><code>DATASOURCE_DB_DATABASE</code></td>
-<td>✓</td>
-<td>Database name</td>
+<td><code>APPLICATION_MODE</code></td>
+<td>Yes</td>
+<td><code>integrated</code></td>
+<td><code>standalone</code> or <code>integrated</code> — see <a href="../modes/">Deployment Modes</a></td>
 </tr>
 <tr>
-<td><code>DATASOURCE_DB_SCHEMA</code></td>
-<td>✓</td>
-<td>Schema name containing OMOP tables</td>
-</tr>
-<tr>
-<td><code>DATASOURCE_DB_USERNAME</code></td>
-<td>✓</td>
-<td>Database username</td>
-</tr>
-<tr>
-<td><code>DATASOURCE_DB_PASSWORD</code></td>
-<td>✓</td>
-<td>Database password</td>
-</tr>
-<tr>
-<td><code>DATASOURCE_DB_PORT</code></td>
-<td>✓</td>
-<td>Database port</td>
-</tr>
-<tr>
-<td><code>DATASOURCE_DB_DRIVERNAME</code></td>
-<td>✓</td>
-<td>SQLAlchemy driver name (see table below)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="supported-database-drivers">Supported database drivers</h3>
-<table>
-<thead>
-<tr>
-<th>Database</th>
-<th><code>DATASOURCE_DB_DRIVERNAME</code></th>
-<th>Default port</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PostgreSQL</td>
-<td><code>postgresql</code></td>
-<td><code>5432</code></td>
-</tr>
-<tr>
-<td>SQL Server</td>
-<td><code>mssql+pyodbc</code></td>
-<td><code>1433</code></td>
-</tr>
-<tr>
-<td>DuckDB</td>
-<td><code>duckdb</code></td>
+<td><code>NEXT_PUBLIC_LOGIN_URL</code></td>
+<td>Yes</td>
 <td>—</td>
+<td>Redirect URL when unauthenticated</td>
 </tr>
 <tr>
-<td>Snowflake</td>
-<td><code>snowflake</code></td>
-<td><code>443</code></td>
+<td><code>NEXT_PUBLIC_TASK_URL</code></td>
+<td>No</td>
+<td><code>http://localhost:8100/api/v1</code></td>
+<td>Task API endpoint</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_USE_EXAMPLE_QUERY</code></td>
+<td>No</td>
+<td><code>false</code></td>
+<td>Enable example query helpers (debug)</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_USE_DEBUG_LOGS</code></td>
+<td>No</td>
+<td><code>false</code></td>
+<td>Enable client-side debug logging</td>
+</tr>
+<tr>
+<td><code>CONFIG_SERVICE_DESK_URL</code></td>
+<td>No</td>
+<td>—</td>
+<td>Service desk URL for support links</td>
+</tr>
+<tr>
+<td><code>DEFAULT_TABLE_REFRESH_INTERVAL</code></td>
+<td>No</td>
+<td>—</td>
+<td>Table auto-refresh interval in ms</td>
+</tr>
+<tr>
+<td><code>DEFAULT_SEARCH_WAIT_TIME</code></td>
+<td>No</td>
+<td>—</td>
+<td>Debounce delay before search fires (ms)</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Additional variables for some drivers</p>
-<p>SQL Server and Snowflake may require additional configuration variables. See <a href="https://hutch.health/bunny/config">hutch.health/bunny/config</a> for driver-specific settings.</p>
+<div class="admonition tip">
+<p class="admonition-title">Standalone mode login URL</p>
+<p>For local standalone development, set:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>NEXT_PUBLIC_LOGIN_URL=http://localhost:3000/auth/login
+</span></code></pre></div>
+For integrated mode, this points to the Gateway login endpoint.</p>
 </div>
 <hr />
-<h2 id="example-configurations">Example configurations</h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">PostgreSQL</label><label for="__tabbed_1_2">SQL Server</label><label for="__tabbed_1_3">Snowflake</label></div>
+<h2 id="npm-scripts">npm scripts</h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Development</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>npm<span class="w"> </span>run<span class="w"> </span>dev<span class="w">              </span><span class="c1"># Dev server with Turbopack on port 3000</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>npm<span class="w"> </span>run<span class="w"> </span>dev-debug<span class="w">        </span><span class="c1"># Dev server with Node.js inspector attached</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Production</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>npm<span class="w"> </span>run<span class="w"> </span>build<span class="w">            </span><span class="c1"># Production build</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>npm<span class="w"> </span>run<span class="w"> </span>start<span class="w">            </span><span class="c1"># Production server on port 3001</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Linting</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>npm<span class="w"> </span>run<span class="w"> </span>lint<span class="w">             </span><span class="c1"># ESLint</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>npm<span class="w"> </span>run<span class="w"> </span>lint:fix<span class="w">         </span><span class="c1"># ESLint with auto-fix</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>npm<span class="w"> </span>run<span class="w"> </span>lint:workflows<span class="w">   </span><span class="c1"># GitHub Actions workflow lint (requires actionlint)</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="c1"># Unit &amp; component tests</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>npm<span class="w"> </span>run<span class="w"> </span><span class="nb">test</span><span class="w">             </span><span class="c1"># Jest — all tests</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>npm<span class="w"> </span>run<span class="w"> </span>test:watch<span class="w">       </span><span class="c1"># Jest watch mode</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1"># Storybook</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>npm<span class="w"> </span>run<span class="w"> </span>storybook<span class="w">        </span><span class="c1"># Component explorer on port 6006</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>npm<span class="w"> </span>run<span class="w"> </span>build-storybook<span class="w">  </span><span class="c1"># Build static Storybook output</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="c1"># E2E tests</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>npm<span class="w"> </span>run<span class="w"> </span>mock-api:start<span class="w">   </span><span class="c1"># Start mock API server on port 8100</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>npm<span class="w"> </span>run<span class="w"> </span>cy:open<span class="w">          </span><span class="c1"># Cypress interactive runner</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>npm<span class="w"> </span>run<span class="w"> </span>cy:run<span class="w">           </span><span class="c1"># Cypress headless</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>npm<span class="w"> </span>run<span class="w"> </span>e2e<span class="w">              </span><span class="c1"># Full pipeline: production build → Cypress</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>npm<span class="w"> </span>run<span class="w"> </span>e2e:dev<span class="w">          </span><span class="c1"># Full pipeline: dev server → Cypress</span>
+</span></code></pre></div>
+<hr />
+<h2 id="testing">Testing</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Unit tests (Jest)</label><label for="__tabbed_1_2">E2E tests (Cypress)</label><label for="__tabbed_1_3">Storybook</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-yaml highlight"><span class="filename">docker-compose.yml</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">environment</span><span class="p">:</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_TYPE=a</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_BASE_URL=https://api.cohort-discovery.healthdatagateway.org/api/v1</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_USERNAME=&lt;your_client_id&gt;</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_PASSWORD=&lt;your_client_secret&gt;</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">COLLECTION_ID=&lt;your_collection_id&gt;</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_HOST=&lt;your_db_host&gt;</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_DATABASE=&lt;your_db_name&gt;</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_SCHEMA=&lt;your_schema&gt;</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_USERNAME=&lt;your_db_user&gt;</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_PASSWORD=&lt;your_db_password&gt;</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_PORT=5432</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_DRIVERNAME=postgresql</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npm<span class="w"> </span>run<span class="w"> </span><span class="nb">test</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>npm<span class="w"> </span>run<span class="w"> </span>test:watch
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Run a specific file</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>npm<span class="w"> </span>run<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--<span class="w"> </span>--testPathPattern<span class="o">=</span>src/utils/__tests__/rules
 </span></code></pre></div>
+<p>Tests run in a <code>jsdom</code> environment. The setup file is <code>jest.setup.ts</code>. The path alias <code>@/</code> maps to <code>src/</code>.</p>
 </div>
 <div class="tabbed-block">
-<div class="language-yaml highlight"><span class="filename">docker-compose.yml</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">environment</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_TYPE=a</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_BASE_URL=https://api.cohort-discovery.healthdatagateway.org/api/v1</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_USERNAME=&lt;your_client_id&gt;</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_PASSWORD=&lt;your_client_secret&gt;</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">COLLECTION_ID=&lt;your_collection_id&gt;</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_HOST=&lt;your_db_host&gt;</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_DATABASE=&lt;your_db_name&gt;</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_SCHEMA=&lt;your_schema&gt;</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_USERNAME=&lt;your_db_user&gt;</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_PASSWORD=&lt;your_db_password&gt;</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_PORT=1433</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_DRIVERNAME=mssql+pyodbc</span>
+<p>The E2E suite requires a running API — use the mock API for isolated front-end testing:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Start mock API (port 8100) then open Cypress</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>npm<span class="w"> </span>run<span class="w"> </span>mock-api:start<span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>npm<span class="w"> </span>run<span class="w"> </span>cy:open
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Or run headlessly against a full stack</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>npm<span class="w"> </span>run<span class="w"> </span>e2e<span class="w">          </span><span class="c1"># production build</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>npm<span class="w"> </span>run<span class="w"> </span>e2e:dev<span class="w">      </span><span class="c1"># dev server</span>
 </span></code></pre></div>
+<p>Cypress config is in <code>cypress.config.ts</code>:
+- Base URL: <code>http://localhost:3000</code>
+- Viewport: 1280×900
+- Videos and screenshots on failure are enabled
+- JWT token generation tasks are available for role-based test scenarios</p>
 </div>
 <div class="tabbed-block">
-<div class="language-yaml highlight"><span class="filename">docker-compose.yml</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">environment</span><span class="p">:</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_TYPE=a</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_BASE_URL=https://api.cohort-discovery.healthdatagateway.org/api/v1</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_USERNAME=&lt;your_client_id&gt;</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TASK_API_PASSWORD=&lt;your_client_secret&gt;</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">COLLECTION_ID=&lt;your_collection_id&gt;</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASOURCE_DB_DRIVERNAME=snowflake</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="c1"># See hutch.health/bunny/config for full Snowflake variables</span>
+<p>Storybook documents and visually tests isolated components:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>npm<span class="w"> </span>run<span class="w"> </span>storybook<span class="w">        </span><span class="c1"># Open at http://localhost:6006</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>npm<span class="w"> </span>run<span class="w"> </span>build-storybook<span class="w">  </span><span class="c1"># Build for static hosting</span>
 </span></code></pre></div>
 </div>
 </div>
 </div>
 <hr />
-<h2 id="obfuscation-settings">Obfuscation settings</h2>
-<p>Data Custodians should configure obfuscation on their Bunny instance to meet disclosure control requirements:</p>
+<h2 id="project-structure">Project structure</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>src/
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>├── app/                     Next.js App Router
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>│   ├── (protected)/         Authenticated routes (admin, custodian, researcher views)
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>│   ├── (public)/            Unauthenticated routes (login, etc.)
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>│   └── (error)/             Error boundary pages
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>├── actions/                 Server Actions — one directory per domain
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>│   ├── admin/
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>│   ├── collection/
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>│   ├── concept/
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>│   ├── conceptSet/
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>│   ├── query/
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>│   ├── task/
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>│   └── workgroup/
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>├── modules/                 Feature-level composite components
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>├── components/              Reusable atoms and molecules
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>│   ├── Table/               Use via useTable() hook
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>│   ├── TabsShell/           Page-level tab navigation
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>│   ├── Modal/               Dialogs
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>│   └── SquareCheckbox/      MUI Checkbox wrapper
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>├── hooks/                   Shared React hooks (useTable, useSearchParams, …)
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>├── lib/                     API client helpers and auth logic
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>│   └── api.ts               apiGet, apiPost, apiPut, apiDelete
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>├── config/
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>│   └── routes.ts            Centralised route builders — always use this for URLs
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>├── types/                   TypeScript type definitions
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>└── store/                   Zustand global state (with persistence)
+</span></code></pre></div>
+<hr />
+<h2 id="coding-patterns">Coding patterns</h2>
+<p><strong>API calls — always use Server Actions and shared helpers:</strong>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// src/actions/query/getQueries.ts</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">apiGet</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/lib/api&quot;</span><span class="p">;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getQueries</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">apiGet</span><span class="p">(</span><span class="s2">&quot;/api/v1/queries&quot;</span><span class="p">);</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<p>Never use ad-hoc <code>fetch()</code> in client components. All backend calls go through Server Actions in <code>src/actions/</code>.</p>
+<p><strong>Routing — always use <code>routes.ts</code>:</strong>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">routes</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/config/routes&quot;</span><span class="p">;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1">// Good</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nx">href</span><span class="o">=</span><span class="p">{</span><span class="nx">routes</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">detail</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">id</span><span class="p">)}</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1">// Bad — hardcoded paths break when routes change</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nx">href</span><span class="o">=</span><span class="p">{</span><span class="sb">`/queries/</span><span class="si">${</span><span class="nx">query</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">}</span>
+</span></code></pre></div></p>
+<p><strong>State management:</strong></p>
 <table>
 <thead>
 <tr>
-<th>Setting</th>
-<th>Recommended value</th>
-<th>Description</th>
+<th>State type</th>
+<th>Tool</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Low count suppression</td>
-<td><code>&lt; 10</code> → return <code>0</code></td>
-<td>Counts below this threshold are suppressed</td>
+<td>Server / fetched data</td>
+<td>Server Actions + React Query (TanStack)</td>
 </tr>
 <tr>
-<td>Rounding</td>
-<td>Round to nearest 10</td>
-<td>Counts above suppression threshold are rounded</td>
+<td>Global client state</td>
+<td>Zustand (<code>src/store/</code>)</td>
+</tr>
+<tr>
+<td>Form state</td>
+<td>React Hook Form + Yup</td>
 </tr>
 </tbody>
 </table>
-<p>See <a href="https://hutch.health/bunny/config">hutch.health/bunny/config</a> for the environment variables that control obfuscation.</p>
+<p><strong>MUI wrappers — use the project's abstractions:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Use</th>
+<th>Instead of</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;Table&gt;</code> + <code>useTable()</code></td>
+<td>MUI <code>&lt;TableContainer&gt;</code> directly</td>
+</tr>
+<tr>
+<td><code>&lt;TabsShell&gt;</code></td>
+<td>MUI <code>&lt;Tabs&gt;</code> directly</td>
+</tr>
+<tr>
+<td><code>&lt;Modal&gt;</code></td>
+<td>MUI <code>&lt;Dialog&gt;</code> directly</td>
+</tr>
+<tr>
+<td><code>&lt;SquareCheckbox&gt;</code></td>
+<td>MUI <code>&lt;Checkbox&gt;</code> directly</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Caching:</strong>
+- Read-only data: pass <code>cacheOptions: { tags: ["queries"] }</code> to <code>apiGet</code>
+- Mutations: pass <code>cacheOptions: { useCache: false }</code> and call <code>revalidateTag</code> in the action</p>
+<hr />
+<h2 id="pr-title-convention">PR title convention</h2>
+<p>PR titles must match this format (enforced in CI):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>feat(DP-1234): short description
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>fix(DP-5678): short description
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>fix!(DP-5678): breaking change description
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>RELEASE: vX.Y.Z
+</span></code></pre></div>
+<p>Accepted prefixes: <code>feat</code>, <code>fix</code>, <code>chore</code>, <code>docs</code>, <code>style</code>, <code>refactor</code>, <code>test</code>, <code>perf</code></p>
+<hr />
+<h2 id="pre-pr-checklist">Pre-PR checklist</h2>
+<p>Run these before opening a pull request:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>npm<span class="w"> </span>run<span class="w"> </span>lint
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>npm<span class="w"> </span>run<span class="w"> </span><span class="nb">test</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>npm<span class="w"> </span>run<span class="w"> </span>build
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>npm<span class="w"> </span>run<span class="w"> </span>lint:workflows<span class="w">   </span><span class="c1"># requires: brew install actionlint</span>
+</span></code></pre></div>
+<p>For component-heavy changes, also run:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>npm<span class="w"> </span>run<span class="w"> </span>build-storybook
+</span></code></pre></div></p>
 
 
 
@@ -2249,7 +2340,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Step-by-Step Setup">
+          <a href="../api/" class="md-footer__link md-footer__link--prev" aria-label="Previous: API Service">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2259,20 +2350,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Step-by-Step Setup
+                API Service
               </div>
             </div>
           </a>
         
         
           
-          <a href="../two-instance-pattern/" class="md-footer__link md-footer__link--next" aria-label="Next: Two-Instance Pattern">
+          <a href="../nlp/" class="md-footer__link md-footer__link--next" aria-label="Next: NLP Service">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Two-Instance Pattern
+                NLP Service
               </div>
             </div>
             <div class="md-footer__button md-icon">

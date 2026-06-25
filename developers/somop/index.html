@@ -6,35 +6,35 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="OMOP CDM requirements for the HDR UK Cohort Discovery Service">
+        <meta name="description" content="Generate synthetic OMOP CDM data for local BUNNY testing">
       
       
       
-        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/omop/">
+        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/developers/somop/">
       
       
-        <link rel="prev" href="../architecture/governance/">
+        <link rel="prev" href="../modes/">
       
       
-        <link rel="next" href="minimum-dataset/">
+        <link rel="next" href="installation/">
       
       
         
       
       
-      <link rel="icon" href="../images/favicon.svg">
+      <link rel="icon" href="../../images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>OMOP Requirements - Cohort Discovery Service Documentation</title>
+        <title>Synthetic Data (somop) - Cohort Discovery Service Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,9 +53,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/custom.css">
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#omop-requirements" class="md-skip">
+        <a href="#synthetic-data-with-somop" class="md-skip">
           Skip to content
         </a>
       
@@ -98,9 +98,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Cohort Discovery Service Documentation" class="md-header__button md-logo" aria-label="Cohort Discovery Service Documentation" data-md-component="logo">
+    <a href="../.." title="Cohort Discovery Service Documentation" class="md-header__button md-logo" aria-label="Cohort Discovery Service Documentation" data-md-component="logo">
       
-  <img src="../images/logo.svg" alt="logo">
+  <img src="../../images/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              OMOP Requirements
+              Synthetic Data (somop)
             
           </span>
         </div>
@@ -214,9 +214,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Cohort Discovery Service Documentation" class="md-nav__button md-logo" aria-label="Cohort Discovery Service Documentation" data-md-component="logo">
+    <a href="../.." title="Cohort Discovery Service Documentation" class="md-nav__button md-logo" aria-label="Cohort Discovery Service Documentation" data-md-component="logo">
       
-  <img src="../images/logo.svg" alt="logo">
+  <img src="../../images/logo.svg" alt="logo">
 
     </a>
     Cohort Discovery Service Documentation
@@ -243,7 +243,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -301,7 +301,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../getting-started/" class="md-nav__link ">
+            <a href="../../getting-started/" class="md-nav__link ">
               
   
   
@@ -345,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/prerequisites/" class="md-nav__link">
+      <a href="../../getting-started/prerequisites/" class="md-nav__link">
         
   
   
@@ -373,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/onboarding-overview/" class="md-nav__link">
+      <a href="../../getting-started/onboarding-overview/" class="md-nav__link">
         
   
   
@@ -439,7 +439,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../architecture/" class="md-nav__link ">
+            <a href="../../architecture/" class="md-nav__link ">
               
   
   
@@ -483,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/platform/" class="md-nav__link">
+      <a href="../../architecture/platform/" class="md-nav__link">
         
   
   
@@ -511,7 +511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/omop-mapping/" class="md-nav__link">
+      <a href="../../architecture/omop-mapping/" class="md-nav__link">
         
   
   
@@ -539,7 +539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/governance/" class="md-nav__link">
+      <a href="../../architecture/governance/" class="md-nav__link">
         
   
   
@@ -571,8 +571,6 @@
       
   
   
-    
-  
   
   
     
@@ -597,15 +595,17 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../omop/" class="md-nav__link ">
               
   
   
@@ -623,13 +623,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -649,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="minimum-dataset/" class="md-nav__link">
+      <a href="../../omop/minimum-dataset/" class="md-nav__link">
         
   
   
@@ -677,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="schema/" class="md-nav__link">
+      <a href="../../omop/schema/" class="md-nav__link">
         
   
   
@@ -705,7 +705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mapping-tools/" class="md-nav__link">
+      <a href="../../omop/mapping-tools/" class="md-nav__link">
         
   
   
@@ -771,7 +771,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../bunny/" class="md-nav__link ">
+            <a href="../../bunny/" class="md-nav__link ">
               
   
   
@@ -815,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bunny/setup/" class="md-nav__link">
+      <a href="../../bunny/setup/" class="md-nav__link">
         
   
   
@@ -843,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bunny/configuration/" class="md-nav__link">
+      <a href="../../bunny/configuration/" class="md-nav__link">
         
   
   
@@ -871,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bunny/two-instance-pattern/" class="md-nav__link">
+      <a href="../../bunny/two-instance-pattern/" class="md-nav__link">
         
   
   
@@ -903,6 +903,8 @@
       
   
   
+    
+  
   
   
     
@@ -935,17 +937,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../developers/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -971,7 +971,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -991,7 +991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/quick-start/" class="md-nav__link">
+      <a href="../quick-start/" class="md-nav__link">
         
   
   
@@ -1019,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/api/" class="md-nav__link">
+      <a href="../api/" class="md-nav__link">
         
   
   
@@ -1047,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/web/" class="md-nav__link">
+      <a href="../web/" class="md-nav__link">
         
   
   
@@ -1075,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/nlp/" class="md-nav__link">
+      <a href="../nlp/" class="md-nav__link">
         
   
   
@@ -1103,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/modes/" class="md-nav__link">
+      <a href="../modes/" class="md-nav__link">
         
   
   
@@ -1128,6 +1128,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1149,17 +1151,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../developers/somop/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -1177,13 +1177,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1203,7 +1203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/somop/installation/" class="md-nav__link">
+      <a href="installation/" class="md-nav__link">
         
   
   
@@ -1231,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/somop/configuration/" class="md-nav__link">
+      <a href="configuration/" class="md-nav__link">
         
   
   
@@ -1259,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/somop/cli/" class="md-nav__link">
+      <a href="cli/" class="md-nav__link">
         
   
   
@@ -1295,7 +1295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developers/contributing/" class="md-nav__link">
+      <a href="../contributing/" class="md-nav__link">
         
   
   
@@ -1361,7 +1361,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../workstreams/" class="md-nav__link ">
+            <a href="../../workstreams/" class="md-nav__link ">
               
   
   
@@ -1405,7 +1405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workstreams/governance/" class="md-nav__link">
+      <a href="../../workstreams/governance/" class="md-nav__link">
         
   
   
@@ -1433,7 +1433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workstreams/data/" class="md-nav__link">
+      <a href="../../workstreams/data/" class="md-nav__link">
         
   
   
@@ -1461,7 +1461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workstreams/infrastructure/" class="md-nav__link">
+      <a href="../../workstreams/infrastructure/" class="md-nav__link">
         
   
   
@@ -1558,7 +1558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/glossary/" class="md-nav__link">
+      <a href="../../reference/glossary/" class="md-nav__link">
         
   
   
@@ -1586,7 +1586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/tools/" class="md-nav__link">
+      <a href="../../reference/tools/" class="md-nav__link">
         
   
   
@@ -1614,7 +1614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/support/" class="md-nav__link">
+      <a href="../../reference/support/" class="md-nav__link">
         
   
   
@@ -1649,7 +1649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tags/" class="md-nav__link">
+      <a href="../../tags/" class="md-nav__link">
         
   
   
@@ -1696,10 +1696,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quick-summary" class="md-nav__link">
+  <a href="#what-somop-does" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick summary
+        What somop does
       
     </span>
   </a>
@@ -1707,10 +1707,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mandatory-tables" class="md-nav__link">
+  <a href="#when-to-use-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mandatory tables
+        When to use it
       
     </span>
   </a>
@@ -1718,10 +1718,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#omop-cdm-version-support" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OMOP CDM version support
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick example
       
     </span>
   </a>
@@ -1753,7 +1764,7 @@
   
   
     <li class="md-path__item">
-      <a href=".." class="md-path__link">
+      <a href="../.." class="md-path__link">
         
   <span class="md-ellipsis">
     Home
@@ -1771,10 +1782,28 @@
     
     
       <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Developer Guide
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
         <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
-    OMOP Requirements
+    Synthetic Data (somop)
   </span>
 
         </a>
@@ -1797,21 +1826,35 @@
       
       
       
-        <a href="../tags/#tag:data" class="md-tag">data</a>
+        <a href="../../tags/#tag:bunny" class="md-tag">bunny</a>
       
     
       
       
       
       
-        <a href="../tags/#tag:omop" class="md-tag">omop</a>
+        <a href="../../tags/#tag:somop" class="md-tag">somop</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:synthetic-data" class="md-tag">synthetic data</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:testing" class="md-tag">testing</a>
       
     
   </nav>
 
 
   
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/omop/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/developers/somop/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -1820,93 +1863,101 @@
     
       
     
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/omop/index.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/developers/somop/index.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="omop-requirements">OMOP Requirements</h1>
-<p>The Cohort Discovery Service operates on data mapped to the <strong>OMOP Common Data Model (CDM)</strong>. This section defines the minimum set of OMOP fields that must be populated for your data to be discoverable.</p>
-<div class="admonition info">
-<p class="admonition-title">What is OMOP?</p>
-<p>OMOP (Observational Medical Outcomes Partnership) CDM is a global standard for observational health data. It is patient-centric, tabular, extendable, built for analytics, and has a relational design. For background, see the <a href="https://ohdsi.github.io/CommonDataModel/">OHDSI OMOP CDM documentation</a>.</p>
-</div>
-<hr />
-<h2 id="quick-summary">Quick summary</h2>
+<h1 id="synthetic-data-with-somop">Synthetic Data with somop</h1>
+<p><code>somop</code> is an HDR UK-developed Python tool that generates synthetic <a href="https://ohdsi.github.io/CommonDataModel/">OMOP CDM v5.4.3</a> datasets from YAML configuration files. It produces realistic-looking clinical test data — conditions, medications, measurements, procedures — without using any real patient records.</p>
+<p>Its primary use case is standing up a local BUNNY instance with an OMOP database for end-to-end integration testing of the Cohort Discovery Service.</p>
 <div class="grid cards">
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span> <strong>Mandatory tables</strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg></span> <strong>Installation</strong></p>
 <hr />
-<p><strong>Person</strong> and <strong>Concept</strong> must be populated for all collections.</p>
+<p>Install somop and its Docker dependencies.</p>
+<p><a href="installation/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Installation</a></p>
 </li>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg></span> <strong>Minimum dataset</strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h6.68a7 7 0 0 1-.68-3 7 7 0 0 1 7-7 7 7 0 0 1 1 .08V8l-6-6zm7 1.5L18.5 9H13zM18 14a.26.26 0 0 0-.26.21l-.19 1.32c-.3.13-.59.29-.85.47l-1.24-.5c-.11 0-.24 0-.31.13l-1 1.73c-.06.11-.04.24.06.32l1.06.82a4.2 4.2 0 0 0 0 1l-1.06.82a.26.26 0 0 0-.06.32l1 1.73c.06.13.19.13.31.13l1.24-.5c.26.18.54.35.85.47l.19 1.32c.02.12.12.21.26.21h2c.11 0 .22-.09.24-.21l.19-1.32c.3-.13.57-.29.84-.47l1.23.5c.13 0 .26 0 .33-.13l1-1.73a.26.26 0 0 0-.06-.32l-1.07-.82c.02-.17.04-.33.04-.5s-.01-.33-.04-.5l1.06-.82a.26.26 0 0 0 .06-.32l-1-1.73c-.06-.13-.19-.13-.32-.13l-1.23.5c-.27-.18-.54-.35-.85-.47l-.19-1.32A.236.236 0 0 0 20 14zm1 3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5c-.84 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5"/></svg></span> <strong>Configuration</strong></p>
 <hr />
-<p>8 additional tables cover conditions, procedures, drugs, observations, measurements, death, visits, and specimens.</p>
-<p><a href="minimum-dataset/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> View minimum dataset</a></p>
+<p>YAML config reference — all tables, distributions, and interaction effects.</p>
+<p><a href="configuration/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Configuration</a></p>
 </li>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> <strong>CDM versions</strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 19V7H4v12zm0-16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-7 14v-2h5v2zm-3.42-4L5.57 9H8.4l3.3 3.3c.39.39.39 1.03 0 1.42L8.42 17H5.59z"/></svg></span> <strong>CLI Reference</strong></p>
 <hr />
-<p>OMOP CDM <strong>5.3</strong> (supported) and <strong>5.4</strong> (recommended for new mappings).</p>
-</li>
-<li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg></span> <strong>Mapping tools</strong></p>
-<hr />
-<p>White Rabbit + Carrot Mapper + Carrot-CDM. HDR UK can assist.</p>
-<p><a href="mapping-tools/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Mapping tools</a></p>
+<p><code>generate</code>, <code>load</code>, <code>run</code>, and <code>multi</code> command details.</p>
+<p><a href="cli/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> CLI Reference</a></p>
 </li>
 </ul>
 </div>
 <hr />
-<h2 id="mandatory-tables">Mandatory tables</h2>
-<p>The following two tables must be populated for all collections:</p>
+<h2 id="what-somop-does">What somop does</h2>
+<p><code>somop</code> lets you:</p>
+<ul>
+<li><strong>Generate</strong> synthetic OMOP CDM CSV files from a simple YAML config — specify concept IDs, prevalences, and value distributions</li>
+<li><strong>Load</strong> those files into a PostgreSQL database using <a href="https://github.com/health-Informatics-UoN/omop-lite">omop-lite</a> via Docker</li>
+<li><strong>Run</strong> a full local stack — PostgreSQL + omop-lite + two BUNNY instances (type A and type B) — in a single Docker Compose command</li>
+<li><strong>Test</strong> without Athena downloads, real data, or complex infrastructure</li>
+</ul>
+<hr />
+<h2 id="when-to-use-it">When to use it</h2>
 <table>
 <thead>
 <tr>
-<th>Table</th>
-<th>Required Fields</th>
+<th>Scenario</th>
+<th>Use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Person</strong></td>
-<td><code>person_id</code>, <code>gender_concept_id</code>, <code>year_of_birth</code>, <code>race_concept_id</code>, <code>ethnicity_concept_id</code></td>
+<td>Testing that BUNNY can pick up and execute a query end-to-end</td>
+<td><code>somop run</code></td>
 </tr>
 <tr>
-<td><strong>Concept</strong></td>
-<td><code>concept_id</code>, <code>domain_id</code></td>
+<td>Generating a dataset for manual inspection of OMOP schema</td>
+<td><code>somop generate</code> or <code>somop load</code></td>
+</tr>
+<tr>
+<td>CI integration tests for the API + BUNNY interaction</td>
+<td><code>somop run</code> (or <code>somop load</code> against a pre-existing DB)</td>
+</tr>
+<tr>
+<td>Load testing with a large synthetic population</td>
+<td><code>somop generate</code> with <code>person.n_people: 400000</code></td>
+</tr>
+<tr>
+<td>Multi-site simulations</td>
+<td><code>somop multi run</code></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="omop-cdm-version-support">OMOP CDM version support</h2>
-<table>
-<thead>
-<tr>
-<th>Version</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>5.4</strong></td>
-<td>Recommended for new mappings</td>
-</tr>
-<tr>
-<td><strong>5.3</strong></td>
-<td>Fully supported — no migration required</td>
-</tr>
-<tr>
-<td>Other</td>
-<td>Contact HDR UK before proceeding</td>
-</tr>
-</tbody>
-</table>
-<p>Supported versions are ultimately constrained by Bunny's deployment requirements. See <a href="https://hutch.health/bunny/deployment/requirements">hutch.health/bunny/deployment/requirements</a> for the latest information.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Python 3.9+</li>
+<li>Docker 24+ (required for <code>somop load</code> and <code>somop run</code>)</li>
+<li>A running API with a registered collection (for <code>somop run</code>)</li>
+</ul>
+<hr />
+<h2 id="quick-example">Quick example</h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Install</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>path/to/somop
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Spin up a full BUNNY + Postgres stack against the local API</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>somop<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>--config<span class="w"> </span>path/to/somop/configs/conditions.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span>--collection-id<span class="w"> </span>&lt;collection-uuid&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span>--api-url<span class="w"> </span>http://host.docker.internal:8100/api/v1<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span>--api-username<span class="w"> </span>admin@example.com<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span>--api-password<span class="w"> </span>yourpassword
+</span></code></pre></div>
+<p>Press <code>Ctrl+C</code> to stop and remove all containers.</p>
+<p>See <a href="installation/">Installation</a> to get started, or jump straight to the <a href="cli/">CLI Reference</a> if you already have somop installed.</p>
 
 
 
@@ -1947,7 +1998,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../architecture/governance/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Governance &amp; Security">
+          <a href="../modes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deployment Modes">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1957,20 +2008,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Data Governance & Security
+                Deployment Modes
               </div>
             </div>
           </a>
         
         
           
-          <a href="minimum-dataset/" class="md-footer__link md-footer__link--next" aria-label="Next: Minimum Dataset">
+          <a href="installation/" class="md-footer__link md-footer__link--next" aria-label="Next: Installation">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Minimum Dataset
+                Installation
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2030,14 +2081,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "content.action.edit", "content.action.view"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../javascripts/tags-to-bottom.js"></script>
+        <script src="../../javascripts/tags-to-bottom.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

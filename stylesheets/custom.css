@@ -1,37 +1,37 @@
 /* ─── HDRUK Colour Scheme ────────────────────────────────────────────────── */
 [data-md-color-scheme="hdruk"] {
-    --md-primary-fg-color:       #475da7;
-    --md-primary-fg-color--dark: #3db28c;
+    --md-primary-fg-color:       #3db28c;
+    --md-primary-fg-color--dark: #2b7e61;
     --md-primary-bg-color:       #ffffff;
     --md-typeset-a-color:        #2c2c2c;
-    --md-footer-bg-color:        #475da7;
-    --md-footer-bg-color--dark:  #3a4e8e;
-    --md-accent-fg-color:        #3db28c;
+    --md-footer-bg-color:        #3db28c;
+    --md-footer-bg-color--dark:  #2b7e61;
+    --md-accent-fg-color:        #475da7;
 }
 
-/* ─── Header: white background, blue underline, larger logo ─────────────── */
+/* ─── Header: white background, teal underline, larger logo ─────────────── */
 .md-header {
     background-color: #ffffff;
-    border-bottom: 3px solid #475da7;
+    border-bottom: 3px solid #3db28c;
     box-shadow: none;
 }
 
 .md-header__title {
-    color: #475da7;
+    color: #3db28c;
 }
 
 .md-header__button {
-    color: #475da7;
+    color: #3db28c;
 }
 
 .md-header__button.md-logo img {
-    height: 2.4rem;
+    height: 1.4rem;
     width: auto;
 }
 
 /* ─── Headings ───────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
-    color: #3db28c !important;
+    color: #475da7 !important;
     font-weight: bold !important;
 }
 h1 { font-size: 1.3rem !important; }
@@ -42,13 +42,13 @@ h4, h5, h6 { font-size: 0.9rem !important; }
 /* ─── Buttons ────────────────────────────────────────────────────────────── */
 .md-button--primary {
     color: white !important;
-    background-color: #475da7 !important;
-    border-color: #475da7 !important;
+    background-color: #3db28c !important;
+    border-color: #3db28c !important;
 }
 .md-button--secondary {
     color: white !important;
-    background-color: #3db28c !important;
-    border-color: #3db28c !important;
+    background-color: #475da7 !important;
+    border-color: #475da7 !important;
 }
 
 /* ─── Utility ────────────────────────────────────────────────────────────── */
@@ -63,22 +63,22 @@ h4, h5, h6 { font-size: 0.9rem !important; }
 }
 .md-typeset .admonition.hdruk,
 .md-typeset details.hdruk {
-    border-color: #475da7;
+    border-color: #3db28c;
 }
 .md-typeset .hdruk > .admonition-title,
 .md-typeset .hdruk > summary {
-    background-color: #475da788;
+    background-color: #3db28c88;
 }
 .md-typeset .hdruk > .admonition-title::before,
 .md-typeset .hdruk > summary::before {
-    background-color: #475da7;
+    background-color: #3db28c;
     -webkit-mask-image: var(--md-admonition-icon--hdruk);
     mask-image: var(--md-admonition-icon--hdruk);
 }
 
 /* ─── Code block header colour ───────────────────────────────────────────── */
 .md-typeset .highlight span.filename {
-    background-color: #475da7;
+    background-color: #3db28c;
     color: white;
 }
 
