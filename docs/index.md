@@ -58,6 +58,13 @@ icon: material/home
 
     [:octicons-arrow-right-24: Reference](reference/glossary.md)
 
+- :material-code-braces: **Developer Guide**
+
+    ---
+    Set up the full stack locally, generate synthetic test data, and contribute to the platform.
+
+    [:octicons-arrow-right-24: Developer Guide](developers/index.md)
+
 </div>
 
 ---

@@ -1,6 +1,6 @@
 ---
 title: Web Service
-description: Developer guide for the Daphne Web service (Next.js)
+description: Developer guide for the Cohort Discovery Service Web service (Next.js)
 tags:
   - web
   - nextjs
@@ -9,7 +9,7 @@ tags:
 
 # Web Service
 
-The Web service is a Next.js 16 application using the App Router. It renders the Daphne UI for three roles — admin, custodian-admin, and researcher — and communicates with the API exclusively through Next.js Server Actions.
+The Web service is a Next.js 16 application using the App Router. It renders the Cohort Discovery Service UI for three roles — admin, custodian-admin, and researcher — and communicates with the API exclusively through Next.js Server Actions.
 
 - **Repo:** `cohort-discovery-service-web`
 - **Port:** 3000 (dev)

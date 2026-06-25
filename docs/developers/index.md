@@ -1,12 +1,74 @@
 ---
 title: Developer Guide
-description: How to set up, run, and contribute to the Daphne full-stack platform
+description: How to set up, run, and contribute to the Cohort Discovery Service full stack
 icon: material/code-braces
 ---
 
 # Developer Guide
 
-This guide is for engineers working on the Daphne platform — the three services that make up the Cohort Discovery Service, plus the tooling around them.
+The Cohort Discovery Service is a federated platform that lets researchers run cohort queries against pseudonymised health data held by Data Custodians — without the underlying data ever leaving a custodian's infrastructure. This guide covers everything you need to develop, run, and contribute to the three services that make it up.
+
+---
+
+## Services
+
+Three services are actively developed in this codebase. A fourth — **BUNNY** — is an external dependency deployed at each custodian site.
+
+```mermaid
+graph TD
+    Browser["Browser"] -->|HTTPS| Web
+
+    subgraph cds-web["cohort-discovery-service-web · Next.js 16 · :3000"]
+        Web["Web"]
+    end
+
+    subgraph cds-api["cohort-discovery-service-api · Laravel 12 · :8100"]
+        API["API"]
+    end
+
+    subgraph cds-nlp["cohort-discovery-service-nlp · FastAPI · :5001"]
+        NLP["NLP"]
+    end
+
+    Web -->|Server Actions| API
+    API -->|POST /extract| NLP
+    API --- MySQL[("MySQL\napp DB + OMOP vocab")]
+    API --- Redis[("Redis\nqueue + cache")]
+
+    subgraph Custodian["Data Custodian Site"]
+        BUNNY["BUNNY · hutch-bunny\nPython 3.13+"] -->|SQL| OMOPDB[("OMOP CDM DB\nPostgres · MSSQL · DuckDB · Snowflake")]
+    end
+
+    API <-->|"poll tasks / POST results"| BUNNY
+```
+
+| Service | Repo | Stack | Dev Port | Role |
+|---------|------|-------|----------|------|
+| **Web** | `cohort-discovery-service-web` | Next.js 16, React 18, TypeScript | 3000 | Frontend UI — App Router, Server Actions, role-based views |
+| **API** | `cohort-discovery-service-api` | Laravel 12, PHP 8.2+, MySQL, Redis | 8100 | Core backend — queries, tasks, OMOP concepts, async jobs |
+| **NLP** | `cohort-discovery-service-nlp` | FastAPI, Python 3.11, RapidFuzz | 5001 | Free-text → OMOP concept extraction via fuzzy matching |
+| BUNNY | `hutch-bunny` (external — Univ. Nottingham) | Python 3.13+, SQLAlchemy | — | Custodian-side task resolver |
+
+The **Web** layer calls the **API** only — it never contacts the NLP service or custodian databases directly. The **API** and **NLP** service both share access to the OMOP vocabulary database.
+
+---
+
+## Deployment modes
+
+The platform runs in two modes, set via an environment variable in each service. Choose the right mode before you start.
+
+| Mode | API (`APP_OPERATION_MODE`) | Web (`APPLICATION_MODE`) | Auth |
+|------|---------------------------|--------------------------|------|
+| **Standalone** | `standalone` | `standalone` | Laravel Passport + local JWT — self-contained, no external dependencies |
+| **Integrated** | `integrated` | `integrated` | HDR UK Gateway OAuth2 SSO — users authenticate via the Gateway |
+
+Use **standalone** for local development. Use **integrated** for production deployments within the HDR UK Gateway.
+
+[:octicons-arrow-right-24: Deployment Modes — full configuration walkthrough](modes.md)
+
+---
+
+## In this guide
 
 <div class="grid cards" markdown>
 
@@ -60,52 +122,3 @@ This guide is for engineers working on the Daphne platform — the three service
     [:octicons-arrow-right-24: Contributing](contributing.md)
 
 </div>
-
----
-
-## Platform Overview
-
-Daphne is a federated cohort discovery platform. Researchers build cohort queries in the **Web** frontend; the **API** manages those queries, dispatches tasks to data custodians, and calls the **NLP** service to handle free-text input. At each custodian site, **BUNNY** polls the API for tasks, runs them against a local OMOP CDM database, and posts obfuscated results back — the raw data never leaves the custodian's infrastructure.
-
-```mermaid
-graph TD
-    Browser["Browser"] -->|HTTP| Web["Web (Next.js :3000)"]
-    Web -->|Server Actions| API["API (Laravel :8100)"]
-    API -->|HTTP POST /extract| NLP["NLP (FastAPI :5001)"]
-    API --- MySQL[("MySQL\napp DB + OMOP vocab")]
-    API --- Redis[("Redis\nqueue + cache")]
-
-    subgraph Custodian["Data Custodian Site"]
-        Bunny["BUNNY (Python)"] -->|queries| OMOPDB[("OMOP CDM DB")]
-    end
-
-    API <-->|poll tasks / POST results| Bunny
-```
-
-The **Web** layer calls the **API** only — it never contacts the NLP service or custodian databases directly. The **API** and **NLP** service both connect to the shared OMOP vocabulary database.
-
----
-
-## Services at a glance
-
-| Service | Repo | Stack | Dev Port | Role |
-|---------|------|-------|----------|------|
-| Web | `cohort-discovery-service-web` | Next.js 16, React 18, TypeScript | 3000 | Frontend UI — App Router, Server Actions, role-based views |
-| API | `cohort-discovery-service-api` | Laravel 12, PHP 8.2+, MySQL, Redis | 8100 | Core backend — queries, tasks, OMOP concepts, async jobs |
-| NLP | `cohort-discovery-service-nlp` | FastAPI, Python 3.11, RapidFuzz | 5001 | Free-text → OMOP concept extraction via fuzzy matching |
-| BUNNY | `hutch-bunny` (external, Univ. Nottingham) | Python 3.13+, SQLAlchemy | — | Custodian-side task resolver |
-
----
-
-## Deployment modes
-
-The platform supports two authentication modes, controlled by an environment variable in each service:
-
-| Mode | API (`APP_OPERATION_MODE`) | Web (`APPLICATION_MODE`) | Auth mechanism |
-|------|---------------------------|--------------------------|----------------|
-| **Standalone** | `standalone` | `standalone` | Laravel Passport + local JWT |
-| **Integrated** | `integrated` | `integrated` | HDR UK Gateway OAuth2 SSO |
-
-Use **standalone** for local development. Use **integrated** for production deployments embedded within the HDR UK Gateway.
-
-See [Deployment Modes](modes.md) for the full configuration walkthrough.

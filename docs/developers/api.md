@@ -1,6 +1,6 @@
 ---
 title: API Service
-description: Developer guide for the Daphne API service (Laravel)
+description: Developer guide for the Cohort Discovery Service API (Laravel)
 tags:
   - api
   - laravel
@@ -93,7 +93,7 @@ php artisan key:generate
     | `INTEGRATED_AUTHORISATION_URI` | Gateway token endpoint (e.g. `http://localhost:8000/oauth2/token`) |
     | `INTEGRATED_CLIENT_ID` | OAuth client ID from Gateway seeder |
     | `INTEGRATED_CLIENT_SECRET` | OAuth client secret from Gateway seeder |
-    | `OAUTH_INTERNAL_REDIRECT` | Daphne callback URL (e.g. `http://localhost:8100/auth/callback`) |
+    | `OAUTH_INTERNAL_REDIRECT` | API callback URL (e.g. `http://localhost:8100/auth/callback`) |
 
 === "Services & Features"
 
@@ -301,7 +301,7 @@ if (ApplicationMode::isIntegrated()) { ... }
 ## Docker
 
 ```bash
-docker build -t daphne-api:latest \
+docker build -t cohort-discovery-api:latest \
   --secret id=github_token,src=<(echo "$GITHUB_TOKEN") \
   .
 ```

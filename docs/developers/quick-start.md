@@ -1,6 +1,6 @@
 ---
 title: Quick Start
-description: Get the Daphne full-stack running locally from scratch
+description: Get the Cohort Discovery Service full stack running locally from scratch
 tags:
   - setup
   - local development
@@ -37,7 +37,7 @@ This guide walks you through running the Web, API, and NLP services together on 
 ## 1. Clone the repos
 
 ```bash
-mkdir daphne && cd daphne
+mkdir cohort-discovery && cd cohort-discovery
 
 git clone https://github.com/HDRUK/cohort-discovery-service-api
 git clone https://github.com/HDRUK/cohort-discovery-service-web
@@ -101,7 +101,7 @@ APP_OPERATION_MODE=standalone
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=daphne
+DB_DATABASE=cohort_discovery
 DB_USERNAME=root
 DB_PASSWORD=yourpassword
 
@@ -117,7 +117,7 @@ JWT_SECRET=a-long-random-string-for-local-dev
 
 **Primary app database:**
 ```bash
-mysql -u root -p -e "CREATE DATABASE daphne;"
+mysql -u root -p -e "CREATE DATABASE cohort_discovery;"
 php artisan migrate:fresh --seed
 ```
 
@@ -184,7 +184,7 @@ Start the dev server:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). You should see the Daphne login page.
+Open [http://localhost:3000](http://localhost:3000). You should see the login page.
 
 ---
 

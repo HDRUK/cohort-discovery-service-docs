@@ -1,4 +1,4 @@
-site_name: Cohort Discovery Service
+site_name: Cohort Discovery Service Documentation
 site_description: Implementation and onboarding documentation for the HDR UK Cohort Discovery Service
 site_url: https://hdruk.github.io/cohort-discovery-service-docs/
 repo_url: https://github.com/HDRUK/cohort-discovery-service-docs
@@ -9,8 +9,8 @@ theme:
   name: material
   palette:
     scheme: hdruk
-  logo: images/logo.png
-  favicon: images/favicon.png
+  logo: images/logo.svg
+  favicon: images/favicon.svg
   font:
     text: Roboto
     code: Roboto Mono
@@ -102,31 +102,44 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting Started:
-    - getting-started/index.md
-    - Prerequisites: getting-started/prerequisites.md
-    - Onboarding Overview: getting-started/onboarding-overview.md
+      - getting-started/index.md
+      - Prerequisites: getting-started/prerequisites.md
+      - Onboarding Overview: getting-started/onboarding-overview.md
   - Architecture:
-    - architecture/index.md
-    - Platform Architecture: architecture/platform.md
-    - Mapping to OMOP: architecture/omop-mapping.md
-    - Data Governance & Security: architecture/governance.md
+      - architecture/index.md
+      - Platform Architecture: architecture/platform.md
+      - Mapping to OMOP: architecture/omop-mapping.md
+      - Data Governance & Security: architecture/governance.md
   - OMOP Requirements:
-    - omop/index.md
-    - Minimum Dataset: omop/minimum-dataset.md
-    - CDM Schema Reference: omop/schema.md
-    - Mapping Tools: omop/mapping-tools.md
+      - omop/index.md
+      - Minimum Dataset: omop/minimum-dataset.md
+      - CDM Schema Reference: omop/schema.md
+      - Mapping Tools: omop/mapping-tools.md
   - Connecting Bunny:
-    - bunny/index.md
-    - Step-by-Step Setup: bunny/setup.md
-    - Configuration Reference: bunny/configuration.md
-    - Two-Instance Pattern: bunny/two-instance-pattern.md
+      - bunny/index.md
+      - Step-by-Step Setup: bunny/setup.md
+      - Configuration Reference: bunny/configuration.md
+      - Two-Instance Pattern: bunny/two-instance-pattern.md
+  - Developer Guide:
+      - developers/index.md
+      - Quick Start: developers/quick-start.md
+      - API Service: developers/api.md
+      - Web Service: developers/web.md
+      - NLP Service: developers/nlp.md
+      - Deployment Modes: developers/modes.md
+      - Synthetic Data (somop):
+          - developers/somop/index.md
+          - Installation: developers/somop/installation.md
+          - Configuration: developers/somop/configuration.md
+          - CLI Reference: developers/somop/cli.md
+      - Contributing: developers/contributing.md
   - Workstreams:
-    - workstreams/index.md
-    - Governance: workstreams/governance.md
-    - Data: workstreams/data.md
-    - Infrastructure: workstreams/infrastructure.md
+      - workstreams/index.md
+      - Governance: workstreams/governance.md
+      - Data: workstreams/data.md
+      - Infrastructure: workstreams/infrastructure.md
   - Reference:
-    - Glossary: reference/glossary.md
-    - Query Retrieval Tools: reference/tools.md
-    - Support: reference/support.md
+      - Glossary: reference/glossary.md
+      - Query Retrieval Tools: reference/tools.md
+      - Support: reference/support.md
   - Tags: tags.md
