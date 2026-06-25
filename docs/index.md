@@ -8,7 +8,6 @@ icon: material/home
 
 <div class="center" markdown>
 [:octicons-arrow-right-24: Get Started](getting-started/index.md){ .md-button .md-button--primary }
-[:octicons-mark-github-16: GitHub](https://github.com/HDRUK/cohort-discovery-service-docs){ .md-button .md-button--secondary }
 </div>
 
 ## Overview
@@ -76,14 +75,20 @@ The service was initially developed through the [CO-CONNECT project](https://www
 
 ## How it works
 
+<div class="center" markdown>
 ```mermaid
-graph LR
+graph TD
     R[Researcher] -->|Runs query via Gateway| CDS[Cohort Discovery Service]
     CDS -->|Sends task| B[Bunny / Query Tool]
     B -->|Queries locally| OMOP[(OMOP Database)]
     B -->|Returns aggregated count| CDS
     CDS -->|Displays result| R
-    OMOP -->|Stays inside| DC[Data Custodian Infrastructure]
+
+    subgraph DC[Data Custodian Infrastructure]
+        B
+        OMOP
+    end
 ```
+</div>
 
 Data never leaves the Custodian. The query tool (e.g. Bunny) makes only **outbound** requests and returns only **aggregate counts** — no row-level data is ever transmitted.
