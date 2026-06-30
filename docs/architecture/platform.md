@@ -8,7 +8,7 @@ tags:
 
 # Platform Architecture
 
-The Cohort Discovery Service operates across multiple organisational boundaries using a federated model. Each Data Custodian maintains full control of their data within their own infrastructure.
+The Cohort Discovery Service operates across multiple organisational boundaries using a federated model. Each Data Custodian maintains full control of their data within their own infrastructure. aoidhosahdoashdoash 
 
 ---
 
