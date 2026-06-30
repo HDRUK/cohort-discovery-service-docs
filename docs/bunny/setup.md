@@ -11,8 +11,6 @@ tags:
 
 This guide walks through connecting Bunny to the Cohort Discovery Service and onboarding your first dataset as a Collection.
 
-Test change
-
 !!! info "Prerequisites"
     Before starting, ensure you have:
 
