@@ -59,6 +59,7 @@ extra:
     provider: mike
 
 plugins:
+  - git-revision-date
   - search:
       separator: '[\s​\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - tags:
