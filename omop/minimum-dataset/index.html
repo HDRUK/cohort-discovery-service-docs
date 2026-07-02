@@ -709,10 +709,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#minimum-viable-omop-fields" class="md-nav__link">
+  <a href="#omop-cdm-version-support" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Minimum viable OMOP fields
+        OMOP CDM Version Support
       
     </span>
   </a>
@@ -720,10 +720,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#field-by-field-rationale" class="md-nav__link">
+  <a href="#mandatory-data-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Field-by-field rationale
+        Mandatory data requirements
       
     </span>
   </a>
@@ -731,10 +731,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#schema-compliance" class="md-nav__link">
+  <a href="#field-level-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Schema compliance
+        Field-Level Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bunny-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bunny Compatibility
       
     </span>
   </a>
@@ -1776,10 +1787,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#minimum-viable-omop-fields" class="md-nav__link">
+  <a href="#omop-cdm-version-support" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Minimum viable OMOP fields
+        OMOP CDM Version Support
       
     </span>
   </a>
@@ -1787,10 +1798,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#field-by-field-rationale" class="md-nav__link">
+  <a href="#mandatory-data-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Field-by-field rationale
+        Mandatory data requirements
       
     </span>
   </a>
@@ -1798,10 +1809,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#schema-compliance" class="md-nav__link">
+  <a href="#field-level-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Schema compliance
+        Field-Level Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bunny-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bunny Compatibility
       
     </span>
   </a>
@@ -1915,421 +1937,52 @@
 
 
 <h1 id="minimum-omop-dataset">Minimum OMOP Dataset</h1>
-<p>This page defines the minimum set of OMOP CDM tables and fields that must be populated for your data to be discoverable via the Cohort Discovery Service.</p>
-<div class="admonition info">
+<p>This page defines the OMOP CDM requirements for making your data discoverable 
+via the Cohort Discovery Service.</p>
+<div class="admonition abstract">
 <p class="admonition-title">Objective</p>
-<p>The minimum dataset represents basic information about a patient — their condition, procedure, drug exposure, observations, and measurements — that helps researchers find and access cohorts for further analysis.</p>
+<p>The minimum dataset represents basic information about a patient — their 
+condition, procedure, drug exposure, observations, and measurements — that 
+helps researchers find and access cohorts for further analysis.</p>
 </div>
 <hr />
-<h2 id="minimum-viable-omop-fields">Minimum viable OMOP fields</h2>
-<p>Items marked with <code>*</code> are optional but useful.</p>
-<table>
-<thead>
-<tr>
-<th>OMOP Table</th>
-<th>Required Fields</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Person</strong></td>
-<td><code>person_id</code>, <code>gender_concept_id</code>, <code>year_of_birth</code>, <code>race_concept_id</code>, <code>ethnicity_concept_id</code></td>
-</tr>
-<tr>
-<td><strong>Condition_Occurrence</strong></td>
-<td><code>condition_occurrence_id</code>, <code>person_id</code>, <code>condition_concept_id</code>, <code>condition_start_date</code></td>
-</tr>
-<tr>
-<td><strong>Procedure_Occurrence</strong></td>
-<td><code>procedure_occurrence_id</code>, <code>person_id</code>, <code>procedure_concept_id</code>, <code>procedure_date</code></td>
-</tr>
-<tr>
-<td><strong>Drug_Exposure</strong></td>
-<td><code>drug_exposure_id</code>, <code>person_id</code>, <code>drug_concept_id</code>, <code>drug_exposure_start_date</code></td>
-</tr>
-<tr>
-<td><strong>Observation</strong></td>
-<td><code>observation_id</code>, <code>person_id</code>, <code>observation_concept_id</code>, <code>observation_date</code>, <code>value_as_number</code><em>, <code>value_as_concept_id</code></em></td>
-</tr>
-<tr>
-<td><strong>Measurement</strong></td>
-<td><code>measurement_id</code>, <code>person_id</code>, <code>measurement_concept_id</code>, <code>measurement_date</code>, <code>value_as_number</code><em>, <code>value_as_concept_id</code></em></td>
-</tr>
-<tr>
-<td><strong>Death</strong> *</td>
-<td><code>person_id</code>, <code>death_date</code>, <code>death_type_concept_id</code>, <code>cause_concept_id</code></td>
-</tr>
-<tr>
-<td><strong>Visit_Occurrence</strong> *</td>
-<td><code>visit_occurrence_id</code>, <code>person_id</code>, <code>visit_concept_id</code>, <code>visit_start_date</code></td>
-</tr>
-<tr>
-<td><strong>Concept</strong></td>
-<td><code>concept_id</code>, <code>domain_id</code></td>
-</tr>
-<tr>
-<td><strong>Specimen</strong> *</td>
-<td><code>specimen_id</code>, <code>person_id</code>, <code>specimen_concept_id</code>, <code>specimen_date</code></td>
-</tr>
-</tbody>
-</table>
+<h2 id="omop-cdm-version-support">OMOP CDM Version Support</h2>
+<p>The Cohort Discovery Service supports OMOP CDM versions 5.3 and above. If you 
+are mapping data for the first time, version 5.4 is recommended. If you have an 
+existing 5.3 mapping, this is fully supported and no migration is required.</p>
+<p>Supported versions are ultimately constrained by Bunny's deployment requirements. 
+See the <a href="https://hutch.health/bunny">Bunny documentation</a> for the latest 
+information. If you are using a version older than 5.3, please contact 
+us before proceeding.</p>
 <hr />
-<h2 id="field-by-field-rationale">Field-by-field rationale</h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:10"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><input id="__tabbed_1_8" name="__tabbed_1" type="radio" /><input id="__tabbed_1_9" name="__tabbed_1" type="radio" /><input id="__tabbed_1_10" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Person</label><label for="__tabbed_1_2">Condition Occurrence</label><label for="__tabbed_1_3">Procedure Occurrence</label><label for="__tabbed_1_4">Drug Exposure</label><label for="__tabbed_1_5">Observation</label><label for="__tabbed_1_6">Measurement</label><label for="__tabbed_1_7">Death</label><label for="__tabbed_1_8">Visit Occurrence</label><label for="__tabbed_1_9">Concept</label><label for="__tabbed_1_10">Specimen</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>Rationale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>person_id</code></td>
-<td>✓</td>
-<td>Unique identifier for each individual; enables linking across all tables</td>
-</tr>
-<tr>
-<td><code>gender_concept_id</code></td>
-<td>✓</td>
-<td>Identifies sex category for sex-specific cohort definitions</td>
-</tr>
-<tr>
-<td><code>year_of_birth</code></td>
-<td>✓</td>
-<td>Determines age groups; facilitates age-related analyses</td>
-</tr>
-<tr>
-<td><code>race_concept_id</code></td>
-<td>✓</td>
-<td>Potentially informative for understanding health disparities</td>
-</tr>
-<tr>
-<td><code>ethnicity_concept_id</code></td>
-<td>✓</td>
-<td>Identifies ethnicity for cohort stratification and health disparities analysis</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>Rationale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>condition_occurrence_id</code></td>
-<td>✓</td>
-<td>Unique identifier for each condition; enables tracking and analysis</td>
-</tr>
-<tr>
-<td><code>person_id</code></td>
-<td>✓</td>
-<td>Key — links to Person table</td>
-</tr>
-<tr>
-<td><code>condition_concept_id</code></td>
-<td>✓</td>
-<td>Identifies specific medical condition for cohort definition and disease progression analysis</td>
-</tr>
-<tr>
-<td><code>condition_start_date</code></td>
-<td>✓</td>
-<td>Tracks date of condition onset; enables disease trajectory analysis</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>Rationale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>procedure_occurrence_id</code></td>
-<td>✓</td>
-<td>Unique identifier for each procedure</td>
-</tr>
-<tr>
-<td><code>person_id</code></td>
-<td>✓</td>
-<td>Key</td>
-</tr>
-<tr>
-<td><code>procedure_concept_id</code></td>
-<td>✓</td>
-<td>Identifies the specific type of procedure for cohort definition and utilisation analysis</td>
-</tr>
-<tr>
-<td><code>procedure_date</code></td>
-<td>✓</td>
-<td>Tracks the date of each procedure for temporal trends</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>Rationale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>drug_exposure_id</code></td>
-<td>✓</td>
-<td>Unique identifier for each drug exposure</td>
-</tr>
-<tr>
-<td><code>person_id</code></td>
-<td>✓</td>
-<td>Key</td>
-</tr>
-<tr>
-<td><code>drug_concept_id</code></td>
-<td>✓</td>
-<td>Identifies the specific drug for cohort definition and medication effectiveness research</td>
-</tr>
-<tr>
-<td><code>drug_exposure_start_date</code></td>
-<td>✓</td>
-<td>Tracks date of drug exposure initiation; enables treatment pattern analysis</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>Rationale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>observation_id</code></td>
-<td>✓</td>
-<td>Unique identifier for each observation</td>
-</tr>
-<tr>
-<td><code>person_id</code></td>
-<td>✓</td>
-<td>Key</td>
-</tr>
-<tr>
-<td><code>observation_concept_id</code></td>
-<td>✓</td>
-<td>Identifies the type of observation (e.g. physical exam finding, imaging result)</td>
-</tr>
-<tr>
-<td><code>observation_date</code></td>
-<td>✓</td>
-<td>Tracks the date; enables temporal analysis</td>
-</tr>
-<tr>
-<td><code>value_as_number</code></td>
-<td>Optional</td>
-<td>Observation value — useful for quantitative analysis</td>
-</tr>
-<tr>
-<td><code>value_as_concept_id</code></td>
-<td>Optional</td>
-<td>Coded observation value</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>Rationale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>measurement_id</code></td>
-<td>✓</td>
-<td>Unique identifier for each measurement</td>
-</tr>
-<tr>
-<td><code>person_id</code></td>
-<td>✓</td>
-<td>Key</td>
-</tr>
-<tr>
-<td><code>measurement_concept_id</code></td>
-<td>✓</td>
-<td>Identifies the type of measurement (e.g. blood pressure, lab test)</td>
-</tr>
-<tr>
-<td><code>measurement_date</code></td>
-<td>✓</td>
-<td>Tracks date of each measurement</td>
-</tr>
-<tr>
-<td><code>value_as_number</code></td>
-<td>Optional</td>
-<td>Value of the measurement</td>
-</tr>
-<tr>
-<td><code>value_as_concept_id</code></td>
-<td>Optional</td>
-<td>Coded value of the measurement</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>Rationale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>person_id</code></td>
-<td>✓</td>
-<td>Key</td>
-</tr>
-<tr>
-<td><code>death_date</code></td>
-<td>✓</td>
-<td>Records the date of death; enables mortality cohorts and survival analysis</td>
-</tr>
-<tr>
-<td><code>death_type_concept_id</code></td>
-<td>✓</td>
-<td>Identifies the type of death (e.g. natural, accidental)</td>
-</tr>
-<tr>
-<td><code>cause_concept_id</code></td>
-<td>✓</td>
-<td>Identifies the underlying cause of death; enables disease burden analysis</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>Rationale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>visit_occurrence_id</code></td>
-<td>Optional</td>
-<td>Unique identifier for each visit</td>
-</tr>
-<tr>
-<td><code>person_id</code></td>
-<td>Optional</td>
-<td>Key</td>
-</tr>
-<tr>
-<td><code>visit_concept_id</code></td>
-<td>Optional</td>
-<td>Identifies the type of visit (e.g. inpatient, outpatient)</td>
-</tr>
-<tr>
-<td><code>visit_start_date</code></td>
-<td>Optional</td>
-<td>Tracks the timing of each visit for temporal analysis</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>Rationale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>concept_id</code></td>
-<td>✓</td>
-<td>Identifies the specific concept for cohort definition and vocabulary lookups</td>
-</tr>
-<tr>
-<td><code>domain_id</code></td>
-<td>✓</td>
-<td>Identifies the domain of the concept (e.g. Condition, Drug, Procedure) to support query filtering</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>Rationale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>specimen_id</code></td>
-<td>Optional</td>
-<td>Unique identifier for each specimen</td>
-</tr>
-<tr>
-<td><code>person_id</code></td>
-<td>Optional</td>
-<td>Key — links specimen to the patient record</td>
-</tr>
-<tr>
-<td><code>specimen_concept_id</code></td>
-<td>Optional</td>
-<td>Identifies the type of specimen (e.g. blood, tissue)</td>
-</tr>
-<tr>
-<td><code>specimen_date</code></td>
-<td>Optional</td>
-<td>Tracks the date the specimen was collected</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+<h2 id="mandatory-data-requirements">Mandatory data requirements</h2>
+<p>Two tables are mandatory to be populated for all datasets:</p>
+<ul>
+<li><strong>Person</strong> — must be populated with <code>person_id</code>s for all individuals in the 
+dataset.</li>
+<li><strong>Concept</strong> — must be populated with the <code>concept_id</code>s for whatever clinical 
+concepts are in use.</li>
+</ul>
+<p>OHDSI defines the full <a class="md-button" href="https://ohdsi.github.io/CommonDataModel/cdm53.html">OMOP CDM definition for version 5.3</a> . Tables other than Person and Concept might be present but are optional for being populated. Which ones you populate will depend on the nature 
+of your dataset. </p>
 <hr />
-<h2 id="schema-compliance">Schema compliance</h2>
-<p>When implementing any OMOP CDM table, <strong>all columns defined by the CDM schema should ideally be present</strong> in the table structure — even if some fields are not used. Refer to the <a href="https://ohdsi.github.io/CommonDataModel/cdm53.html">official OMOP CDM schema documentation</a> for full data types, constraints, and descriptions.</p>
-<div class="admonition warning">
+<h2 id="field-level-requirements">Field-Level Requirements</h2>
+<p>For full field-level detail — including data types, constraints, and descriptions 
+for each OMOP table — refer to the official OMOP CDM documentation maintained 
+by OHDSI:</p>
+<p><a class="md-button" href="https://ohdsi.github.io/CommonDataModel/">OMOP CDM Documentation (OHDSI)</a></p>
+<p>This is the authoritative reference for how each field should be populated across 
+all supported CDM versions. Use it alongside this guide when preparing your 
+OMOP mapping.</p>
+<hr />
+<h2 id="bunny-compatibility">Bunny Compatibility</h2>
+<p>The Cohort Discovery minimum dataset is fully aligned with Bunny's deployment 
+requirements. For field-level requirements specific to Bunny, see:</p>
+<p><a class="md-button" href="https://hutch.health/bunny/deployment/requirements">Bunny Deployment Requirements</a></p>
+<div class="admonition note">
 <p class="admonition-title">Unsupported tables</p>
-<p>Tables not yet supported by Bunny could still be included in your OMOP CDM, but will only be surfaced by the Cohort Discovery Service after agreed adoption.</p>
+<p>Tables not yet supported by Bunny can still be included in your OMOP CDM, 
+but will only be surfaced by the Cohort Discovery Service after agreed adoption.</p>
 </div>
 
 
