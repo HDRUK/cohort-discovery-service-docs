@@ -7,6 +7,7 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
+  custom_dir: overrides
   palette:
     scheme: hdruk
   logo: images/logo.svg
@@ -59,7 +60,8 @@ extra:
     provider: mike
 
 plugins:
-  - git-revision-date
+  - git-revision-date-localized:
+      type: timeago
   - search:
       separator: '[\s​\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - tags:
