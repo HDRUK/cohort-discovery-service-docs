@@ -32,7 +32,7 @@ graph LR
 
 *Figure 2 — Example architecture separating OMOP mapping from ETL*
 
-![Architecture diagram showing the four-step process: extract data subset, profile with White Rabbit, map to OMOP with Carrot Mapper, and ETL to OMOP database with Carrot-CDM](../images/figures/figure-2-omop-etl-architecture.png)
+![Architecture diagram showing the four-step process: extract data subset, profile with White Rabbit, map to OMOP with Carrot Mapper, and ETL to OMOP database with Carrot-CDM](../images/figures/figure-2-omop-etl-architecture.png){ width="100%" }
 
 ### Step-by-step
 
