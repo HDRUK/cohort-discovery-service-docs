@@ -59,7 +59,9 @@ extra:
     provider: mike
 
 plugins:
-  - git-revision-date
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
   - search:
       separator: '[\s​\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - tags:
