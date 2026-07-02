@@ -1,11 +1,14 @@
 ---
-title: Connecting Bunny
+title: Connecting Query Retrieval Tools
 description: Overview of connecting Bunny to the HDR UK Cohort Discovery Service
 tags:
   - bunny
   - integration
   - onboarding
+  - BC|INSIGHT
 ---
+
+# Connecting Query Retrieval Tools
 
 # Connecting Bunny
 
@@ -71,3 +74,13 @@ Before connecting Bunny, ensure you have:
 
 !!! hdruk "HDR UK support"
     HDR UK can provide guidance to Data Custodians wishing to use Bunny. Contact [gateway@hdruk.ac.uk](mailto:gateway@hdruk.ac.uk).
+
+## Connecting BC|INSIGHT
+
+BC|INSIGHT uses the same credentials and connection model as Bunny. Refer to the full credential setup for Bunny, as the Client ID, Client Secret, Collection ID, and Task API Base URL are the same regardless of which query tool you use.
+
+BC|INSIGHT requires **two instances** per dataset, equivalent to Bunny's Type A (availability queries) and Type B (distribution jobs). Configure your A and B instances using the same credentials — only the instance type differs.
+
+For installation instructions, contract options, and BC|INSIGHT-specific questions, contact BC Platforms directly.
+
+[bcplatforms.com](https://www.bcplatforms.com){ .md-button }
