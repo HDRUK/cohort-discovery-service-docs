@@ -136,3 +136,6 @@ Once the OMOP database has been created and stored, it needs to be connected to 
 
 !!! tip "Test with your draft Collection"
     While your Collection is in **Draft** status, you can run test queries visible only to you. See [Step 8 of the Bunny setup guide](../bunny/setup.md#step-8-request-activation-of-your-collection).
+
+!!! tip "Monitoring your Collection"
+    We recommend setting up internal monitoring to detect when your Collection goes offline. The most practical approach is to monitor your Bunny instance health and logs — Bunny's own documentation covers available logging and health-check options. You can also check Collection status at any time in the Cohort Discovery admin panel; a Collection that has gone offline will show as **Offline** or **Suspended** in your Collections list. Contact us at gateway@hdruk.ac.uk if you need support diagnosing a persistent issue.
