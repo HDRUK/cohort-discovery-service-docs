@@ -22,7 +22,7 @@ The Data Workstream covers all steps from extracting a subset of your raw identi
 | Step | Description | Notes |
 |------|-------------|-------|
 | **D1** | Extract a subset of raw identifiable data | Identify the subset of data to be made discoverable |
-| **D2** | Map the extracted subset to OMOP CDM | Can be done in-house or with HDR UK / external support |
+| **D2** | Map the extracted subset to OMOP CDM | Can be done in-house or with external support, e.g. in collaboration with the team at Health Informatics Centre (HIC) at the University of Dundee |
 | **D3** | Create synthetic data (bonus) | Strongly recommended for safe testing |
 | **D4** | ETL the extracted subset to create an OMOP database | Loaded into your secure network area |
 
