@@ -83,7 +83,7 @@ Synthetic data allows you to:
 - Onboard a synthetic collection to Cohort Discovery for development and testing purposes
 
 !!! tip "Test with synthetic data first"
-    HDR UK strongly recommends using synthetic data for all testing until G1 (Data Controller Consent) is complete. A synthetic collection can be set up in Cohort Discovery and queried without requiring Safe Person authentication.
+    HDR UK strongly recommends using synthetic data for all testing until G1 (Data Controller Consent) is complete.
 
 ---
 
