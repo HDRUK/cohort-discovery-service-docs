@@ -59,7 +59,7 @@ The minimum OMOP fields required for Cohort Discovery are defined in [OMOP Requi
 
 === "HDR UK mapping support"
 
-    HDR UK partners at the Health Informatics Centre (HIC), University of Dundee offer OMOP mapping services using CaRROT tools.
+    HDR UK and partners at the Health Informatics Centre (HIC), University of Dundee offer OMOP mapping services using Carrot tools.
 
     Contact the [HIC team](mailto:HICSupport@dundee.ac.uk ) to discuss.
 
@@ -102,7 +102,7 @@ This step produces the OMOP database that Bunny (or your chosen query tool) will
     carrot run --rules mapping_rules.json --input source_data/
     ```
 
-    See [carrot4omop.ac.uk/CaRROT-CDM](https://carrot4omop.ac.uk/CaRROT-CDM/) for full documentation.
+    See [Carrot documentation](https://carrot.ac.uk/documentation) for more detail.
 
 === "Custom ETL"
 
