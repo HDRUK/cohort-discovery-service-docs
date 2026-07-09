@@ -102,7 +102,7 @@ This step produces the OMOP database that Bunny (or your chosen query tool) will
     carrot run --rules mapping_rules.json --input source_data/
     ```
 
-    See [carrot4omop.ac.uk/CaRROT-CDM](https://carrot4omop.ac.uk/CaRROT-CDM/) for full documentation.
+    See [Carrot documentation](https://carrot.ac.uk/documentation) for more detail.
 
 === "Custom ETL"
 
