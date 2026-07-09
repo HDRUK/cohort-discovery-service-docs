@@ -61,7 +61,7 @@ The minimum OMOP fields required for Cohort Discovery are defined in [OMOP Requi
 
     HDR UK and partners at the Health Informatics Centre (HIC), University of Dundee offer OMOP mapping services using Carrot tools.
 
-    Contact [gateway@hdruk.ac.uk](mailto:gateway@hdruk.ac.uk) to discuss.
+    Contact the [HIC team](mailto:HICSupport@dundee.ac.uk ) to discuss.
 
 === "External vendor"
 
