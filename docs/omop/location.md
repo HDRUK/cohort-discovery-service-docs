@@ -1,6 +1,6 @@
 ---
 title: Location & Geo-radius Filtering
-description: How to add location to OMOP data for Bunny's geo-radius filter without holding patient location PII — by blurring postcodes to LSOA centroids
+description: How to add location to OMOP data for Bunny's geo-radius filter without holding identifiable patient location data — by blurring postcodes to LSOA centroids
 tags:
   - omop
   - location
@@ -14,14 +14,14 @@ tags:
 Bunny can answer **geographic** cohort queries — "how many matching patients live
 within *N* km of this point?" — using the OMOP `LOCATION` table. This page explains how
 to populate that table in a way that is useful for discovery **without** holding any
-patient location PII.
+identifiable patient location data.
 
 !!! info "Why not just store real coordinates?"
-    [Governance](../architecture/governance.md) requires that **all patient location PII
-    is withheld** before data enters the secure area — a postcode or exact coordinate is
-    identifying. Yet location filtering needs coordinates. The resolution is to store the
-    **centroid of a coarse statistical area** (LSOA / Data Zone) rather than a person's
-    real location: many people share the same point, so no individual is locatable.
+    [Governance](../architecture/governance.md) requires that **all identifiable patient
+    location data is withheld** before data enters the secure area — a postcode or exact
+    coordinate is identifying. Yet location filtering needs coordinates. The resolution is
+    to store the **centroid of a coarse statistical area** (LSOA / Data Zone) rather than
+    a person's real location: many people share the same point, so no individual is locatable.
 
 ---
 
@@ -60,7 +60,7 @@ Do **not** map a person's real coordinates or store their postcode. Instead:
 3. Store the centroid in the `LOCATION` table and link the person to it. Leave every other
    `LOCATION` field (`address_1`, `city`, `state`, `zip`, `county`, `country_concept_id`, …)
    `NULL` — none of them are needed for `GEO_RADIUS` and populating them from real addresses
-   would reintroduce the PII this approach avoids.
+   would reintroduce the identifiable data this approach avoids.
 
 Every person in the same area gets the **same** centroid, so the stored coordinate never
 identifies an individual — but the anonymity set size varies by nation, so don't treat it as a
@@ -80,21 +80,8 @@ homogeneous area can shrink a matching cohort to a handful of people. Resulting 
 subject to Bunny's normal low-number suppression and rounding — see
 [Obfuscation settings](../bunny/configuration.md#obfuscation-settings) — but if you're
 running `GEO_RADIUS` combined with narrow clinical filters, treat the area size as a floor on
-how small a "safe" query can get, not a guarantee.
-
-```mermaid
-graph LR
-    A[Patient postcode<br/>identifiable — stays<br/>in raw data store] -->|uk-postcode-mapper| C[LSOA / Data Zone code<br/>e.g. E01000001]
-    R[Ready-made LOCATION.csv<br/>area code → centroid] -->|join on area code| E[(OMOP LOCATION table)]
-    C -->|join on area code| E
-    E -->|set person.location_id| F[Person]
-
-    style A fill:#e8833a,color:#fff
-    style E fill:#3db28c,color:#fff
-```
-
-*The postcode never leaves the raw data store; only the area code and centroid reach OMOP —
-and the centroid itself comes from the ready-made table, not from re-deriving it per patient.*
+how small a "safe" query can get, not a guarantee. See the [end-to-end summary](#end-to-end-summary)
+below for how this flow fits together.
 
 !!! tip "Why the centroid and not the area polygon?"
     Bunny's `GEO_RADIUS` rule works on a single point per location. A population-weighted
@@ -133,14 +120,19 @@ real data is a **code join** — no coordinate maths required:
 2. For each person, blur their postcode to an area code using `uk-postcode-mapper` (see below).
 3. Set `person.location_id` to the `location_id` of the matching `location_source_value`.
 
-!!! warning "Keep the CSV and the mapper on the same boundary vintage"
-    The join only works if `uk-postcode-mapper`'s area codes and the ready-made CSV's
-    `location_source_value` codes come from the **same** boundary release (the tables above
-    are pinned to LSOA 2021 / Data Zone 2022 / Super Data Zone 2021). If either side is
-    updated to a newer ONS/NRS/NISRA boundary revision before the other, codes can silently
-    fail to match — or worse, match a reused code whose area geometry has changed — with no
-    error raised. Check the vintage noted in `locations/README.md` against the mapper's
-    release before loading, and re-run the join after regenerating either side.
+!!! warning "The mapper and the ready-made CSVs must be built from the same boundary release year"
+    LSOA / Data Zone / Super Data Zone boundaries are periodically redrawn by ONS/NRS/NISRA —
+    "LSOA 2021" is one specific set of area definitions, not a permanent one; a future
+    "LSOA 2031" will redraw some boundaries and reassign some codes. The area codes returned
+    by `uk-postcode-mapper` only match the `location_source_value` codes in the ready-made
+    CSVs above if **both were built from the same release** (currently LSOA 2021 / Data Zone
+    2022 / Super Data Zone 2021 — see `locations/README.md` for what the CSVs use, and the
+    mapper's own README/release notes for what it was built from). If one side is later
+    rebuilt against a newer release while the other isn't, a code can either match nothing,
+    or — worse — match a **different** area than intended, since codes are sometimes reused
+    across releases for boundaries that have moved. Neither failure raises an error; you'd
+    just get silently wrong locations. Re-check both sides' release year whenever either is
+    regenerated.
 
 ### 2. Postcode → area → centroid: `uk-postcode-mapper`
 
@@ -157,21 +149,84 @@ cd uk-postcode-mapper
 docker compose up --build     # builds the DB on first run, then serves on :8200
 ```
 
-It exposes two lookups:
+It exposes two lookups, both batched (1–1000 codes per request):
 
 === "Postcode → area + centroid"
 
-    Submit postcodes (case-insensitive, spaces ignored; 1–1000 per request). Returns the
-    LSOA / Data Zone / Super Data Zone code, Local Authority District, derived nation, and
-    the population-weighted centroid.
+    `POST /api/v1/postcode/lsoa` — submit postcodes (case-insensitive, spaces ignored) and
+    get back the LSOA / Data Zone / Super Data Zone code, Local Authority District, derived
+    nation, and population-weighted centroid for each.
+
+    ```bash
+    curl -X POST http://localhost:8200/api/v1/postcode/lsoa \
+      -H "Content-Type: application/json" \
+      -d '{"postcodes": ["SW1A 1AA"]}'
+    ```
+
+    ```json
+    {
+      "data": [
+        {
+          "postcode": "SW1A1AA",
+          "lsoa_code": "E01004736",
+          "lsoa_name": "Westminster 018C",
+          "lad_code": "E09000033",
+          "lad_name": "Westminster",
+          "country": "England",
+          "lsoa_centroid": { "latitude": 51.505073224482985, "longitude": -0.13560308569101265 }
+        }
+      ]
+    }
+    ```
 
 === "Area code → centroid"
 
-    Submit LSOA / Data Zone / Super Data Zone codes directly to retrieve their centroids —
-    useful if your source data already carries an area code rather than a postcode.
+    `POST /api/v1/lsoa/centroid` — submit LSOA / Data Zone / Super Data Zone codes directly
+    to retrieve their centroids. Useful if your source data already carries an area code
+    rather than a postcode, or if you're building a custom `LOCATION` table (see below).
+
+    ```bash
+    curl -X POST http://localhost:8200/api/v1/lsoa/centroid \
+      -H "Content-Type: application/json" \
+      -d '{"lsoa_codes": ["E01004736"]}'
+    ```
+
+    ```json
+    {
+      "data": [
+        {
+          "lsoa_code": "E01004736",
+          "lsoa_name": "Westminster 018C",
+          "lsoa_centroid": { "latitude": 51.505073224482985, "longitude": -0.13560308569101265 }
+        }
+      ]
+    }
+    ```
 
 Run the blurring **inside your secure environment**, against the identifiable data, and
 keep only the area code and centroid in the OMOP output.
+
+#### Building a `LOCATION` row from the response
+
+The mapper is a plain lookup API — it doesn't emit an OMOP `location_id` or a ready-to-load
+CSV. If you're not using the [ready-made tables](#1-ready-made-location-tables-recommended-approach)
+(e.g. you need a non-UK area scheme), assign your own surrogate `location_id` per distinct
+area code your patients resolve to, and map the rest straight from the response — leaving
+every other field `NULL`, [as above](#the-recommended-approach-blur-to-an-lsoa-centroid):
+
+```sql title="One row per distinct area code"
+INSERT INTO location (location_id, location_source_value, latitude, longitude)
+VALUES (1, 'E01004736', 51.505073224482985, -0.13560308569101265);
+```
+
+```sql title="Then link each person to their area's row"
+UPDATE person
+SET location_id = (SELECT location_id FROM location WHERE location_source_value = 'E01004736')
+WHERE person_id = 123;
+```
+
+This is exactly what the ready-made tables already do for you — building your own is only
+worth it for a non-UK area scheme, or if you want tighter control over which areas get a row.
 
 ---
 
@@ -180,12 +235,20 @@ keep only the area code and centroid in the OMOP output.
 ```mermaid
 graph TD
     P[Postcodes in raw<br/>data store] -->|blur, in secure env| M[uk-postcode-mapper<br/>→ area code]
-    L[Ready-made LOCATION.csv<br/>area code → centroid] --> DB[(OMOP 5.4 database)]
-    M -->|join on area code| DB
+    M -->|matches area code,<br/>sets person.location_id| DB[(OMOP 5.4 database)]
+    M -.->|optional: bulk area code<br/>→ centroid lookup| CUSTOM[Custom-built LOCATION.csv]
+    HDRUK[HDRUK ready-made<br/>LOCATION.csv] --> DB
+    CUSTOM --> DB
     DB -->|OMOP_LOCATION_ENABLED| BUNNY[Bunny GEO_RADIUS filter]
 
     style DB fill:#3db28c,color:#fff
+    style HDRUK fill:#cfe8dc,color:#000
+    style CUSTOM fill:#f5d9a8,color:#000
 ```
+
+*Green = the [HDRUK-provided](#1-ready-made-location-tables-recommended-approach) table
+(recommended); amber = a [custom-built](#building-a-location-row-from-the-response) one,
+via the mapper's area-code-to-centroid lookup — only needed for a non-UK area scheme.*
 
 | Step | Where | What leaves it |
 |------|-------|----------------|
@@ -200,5 +263,5 @@ graph TD
 - [Minimum dataset](minimum-dataset.md) — the CDM 5.4 location exception
 - [CDM Schema Reference](schema.md) — `LOCATION` table fields
 - [Bunny configuration](../bunny/configuration.md) — `OMOP_LOCATION_ENABLED`
-- [Data Governance & Security](../architecture/governance.md) — PII withholding
+- [Data Governance & Security](../architecture/governance.md) — identifiable data withholding
 - [Synthetic data (somop)](../developers/somop/index.md) — generate test data with a populated `LOCATION` table
