@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -754,6 +754,17 @@
     <span class="md-ellipsis">
       
         Bunny deployment requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-cdm-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional CDM tables
       
     </span>
   </a>
@@ -1811,6 +1822,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#optional-cdm-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional CDM tables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#recommended-database-indexes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1925,7 +1947,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="June 23, 2026 13:52:09 UTC"><span class="timeago" datetime="2026-06-23T13:52:09+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="June 23, 2026 13:52:09 UTC">2026-06-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 10, 2026 08:19:56 UTC"><span class="timeago" datetime="2026-08-10T08:19:56+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 10, 2026 08:19:56 UTC">2026-08-10</span>
   </span>
 
 
@@ -1971,6 +1993,37 @@
 <h2 id="bunny-deployment-requirements">Bunny deployment requirements</h2>
 <p>The Cohort Discovery minimum dataset is fully aligned with Bunny's deployment requirements. Always check the Bunny documentation for the latest supported versions and any additional configuration requirements:</p>
 <p><a href="https://hutch.health/bunny/deployment/requirements"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Bunny deployment requirements</a></p>
+<hr />
+<h2 id="optional-cdm-tables">Optional CDM tables</h2>
+<p>Some OMOP CDM tables are only used by Bunny when explicitly enabled via configuration:</p>
+<table>
+<thead>
+<tr>
+<th>OMOP Table</th>
+<th>Fields used</th>
+<th>Enabled by</th>
+<th>Supported from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Specimen</td>
+<td><code>specimen_id</code>, <code>person_id</code>, <code>specimen_concept_id</code>, <code>specimen_date</code></td>
+<td><code>OMOP_SPECIMEN_ENABLED</code></td>
+<td>Bunny v1.7</td>
+</tr>
+<tr>
+<td>Location</td>
+<td><code>location_id</code>, <code>latitude</code>, <code>longitude</code> (joined via <code>person.location_id</code>)</td>
+<td><code>OMOP_LOCATION_ENABLED</code></td>
+<td>Bunny v1.8</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Location filtering requires OMOP CDM 5.4</p>
+<p>The <code>latitude</code> and <code>longitude</code> fields were only added to the Location table in <strong>OMOP CDM v5.4</strong> — a v5.3 database cannot use Bunny's geo-radius location filter. See <a href="https://hutch.health/bunny/deployment/requirements#omop-cdm">Bunny deployment requirements</a> for the full table/field reference, and the <a href="https://hutch.health/concepts/availability#location-filtering">Availability concept — Location filtering</a> page for how the <code>GEO_RADIUS</code> rule works.</p>
+</div>
 <hr />
 <h2 id="recommended-database-indexes">Recommended database indexes</h2>
 <p>If you are using Bunny as your query retrieval software, ensure the following indexes are in place on your OMOP tables to support efficient query processing:</p>
@@ -2137,7 +2190,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       
