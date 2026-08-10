@@ -120,6 +120,7 @@ nav:
       - Minimum Dataset: omop/minimum-dataset.md
       - CDM Schema Reference: omop/schema.md
       - Mapping Tools: omop/mapping-tools.md
+      - Location & Geo-radius: omop/location.md
   - Connecting Bunny:
       - bunny/index.md
       - Step-by-Step Setup: bunny/setup.md

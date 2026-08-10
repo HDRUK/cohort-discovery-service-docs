@@ -30,6 +30,9 @@ See the [Bunny documentation](https://hutch.health/bunny) for the latest
 information. If you are using a version older than 5.3, please contact 
 us before proceeding.
 
+!!! note "Exception: Location (geo-radius) filtering"
+    One feature is the exception to "5.3 is fully supported": Bunny's Location table geo-radius filter (v1.8+) requires **OMOP CDM v5.4**, since `latitude`/`longitude` were not present on the Location table in 5.3. If you only need Location-based filtering, this is the one case that would require moving to 5.4. See [Availability — Location filtering](https://hutch.health/concepts/availability#location-filtering).
+
 ---
 
 ## Mandatory data requirements
