@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="The minimum set of OMOP CDM tables and fields required for Cohort Discovery">
+        <meta name="description" content="How to add location to OMOP data for Bunny's geo-radius filter without holding patient location PII — by blurring postcodes to LSOA centroids">
       
       
       
-        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/omop/minimum-dataset/">
+        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/omop/location/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../mapping-tools/">
       
       
-        <link rel="next" href="../schema/">
+        <link rel="next" href="../../bunny/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Minimum OMOP Dataset - Cohort Discovery Service Documentation</title>
+        <title>Location & Geo-radius Filtering - Cohort Discovery Service Documentation</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#minimum-omop-dataset" class="md-skip">
+        <a href="#location-geo-radius-filtering" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Minimum OMOP Dataset
+              Location & Geo-radius Filtering
             
           </span>
         </div>
@@ -650,37 +650,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Minimum Dataset
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../minimum-dataset/" class="md-nav__link">
         
   
   
@@ -696,70 +669,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#omop-cdm-version-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OMOP CDM Version Support
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mandatory-data-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mandatory data requirements
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#field-level-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Field-Level Requirements
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bunny-compatibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bunny Compatibility
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -825,10 +734,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../location/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Location & Geo-radius
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -844,6 +780,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-bunny-uses-location" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Bunny uses location
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-recommended-approach-blur-to-an-lsoa-centroid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The recommended approach: blur to an LSOA centroid
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tooling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tooling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-postcode-area-centroid-uk-postcode-mapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Postcode → area → centroid: uk-postcode-mapper
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ready-made-location-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ready-made LOCATION tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-to-end summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1819,10 +1858,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#omop-cdm-version-support" class="md-nav__link">
+  <a href="#how-bunny-uses-location" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OMOP CDM Version Support
+        How Bunny uses location
       
     </span>
   </a>
@@ -1830,10 +1869,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mandatory-data-requirements" class="md-nav__link">
+  <a href="#the-recommended-approach-blur-to-an-lsoa-centroid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mandatory data requirements
+        The recommended approach: blur to an LSOA centroid
       
     </span>
   </a>
@@ -1841,10 +1880,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#field-level-requirements" class="md-nav__link">
+  <a href="#tooling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Field-Level Requirements
+        Tooling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tooling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-postcode-area-centroid-uk-postcode-mapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Postcode → area → centroid: uk-postcode-mapper
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ready-made-location-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ready-made LOCATION tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-to-end summary
       
     </span>
   </a>
@@ -1852,10 +1930,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bunny-compatibility" class="md-nav__link">
+  <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bunny Compatibility
+        See also
       
     </span>
   </a>
@@ -1931,14 +2009,28 @@
       
       
       
-        <a href="../../tags/#tag:data" class="md-tag">data</a>
+        <a href="../../tags/#tag:bunny" class="md-tag">bunny</a>
       
     
       
       
       
       
-        <a href="../../tags/#tag:minimum-dataset" class="md-tag">minimum-dataset</a>
+        <a href="../../tags/#tag:governance" class="md-tag">governance</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:location" class="md-tag">location</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:mapping" class="md-tag">mapping</a>
       
     
       
@@ -1955,77 +2047,227 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 10, 2026 08:19:56 UTC"><span class="timeago" datetime="2026-08-10T08:19:56+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 10, 2026 08:19:56 UTC">2026-08-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 10, 2026 08:54:01 UTC"><span class="timeago" datetime="2026-08-10T08:54:01+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 10, 2026 08:54:01 UTC">2026-08-10</span>
   </span>
 
 
   
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/omop/minimum-dataset.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/omop/location.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
   
   
     
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/omop/minimum-dataset.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/omop/location.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="minimum-omop-dataset">Minimum OMOP Dataset</h1>
-<p>This page defines the OMOP CDM requirements for making your data discoverable 
-via the Cohort Discovery Service.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Objective</p>
-<p>The minimum dataset represents basic information about a patient — their 
-condition, procedure, drug exposure, observations, and measurements — that 
-helps researchers find and access cohorts for further analysis.</p>
+<h1 id="location-geo-radius-filtering">Location &amp; Geo-radius Filtering</h1>
+<p>Bunny can answer <strong>geographic</strong> cohort queries — "how many matching patients live
+within <em>N</em> km of this point?" — using the OMOP <code>LOCATION</code> table. This page explains how
+to populate that table in a way that is useful for discovery <strong>without</strong> holding any
+patient location PII.</p>
+<div class="admonition info">
+<p class="admonition-title">The tension this page resolves</p>
+<p><a href="../../architecture/governance/">Governance</a> requires that <strong>all patient location PII
+is withheld</strong> before data enters the secure area — a postcode or exact coordinate is
+identifying. Yet location filtering needs coordinates. The resolution is to store the
+<strong>centroid of a coarse statistical area</strong> (LSOA / Data Zone) rather than a person's
+real location: many people share the same point, so no individual is locatable.</p>
 </div>
 <hr />
-<h2 id="omop-cdm-version-support">OMOP CDM Version Support</h2>
-<p>The Cohort Discovery Service supports OMOP CDM versions 5.3 and above. If you 
-are mapping data for the first time, version 5.4 is recommended. If you have an 
-existing 5.3 mapping, this is fully supported and no migration is required.</p>
-<p>Supported versions are ultimately constrained by Bunny's deployment requirements. 
-See the <a href="https://hutch.health/bunny">Bunny documentation</a> for the latest 
-information. If you are using a version older than 5.3, please contact 
-us before proceeding.</p>
+<h2 id="how-bunny-uses-location">How Bunny uses location</h2>
+<p>Bunny's optional geo-radius filter matches persons whose <code>location_id</code> joins to a
+<code>LOCATION</code> row whose <code>latitude</code>/<code>longitude</code> fall within a given radius of a query point.</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OMOP CDM version</td>
+<td><strong>5.4 only</strong> — <code>latitude</code>/<code>longitude</code> were added to <code>LOCATION</code> in 5.4</td>
+</tr>
+<tr>
+<td>Bunny version</td>
+<td><strong>v1.8+</strong></td>
+</tr>
+<tr>
+<td>Enable flag</td>
+<td><code>OMOP_LOCATION_ENABLED</code> (see <a href="../../bunny/configuration/">Bunny configuration</a>)</td>
+</tr>
+<tr>
+<td>Query rule</td>
+<td><code>GEO_RADIUS</code> — see <a href="https://hutch.health/concepts/availability#location-filtering">Availability — Location filtering</a></td>
+</tr>
+<tr>
+<td>Join</td>
+<td><code>person.location_id</code> → <code>location.location_id</code> → (<code>latitude</code>, <code>longitude</code>)</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
-<p class="admonition-title">Exception: Location (geo-radius) filtering</p>
-<p>One feature is the exception to "5.3 is fully supported": Bunny's Location table geo-radius filter (v1.8+) requires <strong>OMOP CDM v5.4</strong>, since <code>latitude</code>/<code>longitude</code> were not present on the Location table in 5.3. If you only need Location-based filtering, this is the one case that would require moving to 5.4. See <a href="https://hutch.health/concepts/availability#location-filtering">Availability — Location filtering</a>.</p>
+<p class="admonition-title">This is the one feature that requires CDM 5.4</p>
+<p>Everything else works on 5.3. If location filtering is the <em>only</em> reason you would
+move to 5.4, see the <a href="../minimum-dataset/">minimum dataset exception</a>.</p>
 </div>
 <hr />
-<h2 id="mandatory-data-requirements">Mandatory data requirements</h2>
-<p>Two tables are mandatory to be populated for all datasets:</p>
+<h2 id="the-recommended-approach-blur-to-an-lsoa-centroid">The recommended approach: blur to an LSOA centroid</h2>
+<p>Do <strong>not</strong> map a person's real coordinates or store their postcode. Instead:</p>
+<ol>
+<li><strong>Blur</strong> the postcode to the coarse statistical area that contains it — an <strong>LSOA</strong>
+   (England &amp; Wales), <strong>Data Zone</strong> (Scotland) or <strong>Super Data Zone</strong> (Northern Ireland).
+   These contain roughly 1,000–2,000 residents each.</li>
+<li>Map that area to its <strong>population-weighted centroid</strong> — a single (lat, lon) point
+   representative of where people in the area live.</li>
+<li>Store the centroid in the <code>LOCATION</code> table and link the person to it.</li>
+</ol>
+<p>Every person in the same area gets the <strong>same</strong> centroid, so the stored coordinate
+identifies an area of ~1,500 people, never an individual — while still supporting a
+radius query accurate to the LSOA scale.</p>
+<pre class="mermaid"><code>graph LR
+    A[Patient postcode&lt;br/&gt;identifiable — stays&lt;br/&gt;in raw data store] --&gt; B[uk-postcode-mapper]
+    B --&gt; C[LSOA / Data Zone code&lt;br/&gt;e.g. E01000001]
+    C --&gt; D[Population-weighted&lt;br/&gt;centroid lat/lon]
+    D --&gt; E[(OMOP LOCATION table)]
+    E --&gt; F[person.location_id]
+
+    style A fill:#e8833a,color:#fff
+    style E fill:#3db28c,color:#fff</code></pre>
+<p><em>The postcode never leaves the raw data store; only the area centroid reaches OMOP.</em></p>
+<div class="admonition tip">
+<p class="admonition-title">Why the centroid and not the area polygon?</p>
+<p>Bunny's <code>GEO_RADIUS</code> rule works on a single point per location. A population-weighted
+centroid (the point representative of where residents actually live, not the geometric
+middle) is the natural single-point summary of an LSOA.</p>
+</div>
+<hr />
+<h2 id="tooling">Tooling</h2>
+<h3 id="1-postcode-area-centroid-uk-postcode-mapper">1. Postcode → area → centroid: <code>uk-postcode-mapper</code></h3>
+<p><a href="https://github.com/HDRUK/uk-postcode-mapper"><code>HDRUK/uk-postcode-mapper</code></a> is a small,
+self-contained FastAPI + SQLite service that does both blurring steps. It covers all four
+UK nations and requires no external database.</p>
+<div class="language-bash highlight"><span class="filename">Run the mapper</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/HDRUK/uk-postcode-mapper.git
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>uk-postcode-mapper
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w">     </span><span class="c1"># builds the DB on first run, then serves on :8200</span>
+</span></code></pre></div>
+<p>It exposes two lookups:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Postcode → area + centroid</label><label for="__tabbed_1_2">Area code → centroid</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Submit postcodes (case-insensitive, spaces ignored; 1–1000 per request). Returns the
+LSOA / Data Zone / Super Data Zone code, Local Authority District, derived nation, and
+the population-weighted centroid.</p>
+</div>
+<div class="tabbed-block">
+<p>Submit LSOA / Data Zone / Super Data Zone codes directly to retrieve their centroids —
+useful if your source data already carries an area code rather than a postcode.</p>
+</div>
+</div>
+</div>
+<p>Run the blurring <strong>inside your secure environment</strong>, against the identifiable data, and
+keep only the area code and centroid in the OMOP output.</p>
+<h3 id="2-ready-made-location-tables">2. Ready-made <code>LOCATION</code> tables</h3>
+<p>You usually don't need to build a <code>LOCATION</code> table at all. This repo ships pre-built OMOP
+<code>LOCATION</code> tables for the whole UK (and per nation) under
+<a href="https://github.com/HDRUK/cohort-discovery-service-docs/tree/main/locations"><code>locations/</code></a>,
+using the same centroids <code>uk-postcode-mapper</code> emits:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Coverage</th>
+<th style="text-align: right;">Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>locations/uk/LOCATION.csv</code></td>
+<td>Whole UK</td>
+<td style="text-align: right;">43,914</td>
+</tr>
+<tr>
+<td><code>locations/england/LOCATION.csv</code></td>
+<td>England (LSOA 2021)</td>
+<td style="text-align: right;">33,755</td>
+</tr>
+<tr>
+<td><code>locations/wales/LOCATION.csv</code></td>
+<td>Wales (LSOA 2021)</td>
+<td style="text-align: right;">1,917</td>
+</tr>
+<tr>
+<td><code>locations/scotland/LOCATION.csv</code></td>
+<td>Scotland (Data Zone 2022)</td>
+<td style="text-align: right;">7,392</td>
+</tr>
+<tr>
+<td><code>locations/northern-ireland/LOCATION.csv</code></td>
+<td>Northern Ireland (Super Data Zone 2021)</td>
+<td style="text-align: right;">850</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="https://github.com/HDRUK/cohort-discovery-service-docs/blob/main/locations/README.md"><code>locations/README.md</code></a>
+for provenance and how to regenerate. The area code is stored in <code>location_source_value</code>.
+Because those codes are exactly what <code>uk-postcode-mapper</code> returns, attaching location to
+real data is a <strong>code join</strong> — no coordinate maths required:</p>
+<ol>
+<li>Load the relevant <code>LOCATION.csv</code> into your OMOP database as-is.</li>
+<li>For each person, blur their postcode to an area code (step 1 above).</li>
+<li>Set <code>person.location_id</code> to the <code>location_id</code> of the matching <code>location_source_value</code>.</li>
+</ol>
+<hr />
+<h2 id="end-to-end-summary">End-to-end summary</h2>
+<pre class="mermaid"><code>graph TD
+    P[Postcodes in raw&lt;br/&gt;data store] --&gt;|blur, in secure env| M[uk-postcode-mapper&lt;br/&gt;→ area code]
+    L[somop LOCATION.csv&lt;br/&gt;area code → centroid] --&gt; DB[(OMOP 5.4 database)]
+    M --&gt;|join on area code| DB
+    DB --&gt;|OMOP_LOCATION_ENABLED| BUNNY[Bunny GEO_RADIUS filter]
+
+    style DB fill:#3db28c,color:#fff</code></pre>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Where</th>
+<th>What leaves it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blur postcode → area code</td>
+<td>Inside secure environment</td>
+<td>Area code only</td>
+</tr>
+<tr>
+<td>Area code → centroid</td>
+<td><code>LOCATION</code> table (join)</td>
+<td>Centroid, shared by ~1,500 people</td>
+</tr>
+<tr>
+<td>Radius query</td>
+<td>Bunny</td>
+<td>Aggregate count only</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="see-also">See also</h2>
 <ul>
-<li><strong>Person</strong> — must be populated with <code>person_id</code>s for all individuals in the 
-dataset.</li>
-<li><strong>Concept</strong> — must be populated with the <code>concept_id</code>s for whatever clinical 
-concepts are in use.</li>
+<li><a href="../minimum-dataset/">Minimum dataset</a> — the CDM 5.4 location exception</li>
+<li><a href="../schema/">CDM Schema Reference</a> — <code>LOCATION</code> table fields</li>
+<li><a href="../../bunny/configuration/">Bunny configuration</a> — <code>OMOP_LOCATION_ENABLED</code></li>
+<li><a href="../../architecture/governance/">Data Governance &amp; Security</a> — PII withholding</li>
+<li><a href="../../developers/somop/">Synthetic data (somop)</a> — generate test data with a populated <code>LOCATION</code> table</li>
 </ul>
-<p>OHDSI defines the full <a class="md-button" href="https://ohdsi.github.io/CommonDataModel/cdm53.html">OMOP CDM definition for version 5.3</a> . Tables other than Person and Concept might be present but are optional for being populated. Which ones you populate will depend on the nature 
-of your dataset. </p>
-<hr />
-<h2 id="field-level-requirements">Field-Level Requirements</h2>
-<p>For full field-level detail — including data types, constraints, and descriptions 
-for each OMOP table — refer to the official OMOP CDM documentation maintained 
-by OHDSI:</p>
-<p><a class="md-button" href="https://ohdsi.github.io/CommonDataModel/">OMOP CDM Documentation (OHDSI)</a></p>
-<p>This is the authoritative reference for how each field should be populated across 
-all supported CDM versions. Use it alongside this guide when preparing your 
-OMOP mapping.</p>
-<hr />
-<h2 id="bunny-compatibility">Bunny Compatibility</h2>
-<p>The Cohort Discovery minimum dataset is fully aligned with Bunny's deployment 
-requirements. For field-level requirements specific to Bunny, see:</p>
-<p><a class="md-button" href="https://hutch.health/bunny/deployment/requirements">Bunny Deployment Requirements</a></p>
-<div class="admonition note">
-<p class="admonition-title">Unsupported tables</p>
-<p>Tables not yet supported by Bunny can still be included in your OMOP CDM, 
-but will only be surfaced by the Cohort Discovery Service after agreed adoption.</p>
-</div>
 
 
 
@@ -2056,7 +2298,7 @@ but will only be surfaced by the Cohort Discovery Service after agreed adoption.
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: OMOP Requirements">
+          <a href="../mapping-tools/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Mapping Tools">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2066,20 +2308,20 @@ but will only be surfaced by the Cohort Discovery Service after agreed adoption.
                 Previous
               </span>
               <div class="md-ellipsis">
-                OMOP Requirements
+                Mapping Tools
               </div>
             </div>
           </a>
         
         
           
-          <a href="../schema/" class="md-footer__link md-footer__link--next" aria-label="Next: CDM Schema Reference">
+          <a href="../../bunny/" class="md-footer__link md-footer__link--next" aria-label="Next: Connecting Query Retrieval Tools">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                CDM Schema Reference
+                Connecting Query Retrieval Tools
               </div>
             </div>
             <div class="md-footer__button md-icon">
