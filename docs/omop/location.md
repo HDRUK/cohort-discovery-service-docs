@@ -235,10 +235,11 @@ worth it for a non-UK area scheme, or if you want tighter control over which are
 ```mermaid
 graph TD
     P[Postcodes in raw<br/>data store] -->|blur, in secure env| M[uk-postcode-mapper<br/>→ area code]
-    M -->|matches area code,<br/>sets person.location_id| DB[(OMOP 5.4 database)]
     M -.->|optional: bulk area code<br/>→ centroid lookup| CUSTOM[Custom-built LOCATION.csv]
-    HDRUK[HDRUK ready-made<br/>LOCATION.csv] --> DB
-    CUSTOM --> DB
+    HDRUK[HDRUK ready-made<br/>LOCATION.csv] --> EITHER{pick one}
+    CUSTOM --> EITHER
+    EITHER -->|load as LOCATION rows| DB[(OMOP 5.4 database)]
+    M -->|matches area code,<br/>sets person.location_id| DB
     DB -->|OMOP_LOCATION_ENABLED| BUNNY[Bunny GEO_RADIUS filter]
 
     style DB fill:#3db28c,color:#fff
@@ -246,9 +247,12 @@ graph TD
     style CUSTOM fill:#f5d9a8,color:#000
 ```
 
-*Green = the [HDRUK-provided](#1-ready-made-location-tables-recommended-approach) table
-(recommended); amber = a [custom-built](#building-a-location-row-from-the-response) one,
-via the mapper's area-code-to-centroid lookup — only needed for a non-UK area scheme.*
+*Only one `LOCATION.csv` source feeds the database — either the green
+[HDRUK-provided](#1-ready-made-location-tables-recommended-approach) table (recommended), or
+the amber [custom-built](#building-a-location-row-from-the-response) one via the mapper's
+area-code-to-centroid lookup, needed only for a non-UK area scheme. The mapper's other
+output — matching each person's area code — feeds the database separately, to set
+`person.location_id`.*
 
 | Step | Where | What leaves it |
 |------|-------|----------------|
