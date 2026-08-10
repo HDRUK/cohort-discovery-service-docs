@@ -32,6 +32,20 @@ The Cohort Discovery minimum dataset is fully aligned with Bunny's deployment re
 
 ---
 
+## Optional CDM tables
+
+Some OMOP CDM tables are only used by Bunny when explicitly enabled via configuration:
+
+| OMOP Table | Fields used | Enabled by | Supported from |
+|------------|-------------|------------|-----------------|
+| Specimen | `specimen_id`, `person_id`, `specimen_concept_id`, `specimen_date` | `OMOP_SPECIMEN_ENABLED` | Bunny v1.7 |
+| Location | `location_id`, `latitude`, `longitude` (joined via `person.location_id`) | `OMOP_LOCATION_ENABLED` | Bunny v1.8 |
+
+!!! warning "Location filtering requires OMOP CDM 5.4"
+    The `latitude` and `longitude` fields were only added to the Location table in **OMOP CDM v5.4** — a v5.3 database cannot use Bunny's geo-radius location filter. See [Bunny deployment requirements](https://hutch.health/bunny/deployment/requirements#omop-cdm) for the full table/field reference, and the [Availability concept — Location filtering](https://hutch.health/concepts/availability#location-filtering) page for how the `GEO_RADIUS` rule works.
+
+---
+
 ## Recommended database indexes
 
 If you are using Bunny as your query retrieval software, ensure the following indexes are in place on your OMOP tables to support efficient query processing:

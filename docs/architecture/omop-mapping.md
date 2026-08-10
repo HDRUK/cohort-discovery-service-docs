@@ -73,6 +73,9 @@ HDR UK and partners at the **Health Informatics Centre (HIC)** at the University
 | OMOP CDM 5.3 | Fully supported — no migration required |
 | Other versions | Contact HDR UK before proceeding |
 
+!!! note "Location filtering is 5.4-only"
+    Bunny's optional geo-radius Location filter (v1.8+) requires OMOP CDM 5.4 specifically — see [Bunny deployment requirements](https://hutch.health/bunny/deployment/requirements#omop-cdm).
+
 See the [Bunny deployment requirements](https://hutch.health/bunny/deployment/requirements) for the latest supported versions.
 
 ---

@@ -60,6 +60,19 @@ https://api.cohort-discovery.healthdatagateway.org/api/v1
 
 ---
 
+## Optional feature flags
+
+These variables enable Bunny to query optional OMOP CDM tables. Both default to `false` and require the corresponding table to be populated in your OMOP database:
+
+| Variable | Required | Description |
+|----------|----------|--------------|
+| `OMOP_SPECIMEN_ENABLED` | | Enables filtering on the Specimen table. Available from Bunny v1.7. |
+| `OMOP_LOCATION_ENABLED` | | Enables geo-radius filtering against the Location table (`latitude`/`longitude`). Requires **OMOP CDM v5.4**. Available from Bunny v1.8. |
+
+See [hutch.health/bunny/config#database](https://hutch.health/bunny/config#database) for full details, and [Availability — Location filtering](https://hutch.health/concepts/availability#location-filtering) for how the `GEO_RADIUS` rule is used.
+
+---
+
 ## Example configurations
 
 === "PostgreSQL"
