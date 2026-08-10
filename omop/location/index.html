@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="How to add location to OMOP data for Bunny's geo-radius filter without holding patient location PII — by blurring postcodes to LSOA centroids">
+        <meta name="description" content="How to add location to OMOP data for Bunny's geo-radius filter without holding identifiable patient location data — by blurring postcodes to LSOA centroids">
       
       
       
@@ -849,6 +849,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="2. Postcode → area → centroid: uk-postcode-mapper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-a-location-row-from-the-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building a LOCATION row from the response
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1911,6 +1928,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. Postcode → area → centroid: uk-postcode-mapper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-a-location-row-from-the-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building a LOCATION row from the response
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2047,7 +2081,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 10, 2026 10:10:42 UTC"><span class="timeago" datetime="2026-08-10T10:10:42+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 10, 2026 10:10:42 UTC">2026-08-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 10, 2026 10:32:53 UTC"><span class="timeago" datetime="2026-08-10T10:32:53+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 10, 2026 10:32:53 UTC">2026-08-10</span>
   </span>
 
 
@@ -2070,14 +2104,14 @@
 <p>Bunny can answer <strong>geographic</strong> cohort queries — "how many matching patients live
 within <em>N</em> km of this point?" — using the OMOP <code>LOCATION</code> table. This page explains how
 to populate that table in a way that is useful for discovery <strong>without</strong> holding any
-patient location PII.</p>
+identifiable patient location data.</p>
 <div class="admonition info">
 <p class="admonition-title">Why not just store real coordinates?</p>
-<p><a href="../../architecture/governance/">Governance</a> requires that <strong>all patient location PII
-is withheld</strong> before data enters the secure area — a postcode or exact coordinate is
-identifying. Yet location filtering needs coordinates. The resolution is to store the
-<strong>centroid of a coarse statistical area</strong> (LSOA / Data Zone) rather than a person's
-real location: many people share the same point, so no individual is locatable.</p>
+<p><a href="../../architecture/governance/">Governance</a> requires that <strong>all identifiable patient
+location data is withheld</strong> before data enters the secure area — a postcode or exact
+coordinate is identifying. Yet location filtering needs coordinates. The resolution is
+to store the <strong>centroid of a coarse statistical area</strong> (LSOA / Data Zone) rather than
+a person's real location: many people share the same point, so no individual is locatable.</p>
 </div>
 <hr />
 <h2 id="how-bunny-uses-location">How Bunny uses location</h2>
@@ -2135,7 +2169,7 @@ postcodes that don't resolve to an area (PO boxes, Crown dependencies, brand-new
 <li>Store the centroid in the <code>LOCATION</code> table and link the person to it. Leave every other
    <code>LOCATION</code> field (<code>address_1</code>, <code>city</code>, <code>state</code>, <code>zip</code>, <code>county</code>, <code>country_concept_id</code>, …)
    <code>NULL</code> — none of them are needed for <code>GEO_RADIUS</code> and populating them from real addresses
-   would reintroduce the PII this approach avoids.</li>
+   would reintroduce the identifiable data this approach avoids.</li>
 </ol>
 <p>Every person in the same area gets the <strong>same</strong> centroid, so the stored coordinate never
 identifies an individual — but the anonymity set size varies by nation, so don't treat it as a
@@ -2174,17 +2208,8 @@ homogeneous area can shrink a matching cohort to a handful of people. Resulting 
 subject to Bunny's normal low-number suppression and rounding — see
 <a href="../../bunny/configuration/#obfuscation-settings">Obfuscation settings</a> — but if you're
 running <code>GEO_RADIUS</code> combined with narrow clinical filters, treat the area size as a floor on
-how small a "safe" query can get, not a guarantee.</p>
-<pre class="mermaid"><code>graph LR
-    A[Patient postcode&lt;br/&gt;identifiable — stays&lt;br/&gt;in raw data store] --&gt;|uk-postcode-mapper| C[LSOA / Data Zone code&lt;br/&gt;e.g. E01000001]
-    R[Ready-made LOCATION.csv&lt;br/&gt;area code → centroid] --&gt;|join on area code| E[(OMOP LOCATION table)]
-    C --&gt;|join on area code| E
-    E --&gt;|set person.location_id| F[Person]
-
-    style A fill:#e8833a,color:#fff
-    style E fill:#3db28c,color:#fff</code></pre>
-<p><em>The postcode never leaves the raw data store; only the area code and centroid reach OMOP —
-and the centroid itself comes from the ready-made table, not from re-deriving it per patient.</em></p>
+how small a "safe" query can get, not a guarantee. See the <a href="#end-to-end-summary">end-to-end summary</a>
+below for how this flow fits together.</p>
 <div class="admonition tip">
 <p class="admonition-title">Why the centroid and not the area polygon?</p>
 <p>Bunny's <code>GEO_RADIUS</code> rule works on a single point per location. A population-weighted
@@ -2248,14 +2273,19 @@ real data is a <strong>code join</strong> — no coordinate maths required:</p>
 <li>Set <code>person.location_id</code> to the <code>location_id</code> of the matching <code>location_source_value</code>.</li>
 </ol>
 <div class="admonition warning">
-<p class="admonition-title">Keep the CSV and the mapper on the same boundary vintage</p>
-<p>The join only works if <code>uk-postcode-mapper</code>'s area codes and the ready-made CSV's
-<code>location_source_value</code> codes come from the <strong>same</strong> boundary release (the tables above
-are pinned to LSOA 2021 / Data Zone 2022 / Super Data Zone 2021). If either side is
-updated to a newer ONS/NRS/NISRA boundary revision before the other, codes can silently
-fail to match — or worse, match a reused code whose area geometry has changed — with no
-error raised. Check the vintage noted in <code>locations/README.md</code> against the mapper's
-release before loading, and re-run the join after regenerating either side.</p>
+<p class="admonition-title">The mapper and the ready-made CSVs must be built from the same boundary release year</p>
+<p>LSOA / Data Zone / Super Data Zone boundaries are periodically redrawn by ONS/NRS/NISRA —
+"LSOA 2021" is one specific set of area definitions, not a permanent one; a future
+"LSOA 2031" will redraw some boundaries and reassign some codes. The area codes returned
+by <code>uk-postcode-mapper</code> only match the <code>location_source_value</code> codes in the ready-made
+CSVs above if <strong>both were built from the same release</strong> (currently LSOA 2021 / Data Zone
+2022 / Super Data Zone 2021 — see <code>locations/README.md</code> for what the CSVs use, and the
+mapper's own README/release notes for what it was built from). If one side is later
+rebuilt against a newer release while the other isn't, a code can either match nothing,
+or — worse — match a <strong>different</strong> area than intended, since codes are sometimes reused
+across releases for boundaries that have moved. Neither failure raises an error; you'd
+just get silently wrong locations. Re-check both sides' release year whenever either is
+regenerated.</p>
 </div>
 <h3 id="2-postcode-area-centroid-uk-postcode-mapper">2. Postcode → area → centroid: <code>uk-postcode-mapper</code></h3>
 <p><a href="https://github.com/HDRUK/uk-postcode-mapper"><code>HDRUK/uk-postcode-mapper</code></a> is a small,
@@ -2268,31 +2298,86 @@ ready-made ones (e.g. a non-UK area scheme).</p>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>uk-postcode-mapper
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w">     </span><span class="c1"># builds the DB on first run, then serves on :8200</span>
 </span></code></pre></div>
-<p>It exposes two lookups:</p>
+<p>It exposes two lookups, both batched (1–1000 codes per request):</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Postcode → area + centroid</label><label for="__tabbed_1_2">Area code → centroid</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Submit postcodes (case-insensitive, spaces ignored; 1–1000 per request). Returns the
-LSOA / Data Zone / Super Data Zone code, Local Authority District, derived nation, and
-the population-weighted centroid.</p>
+<p><code>POST /api/v1/postcode/lsoa</code> — submit postcodes (case-insensitive, spaces ignored) and
+get back the LSOA / Data Zone / Super Data Zone code, Local Authority District, derived
+nation, and population-weighted centroid for each.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8200/api/v1/postcode/lsoa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;postcodes&quot;: [&quot;SW1A 1AA&quot;]}&#39;</span>
+</span></code></pre></div>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="nt">&quot;postcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SW1A1AA&quot;</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="nt">&quot;lsoa_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;E01004736&quot;</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">      </span><span class="nt">&quot;lsoa_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Westminster 018C&quot;</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="nt">&quot;lad_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;E09000033&quot;</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">      </span><span class="nt">&quot;lad_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Westminster&quot;</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">      </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;England&quot;</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">      </span><span class="nt">&quot;lsoa_centroid&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">51.505073224482985</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.13560308569101265</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>Submit LSOA / Data Zone / Super Data Zone codes directly to retrieve their centroids —
-useful if your source data already carries an area code rather than a postcode.</p>
+<p><code>POST /api/v1/lsoa/centroid</code> — submit LSOA / Data Zone / Super Data Zone codes directly
+to retrieve their centroids. Useful if your source data already carries an area code
+rather than a postcode, or if you're building a custom <code>LOCATION</code> table (see below).</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8200/api/v1/lsoa/centroid<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;lsoa_codes&quot;: [&quot;E01004736&quot;]}&#39;</span>
+</span></code></pre></div>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">      </span><span class="nt">&quot;lsoa_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;E01004736&quot;</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">      </span><span class="nt">&quot;lsoa_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Westminster 018C&quot;</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">      </span><span class="nt">&quot;lsoa_centroid&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">51.505073224482985</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.13560308569101265</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">}</span>
+</span></code></pre></div>
 </div>
 </div>
 </div>
 <p>Run the blurring <strong>inside your secure environment</strong>, against the identifiable data, and
 keep only the area code and centroid in the OMOP output.</p>
+<h4 id="building-a-location-row-from-the-response">Building a <code>LOCATION</code> row from the response</h4>
+<p>The mapper is a plain lookup API — it doesn't emit an OMOP <code>location_id</code> or a ready-to-load
+CSV. If you're not using the <a href="#1-ready-made-location-tables-recommended-approach">ready-made tables</a>
+(e.g. you need a non-UK area scheme), assign your own surrogate <code>location_id</code> per distinct
+area code your patients resolve to, and map the rest straight from the response — leaving
+every other field <code>NULL</code>, <a href="#the-recommended-approach-blur-to-an-lsoa-centroid">as above</a>:</p>
+<div class="language-sql highlight"><span class="filename">One row per distinct area code</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">location</span><span class="w"> </span><span class="p">(</span><span class="n">location_id</span><span class="p">,</span><span class="w"> </span><span class="n">location_source_value</span><span class="p">,</span><span class="w"> </span><span class="n">latitude</span><span class="p">,</span><span class="w"> </span><span class="n">longitude</span><span class="p">)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;E01004736&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">51</span><span class="p">.</span><span class="mi">505073224482985</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">13560308569101265</span><span class="p">);</span>
+</span></code></pre></div>
+<div class="language-sql highlight"><span class="filename">Then link each person to their area&#x27;s row</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">person</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">SET</span><span class="w"> </span><span class="n">location_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">location_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">location</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">location_source_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;E01004736&#39;</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">person_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">123</span><span class="p">;</span>
+</span></code></pre></div>
+<p>This is exactly what the ready-made tables already do for you — building your own is only
+worth it for a non-UK area scheme, or if you want tighter control over which areas get a row.</p>
 <hr />
 <h2 id="end-to-end-summary">End-to-end summary</h2>
 <pre class="mermaid"><code>graph TD
     P[Postcodes in raw&lt;br/&gt;data store] --&gt;|blur, in secure env| M[uk-postcode-mapper&lt;br/&gt;→ area code]
-    L[Ready-made LOCATION.csv&lt;br/&gt;area code → centroid] --&gt; DB[(OMOP 5.4 database)]
-    M --&gt;|join on area code| DB
+    M --&gt;|matches area code,&lt;br/&gt;sets person.location_id| DB[(OMOP 5.4 database)]
+    M -.-&gt;|optional: bulk area code&lt;br/&gt;→ centroid lookup| CUSTOM[Custom-built LOCATION.csv]
+    HDRUK[HDRUK ready-made&lt;br/&gt;LOCATION.csv] --&gt; DB
+    CUSTOM --&gt; DB
     DB --&gt;|OMOP_LOCATION_ENABLED| BUNNY[Bunny GEO_RADIUS filter]
 
-    style DB fill:#3db28c,color:#fff</code></pre>
+    style DB fill:#3db28c,color:#fff
+    style HDRUK fill:#cfe8dc,color:#000
+    style CUSTOM fill:#f5d9a8,color:#000</code></pre>
+<p><em>Green = the <a href="#1-ready-made-location-tables-recommended-approach">HDRUK-provided</a> table
+(recommended); amber = a <a href="#building-a-location-row-from-the-response">custom-built</a> one,
+via the mapper's area-code-to-centroid lookup — only needed for a non-UK area scheme.</em></p>
 <table>
 <thead>
 <tr>
@@ -2325,7 +2410,7 @@ keep only the area code and centroid in the OMOP output.</p>
 <li><a href="../minimum-dataset/">Minimum dataset</a> — the CDM 5.4 location exception</li>
 <li><a href="../schema/">CDM Schema Reference</a> — <code>LOCATION</code> table fields</li>
 <li><a href="../../bunny/configuration/">Bunny configuration</a> — <code>OMOP_LOCATION_ENABLED</code></li>
-<li><a href="../../architecture/governance/">Data Governance &amp; Security</a> — PII withholding</li>
+<li><a href="../../architecture/governance/">Data Governance &amp; Security</a> — identifiable data withholding</li>
 <li><a href="../../developers/somop/">Synthetic data (somop)</a> — generate test data with a populated <code>LOCATION</code> table</li>
 </ul>
 
