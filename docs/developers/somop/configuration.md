@@ -166,12 +166,16 @@ death:
 
 location:
   enabled: true
+  # Either list locations inline…
   items:
     - location_id: 1
       city: London
       country_source_value: GBR
       latitude: 51.5074
       longitude: -0.1278
+  # …or point at a pre-built LOCATION table (used only when `items` is empty).
+  # somop ships ready-made UK tables under locations/ — see the Location page.
+  # prebuilt_file: locations/uk/LOCATION.csv
 
 
 # ── Interaction effects ────────────────────────────────────────────────────────

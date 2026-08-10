@@ -43,6 +43,13 @@ The Cohort Discovery Service operates on data mapped to the **OMOP Common Data M
 
     [:octicons-arrow-right-24: Mapping tools](mapping-tools.md)
 
+- :material-map-marker-radius: **Location filtering**
+
+    ---
+    Add geo-radius support by blurring postcodes to LSOA centroids — no location PII stored.
+
+    [:octicons-arrow-right-24: Location & geo-radius](location.md)
+
 </div>
 
 ---
