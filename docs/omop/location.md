@@ -112,11 +112,10 @@ keep only the area code and centroid in the OMOP output.
 
 ### 2. Ready-made `LOCATION` tables
 
-You usually don't need to build a `LOCATION` table at all. The
-[`somop`](https://github.com/HDRUK/somop) repo ships pre-built OMOP `LOCATION` tables for
-the whole UK (and per nation) under
-[`locations/`](https://github.com/HDRUK/somop/tree/main/locations), using the same
-centroids `uk-postcode-mapper` emits:
+You usually don't need to build a `LOCATION` table at all. This repo ships pre-built OMOP
+`LOCATION` tables for the whole UK (and per nation) under
+[`locations/`](https://github.com/HDRUK/cohort-discovery-service-docs/tree/main/locations),
+using the same centroids `uk-postcode-mapper` emits:
 
 | Table | Coverage | Rows |
 |-------|----------|-----:|
@@ -126,9 +125,10 @@ centroids `uk-postcode-mapper` emits:
 | `locations/scotland/LOCATION.csv` | Scotland (Data Zone 2022) | 7,392 |
 | `locations/northern-ireland/LOCATION.csv` | Northern Ireland (Super Data Zone 2021) | 850 |
 
-The area code is stored in `location_source_value`. Because those codes are exactly what
-`uk-postcode-mapper` returns, attaching location to real data is a **code join** — no
-coordinate maths required:
+See [`locations/README.md`](https://github.com/HDRUK/cohort-discovery-service-docs/blob/main/locations/README.md)
+for provenance and how to regenerate. The area code is stored in `location_source_value`.
+Because those codes are exactly what `uk-postcode-mapper` returns, attaching location to
+real data is a **code join** — no coordinate maths required:
 
 1. Load the relevant `LOCATION.csv` into your OMOP database as-is.
 2. For each person, blur their postcode to an area code (step 1 above).

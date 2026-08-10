@@ -174,8 +174,9 @@ location:
       latitude: 51.5074
       longitude: -0.1278
   # …or point at a pre-built LOCATION table (used only when `items` is empty).
-  # somop ships ready-made UK tables under locations/ — see the Location page.
-  # prebuilt_file: locations/uk/LOCATION.csv
+  # Ready-made UK tables are published in this repo under locations/ —
+  # see the Location & Geo-radius page.
+  # prebuilt_file: ./LOCATION.csv
 
 
 # ── Interaction effects ────────────────────────────────────────────────────────
