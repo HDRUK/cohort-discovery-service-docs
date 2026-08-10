@@ -831,10 +831,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-postcode-area-centroid-uk-postcode-mapper" class="md-nav__link">
+  <a href="#1-ready-made-location-tables-recommended-approach" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Postcode → area → centroid: uk-postcode-mapper
+        1. Ready-made LOCATION tables — [recommended approach]
       
     </span>
   </a>
@@ -842,10 +842,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-ready-made-location-tables" class="md-nav__link">
+  <a href="#2-postcode-area-centroid-uk-postcode-mapper" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Ready-made LOCATION tables
+        2. Postcode → area → centroid: uk-postcode-mapper
       
     </span>
   </a>
@@ -1892,10 +1892,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-postcode-area-centroid-uk-postcode-mapper" class="md-nav__link">
+  <a href="#1-ready-made-location-tables-recommended-approach" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Postcode → area → centroid: uk-postcode-mapper
+        1. Ready-made LOCATION tables — [recommended approach]
       
     </span>
   </a>
@@ -1903,10 +1903,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-ready-made-location-tables" class="md-nav__link">
+  <a href="#2-postcode-area-centroid-uk-postcode-mapper" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Ready-made LOCATION tables
+        2. Postcode → area → centroid: uk-postcode-mapper
       
     </span>
   </a>
@@ -2047,7 +2047,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 10, 2026 08:54:01 UTC"><span class="timeago" datetime="2026-08-10T08:54:01+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 10, 2026 08:54:01 UTC">2026-08-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 10, 2026 10:10:42 UTC"><span class="timeago" datetime="2026-08-10T10:10:42+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 10, 2026 10:10:42 UTC">2026-08-10</span>
   </span>
 
 
@@ -2072,7 +2072,7 @@ within <em>N</em> km of this point?" — using the OMOP <code>LOCATION</code> ta
 to populate that table in a way that is useful for discovery <strong>without</strong> holding any
 patient location PII.</p>
 <div class="admonition info">
-<p class="admonition-title">The tension this page resolves</p>
+<p class="admonition-title">Why not just store real coordinates?</p>
 <p><a href="../../architecture/governance/">Governance</a> requires that <strong>all patient location PII
 is withheld</strong> before data enters the secure area — a postcode or exact coordinate is
 identifying. Yet location filtering needs coordinates. The resolution is to store the
@@ -2118,30 +2118,73 @@ real location: many people share the same point, so no individual is locatable.<
 <p>Everything else works on 5.3. If location filtering is the <em>only</em> reason you would
 move to 5.4, see the <a href="../minimum-dataset/">minimum dataset exception</a>.</p>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Unresolved locations are excluded, not errored</p>
+<p>A person with no <code>location_id</code> set, or whose <code>LOCATION</code> row has no <code>latitude</code>/<code>longitude</code>,
+is simply never matched by <code>GEO_RADIUS</code> — it doesn't fail the query. This is normal for
+postcodes that don't resolve to an area (PO boxes, Crown dependencies, brand-new addresses).</p>
+</div>
 <hr />
 <h2 id="the-recommended-approach-blur-to-an-lsoa-centroid">The recommended approach: blur to an LSOA centroid</h2>
 <p>Do <strong>not</strong> map a person's real coordinates or store their postcode. Instead:</p>
 <ol>
 <li><strong>Blur</strong> the postcode to the coarse statistical area that contains it — an <strong>LSOA</strong>
-   (England &amp; Wales), <strong>Data Zone</strong> (Scotland) or <strong>Super Data Zone</strong> (Northern Ireland).
-   These contain roughly 1,000–2,000 residents each.</li>
+   (England &amp; Wales), <strong>Data Zone</strong> (Scotland) or <strong>Super Data Zone</strong> (Northern Ireland).</li>
 <li>Map that area to its <strong>population-weighted centroid</strong> — a single (lat, lon) point
    representative of where people in the area live.</li>
-<li>Store the centroid in the <code>LOCATION</code> table and link the person to it.</li>
+<li>Store the centroid in the <code>LOCATION</code> table and link the person to it. Leave every other
+   <code>LOCATION</code> field (<code>address_1</code>, <code>city</code>, <code>state</code>, <code>zip</code>, <code>county</code>, <code>country_concept_id</code>, …)
+   <code>NULL</code> — none of them are needed for <code>GEO_RADIUS</code> and populating them from real addresses
+   would reintroduce the PII this approach avoids.</li>
 </ol>
-<p>Every person in the same area gets the <strong>same</strong> centroid, so the stored coordinate
-identifies an area of ~1,500 people, never an individual — while still supporting a
-radius query accurate to the LSOA scale.</p>
+<p>Every person in the same area gets the <strong>same</strong> centroid, so the stored coordinate never
+identifies an individual — but the anonymity set size varies by nation, so don't treat it as a
+single number:</p>
+<table>
+<thead>
+<tr>
+<th>Area type</th>
+<th>Nation</th>
+<th>Typical residents per area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LSOA</td>
+<td>England &amp; Wales</td>
+<td>~1,000–3,000 (design mean ~1,500)</td>
+</tr>
+<tr>
+<td>Data Zone</td>
+<td>Scotland</td>
+<td>~500–1,000 (design mean ~750)</td>
+</tr>
+<tr>
+<td>Super Data Zone</td>
+<td>Northern Ireland</td>
+<td>~2,000–2,500 (2021 census average ~2,240)</td>
+</tr>
+</tbody>
+</table>
+<p>Because the boundary-to-centroid mapping is deterministic and published by ONS/NRS/NISRA,
+storing the area code (<code>location_source_value</code>) alongside the centroid adds no disclosure
+risk beyond the centroid itself. The usual composition risk still applies, though: combining
+<code>GEO_RADIUS</code> with other rare quasi-identifiers (age, sex, a rare condition) in a small or
+homogeneous area can shrink a matching cohort to a handful of people. Resulting counts remain
+subject to Bunny's normal low-number suppression and rounding — see
+<a href="../../bunny/configuration/#obfuscation-settings">Obfuscation settings</a> — but if you're
+running <code>GEO_RADIUS</code> combined with narrow clinical filters, treat the area size as a floor on
+how small a "safe" query can get, not a guarantee.</p>
 <pre class="mermaid"><code>graph LR
-    A[Patient postcode&lt;br/&gt;identifiable — stays&lt;br/&gt;in raw data store] --&gt; B[uk-postcode-mapper]
-    B --&gt; C[LSOA / Data Zone code&lt;br/&gt;e.g. E01000001]
-    C --&gt; D[Population-weighted&lt;br/&gt;centroid lat/lon]
-    D --&gt; E[(OMOP LOCATION table)]
-    E --&gt; F[person.location_id]
+    A[Patient postcode&lt;br/&gt;identifiable — stays&lt;br/&gt;in raw data store] --&gt;|uk-postcode-mapper| C[LSOA / Data Zone code&lt;br/&gt;e.g. E01000001]
+    R[Ready-made LOCATION.csv&lt;br/&gt;area code → centroid] --&gt;|join on area code| E[(OMOP LOCATION table)]
+    C --&gt;|join on area code| E
+    E --&gt;|set person.location_id| F[Person]
 
     style A fill:#e8833a,color:#fff
     style E fill:#3db28c,color:#fff</code></pre>
-<p><em>The postcode never leaves the raw data store; only the area centroid reaches OMOP.</em></p>
+<p><em>The postcode never leaves the raw data store; only the area code and centroid reach OMOP —
+and the centroid itself comes from the ready-made table, not from re-deriving it per patient.</em></p>
 <div class="admonition tip">
 <p class="admonition-title">Why the centroid and not the area polygon?</p>
 <p>Bunny's <code>GEO_RADIUS</code> rule works on a single point per location. A population-weighted
@@ -2150,10 +2193,77 @@ middle) is the natural single-point summary of an LSOA.</p>
 </div>
 <hr />
 <h2 id="tooling">Tooling</h2>
-<h3 id="1-postcode-area-centroid-uk-postcode-mapper">1. Postcode → area → centroid: <code>uk-postcode-mapper</code></h3>
+<h3 id="1-ready-made-location-tables-recommended-approach">1. Ready-made <code>LOCATION</code> tables — [recommended approach]</h3>
+<p>You usually don't need to compute or maintain centroids yourself. This repo ships pre-built
+OMOP <code>LOCATION</code> tables for the whole UK (and per nation) under
+<a href="https://github.com/HDRUK/cohort-discovery-service-docs/tree/main/locations"><code>locations/</code></a>,
+using the same centroids <code>uk-postcode-mapper</code> emits. You'll still need <code>uk-postcode-mapper</code>
+(or equivalent) to turn each of <em>your</em> patients' postcodes into an area code — see
+<a href="#2-postcode-area-centroid-uk-postcode-mapper">§2</a> — but you won't need it to build the
+centroid side of the table. Download the CSV for the coverage you need directly from the
+links below:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Coverage</th>
+<th style="text-align: right;">Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/HDRUK/cohort-discovery-service-docs/blob/main/locations/uk/LOCATION.csv"><code>locations/uk/LOCATION.csv</code></a></td>
+<td>Whole UK</td>
+<td style="text-align: right;">43,914</td>
+</tr>
+<tr>
+<td><a href="https://github.com/HDRUK/cohort-discovery-service-docs/blob/main/locations/england/LOCATION.csv"><code>locations/england/LOCATION.csv</code></a></td>
+<td>England (LSOA 2021)</td>
+<td style="text-align: right;">33,755</td>
+</tr>
+<tr>
+<td><a href="https://github.com/HDRUK/cohort-discovery-service-docs/blob/main/locations/wales/LOCATION.csv"><code>locations/wales/LOCATION.csv</code></a></td>
+<td>Wales (LSOA 2021)</td>
+<td style="text-align: right;">1,917</td>
+</tr>
+<tr>
+<td><a href="https://github.com/HDRUK/cohort-discovery-service-docs/blob/main/locations/scotland/LOCATION.csv"><code>locations/scotland/LOCATION.csv</code></a></td>
+<td>Scotland (Data Zone 2022)</td>
+<td style="text-align: right;">7,392</td>
+</tr>
+<tr>
+<td><a href="https://github.com/HDRUK/cohort-discovery-service-docs/blob/main/locations/northern-ireland/LOCATION.csv"><code>locations/northern-ireland/LOCATION.csv</code></a></td>
+<td>Northern Ireland (Super Data Zone 2021)</td>
+<td style="text-align: right;">850</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="https://github.com/HDRUK/cohort-discovery-service-docs/blob/main/locations/README.md"><code>locations/README.md</code></a>
+for provenance and how to regenerate. The area code is stored in <code>location_source_value</code>.
+Because those codes are exactly what <code>uk-postcode-mapper</code> returns, attaching location to
+real data is a <strong>code join</strong> — no coordinate maths required:</p>
+<ol>
+<li>Download the relevant <code>LOCATION.csv</code> above and load it into your OMOP database as-is.</li>
+<li>For each person, blur their postcode to an area code using <code>uk-postcode-mapper</code> (see below).</li>
+<li>Set <code>person.location_id</code> to the <code>location_id</code> of the matching <code>location_source_value</code>.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Keep the CSV and the mapper on the same boundary vintage</p>
+<p>The join only works if <code>uk-postcode-mapper</code>'s area codes and the ready-made CSV's
+<code>location_source_value</code> codes come from the <strong>same</strong> boundary release (the tables above
+are pinned to LSOA 2021 / Data Zone 2022 / Super Data Zone 2021). If either side is
+updated to a newer ONS/NRS/NISRA boundary revision before the other, codes can silently
+fail to match — or worse, match a reused code whose area geometry has changed — with no
+error raised. Check the vintage noted in <code>locations/README.md</code> against the mapper's
+release before loading, and re-run the join after regenerating either side.</p>
+</div>
+<h3 id="2-postcode-area-centroid-uk-postcode-mapper">2. Postcode → area → centroid: <code>uk-postcode-mapper</code></h3>
 <p><a href="https://github.com/HDRUK/uk-postcode-mapper"><code>HDRUK/uk-postcode-mapper</code></a> is a small,
 self-contained FastAPI + SQLite service that does both blurring steps. It covers all four
-UK nations and requires no external database.</p>
+UK nations and requires no external database. You need it to complete step 2 above — turning
+your patients' real postcodes into the area codes the ready-made tables key on — and it's also
+the tool to reach for if you want to build a custom <code>LOCATION</code> table instead of using the
+ready-made ones (e.g. a non-UK area scheme).</p>
 <div class="language-bash highlight"><span class="filename">Run the mapper</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/HDRUK/uk-postcode-mapper.git
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>uk-postcode-mapper
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w">     </span><span class="c1"># builds the DB on first run, then serves on :8200</span>
@@ -2174,61 +2284,11 @@ useful if your source data already carries an area code rather than a postcode.<
 </div>
 <p>Run the blurring <strong>inside your secure environment</strong>, against the identifiable data, and
 keep only the area code and centroid in the OMOP output.</p>
-<h3 id="2-ready-made-location-tables">2. Ready-made <code>LOCATION</code> tables</h3>
-<p>You usually don't need to build a <code>LOCATION</code> table at all. This repo ships pre-built OMOP
-<code>LOCATION</code> tables for the whole UK (and per nation) under
-<a href="https://github.com/HDRUK/cohort-discovery-service-docs/tree/main/locations"><code>locations/</code></a>,
-using the same centroids <code>uk-postcode-mapper</code> emits:</p>
-<table>
-<thead>
-<tr>
-<th>Table</th>
-<th>Coverage</th>
-<th style="text-align: right;">Rows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>locations/uk/LOCATION.csv</code></td>
-<td>Whole UK</td>
-<td style="text-align: right;">43,914</td>
-</tr>
-<tr>
-<td><code>locations/england/LOCATION.csv</code></td>
-<td>England (LSOA 2021)</td>
-<td style="text-align: right;">33,755</td>
-</tr>
-<tr>
-<td><code>locations/wales/LOCATION.csv</code></td>
-<td>Wales (LSOA 2021)</td>
-<td style="text-align: right;">1,917</td>
-</tr>
-<tr>
-<td><code>locations/scotland/LOCATION.csv</code></td>
-<td>Scotland (Data Zone 2022)</td>
-<td style="text-align: right;">7,392</td>
-</tr>
-<tr>
-<td><code>locations/northern-ireland/LOCATION.csv</code></td>
-<td>Northern Ireland (Super Data Zone 2021)</td>
-<td style="text-align: right;">850</td>
-</tr>
-</tbody>
-</table>
-<p>See <a href="https://github.com/HDRUK/cohort-discovery-service-docs/blob/main/locations/README.md"><code>locations/README.md</code></a>
-for provenance and how to regenerate. The area code is stored in <code>location_source_value</code>.
-Because those codes are exactly what <code>uk-postcode-mapper</code> returns, attaching location to
-real data is a <strong>code join</strong> — no coordinate maths required:</p>
-<ol>
-<li>Load the relevant <code>LOCATION.csv</code> into your OMOP database as-is.</li>
-<li>For each person, blur their postcode to an area code (step 1 above).</li>
-<li>Set <code>person.location_id</code> to the <code>location_id</code> of the matching <code>location_source_value</code>.</li>
-</ol>
 <hr />
 <h2 id="end-to-end-summary">End-to-end summary</h2>
 <pre class="mermaid"><code>graph TD
     P[Postcodes in raw&lt;br/&gt;data store] --&gt;|blur, in secure env| M[uk-postcode-mapper&lt;br/&gt;→ area code]
-    L[somop LOCATION.csv&lt;br/&gt;area code → centroid] --&gt; DB[(OMOP 5.4 database)]
+    L[Ready-made LOCATION.csv&lt;br/&gt;area code → centroid] --&gt; DB[(OMOP 5.4 database)]
     M --&gt;|join on area code| DB
     DB --&gt;|OMOP_LOCATION_ENABLED| BUNNY[Bunny GEO_RADIUS filter]
 
@@ -2250,7 +2310,7 @@ real data is a <strong>code join</strong> — no coordinate maths required:</p>
 <tr>
 <td>Area code → centroid</td>
 <td><code>LOCATION</code> table (join)</td>
-<td>Centroid, shared by ~1,500 people</td>
+<td>Centroid, shared by ~500–2,500 people depending on nation</td>
 </tr>
 <tr>
 <td>Radius query</td>
