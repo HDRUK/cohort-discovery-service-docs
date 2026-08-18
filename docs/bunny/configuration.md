@@ -68,6 +68,7 @@ These variables enable Bunny to query optional OMOP CDM tables. Both default to 
 |----------|----------|--------------|
 | `OMOP_SPECIMEN_ENABLED` | | Enables filtering on the Specimen table. Available from Bunny v1.7. |
 | `OMOP_LOCATION_ENABLED` | | Enables geo-radius filtering against the Location table (`latitude`/`longitude`). Requires **OMOP CDM v5.4**. Available from Bunny v1.8. |
+| `OMOP_DEATH_ENABLED` *(preview — not yet released)* | | Enables querying the Death table (`death_date`, `cause_concept_id`). No CDM version requirement. Not yet in a tagged Bunny release — see [Death & Cause-of-Death Filtering](../omop/death.md). |
 
 See [hutch.health/bunny/config#database](https://hutch.health/bunny/config#database) for full details, and [Availability — Location filtering](https://hutch.health/concepts/availability#location-filtering) for how the `GEO_RADIUS` rule is used.
 
