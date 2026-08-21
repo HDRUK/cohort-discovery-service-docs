@@ -121,7 +121,7 @@ nav:
       - CDM Schema Reference: omop/schema.md
       - Mapping Tools: omop/mapping-tools.md
       - Location & Geo-radius: omop/location.md
-      - Death & Cause-of-Death (preview): omop/death.md
+      - Death & Cause-of-Death Filtering: omop/death.md
   - Connecting Bunny:
       - bunny/index.md
       - Step-by-Step Setup: bunny/setup.md

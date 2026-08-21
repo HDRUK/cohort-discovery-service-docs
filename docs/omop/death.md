@@ -1,6 +1,6 @@
 ---
 title: Death & Cause-of-Death Filtering
-description: How Bunny's upcoming optional Death table support will work, and what it means for Cohort Discovery
+description: How Bunny's optional Death table support works, and what it means for Cohort Discovery
 tags:
   - omop
   - death
@@ -10,27 +10,24 @@ tags:
 
 # Death & Cause-of-Death Filtering
 
-!!! warning "Not released yet — preview only"
-    This page documents a feature that exists only on an unmerged `hutch-bunny` branch
-    (`death-table-varcat`) at the time of writing — it is **not** in a tagged Bunny release,
-    not on `main`, and not yet documented on [hutch.health](https://hutch.health). Details
-    here (flag name, rule shape, field usage) reflect the current implementation and may
-    change before release. Check [Bunny configuration](../bunny/configuration.md) and
-    [hutch.health/bunny](https://hutch.health/bunny) for what's actually shipped before
-    relying on this.
+!!! info "Released in Bunny v1.9"
+    Death filtering is available from Bunny v1.9 onwards, gated behind the
+    `OMOP_DEATH_ENABLED` flag. See the [Availability concept — Death filtering](https://hutch.health/concepts/availability#death-filtering)
+    page for the canonical Bunny-side documentation this page summarises.
 
-Bunny will be able to answer **death-related** cohort queries — "how many matching patients
-have died?" or "...died of a specific cause?" — using the OMOP `DEATH` table, gated behind a
-new `OMOP_DEATH_ENABLED` flag (default `false`), following the same optional-table pattern as
-[Specimen](../bunny/configuration.md#optional-feature-flags) and
+Bunny can answer **death-related** cohort queries — "how many matching patients have died?",
+"...died of a specific cause?", or "...are still living?" — using the OMOP `DEATH` table,
+gated behind the `OMOP_DEATH_ENABLED` flag (default `false`), following the same
+optional-table pattern as [Specimen](../bunny/configuration.md#optional-feature-flags) and
 [Location](location.md).
 
 ---
 
-## How Bunny will use the Death table
+## How Bunny uses the Death table
 
 | Requirement | Detail |
 |-------------|--------|
+| Available from | Bunny v1.9 |
 | OMOP CDM version | No specific version required — `death_date`/`cause_concept_id` are standard across CDM 5.x (unlike [Location](location.md), which needs 5.4) |
 | Enable flag | `OMOP_DEATH_ENABLED` (default `false`) |
 | Rule shape | `varcat: "Death"`, `type: "TEXT"` — reuses the existing text rule type, unlike Location's new `GEO_RADIUS` type |
@@ -43,6 +40,9 @@ a concept recorded as `cause_concept_id` describes what someone died of, which i
 clinical fact as that concept appearing in their ongoing clinical history — unioning the two
 would conflate "has this condition" with "died of this condition."
 
+A `Death` rule can be combined with rules from other varcats in the same group using
+`rules_oper: "AND"` — e.g. "deceased **and** previously diagnosed with condition X."
+
 !!! info "Explicit `varcat: Death` overrides the flag"
     Same behaviour as Specimen and Location: a rule that explicitly sets `varcat: "Death"`
     queries the Death table regardless of `OMOP_DEATH_ENABLED`. The flag only governs whether
@@ -52,9 +52,19 @@ would conflate "has this condition" with "died of this condition."
 
 ## Example rules
 
-Two shapes, drawn from the implementation's own test fixtures:
+Three shapes, per the [Availability concept — Death filtering](https://hutch.health/concepts/availability#death-filtering) page:
 
-```json title="Is the person dead? (any death record)"
+```json title="Any deceased patient (any death record)"
+{
+  "varname": "OMOP",
+  "varcat": "Death",
+  "type": "TEXT",
+  "oper": "=",
+  "value": ""
+}
+```
+
+```json title="Living patients (excludes anyone with a death record)"
 {
   "varname": "OMOP",
   "varcat": "Death",
@@ -74,8 +84,9 @@ Two shapes, drawn from the implementation's own test fixtures:
 }
 ```
 
-`value` is a `cause_concept_id`, matched against `death.cause_concept_id` — the same concept
-vocabulary already used elsewhere in Cohort Discovery.
+An empty `value` matches on presence/absence of a death record; a populated `value` is a
+`cause_concept_id`, matched against `death.cause_concept_id` — the same concept vocabulary
+already used elsewhere in Cohort Discovery.
 
 ---
 
@@ -114,3 +125,4 @@ a person's own recorded death date and cause aren't the kind of identifier that 
 - [Location & Geo-radius Filtering](location.md) — the closest existing parallel: optional table, flag-gated, varcat bypasses the union
 - [CDM Schema Reference](schema.md) — `LOCATION`/`Specimen` optional-table pattern this follows
 - [Bunny configuration](../bunny/configuration.md) — `OMOP_DEATH_ENABLED`
+- [Availability concept — Death filtering](https://hutch.health/concepts/availability#death-filtering) — canonical Bunny-side documentation
