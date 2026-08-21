@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="The minimum set of OMOP CDM tables and fields required for Cohort Discovery">
+        <meta name="description" content="How Bunny's optional Death table support works, and what it means for Cohort Discovery">
       
       
       
-        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/omop/minimum-dataset/">
+        <link rel="canonical" href="https://hdruk.github.io/cohort-discovery-service-docs/omop/death/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../location/">
       
       
-        <link rel="next" href="../schema/">
+        <link rel="next" href="../../bunny/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Minimum OMOP Dataset - Cohort Discovery Service Documentation</title>
+        <title>Death & Cause-of-Death Filtering - Cohort Discovery Service Documentation</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#minimum-omop-dataset" class="md-skip">
+        <a href="#death-cause-of-death-filtering" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Minimum OMOP Dataset
+              Death & Cause-of-Death Filtering
             
           </span>
         </div>
@@ -652,37 +652,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Minimum Dataset
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../minimum-dataset/" class="md-nav__link">
         
   
   
@@ -698,70 +671,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#omop-cdm-version-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OMOP CDM Version Support
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mandatory-data-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mandatory data requirements
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#field-level-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Field-Level Requirements
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bunny-compatibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bunny Compatibility
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -855,10 +764,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../death/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Death & Cause-of-Death Filtering
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -874,6 +810,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-bunny-uses-the-death-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Bunny uses the Death table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclosure-risk-cause-of-death-is-a-small-cell-risk-not-a-geographic-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disclosure risk: cause of death is a small-cell risk, not a geographic one
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#populating-the-death-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Populating the Death table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1849,10 +1860,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#omop-cdm-version-support" class="md-nav__link">
+  <a href="#how-bunny-uses-the-death-table" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OMOP CDM Version Support
+        How Bunny uses the Death table
       
     </span>
   </a>
@@ -1860,10 +1871,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mandatory-data-requirements" class="md-nav__link">
+  <a href="#example-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mandatory data requirements
+        Example rules
       
     </span>
   </a>
@@ -1871,10 +1882,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#field-level-requirements" class="md-nav__link">
+  <a href="#disclosure-risk-cause-of-death-is-a-small-cell-risk-not-a-geographic-one" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Field-Level Requirements
+        Disclosure risk: cause of death is a small-cell risk, not a geographic one
       
     </span>
   </a>
@@ -1882,10 +1893,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bunny-compatibility" class="md-nav__link">
+  <a href="#populating-the-death-table" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bunny Compatibility
+        Populating the Death table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
       
     </span>
   </a>
@@ -1961,14 +1983,21 @@
       
       
       
-        <a href="../../tags/#tag:data" class="md-tag">data</a>
+        <a href="../../tags/#tag:bunny" class="md-tag">bunny</a>
       
     
       
       
       
       
-        <a href="../../tags/#tag:minimum-dataset" class="md-tag">minimum-dataset</a>
+        <a href="../../tags/#tag:death" class="md-tag">death</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:mapping" class="md-tag">mapping</a>
       
     
       
@@ -1985,77 +2014,167 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 10, 2026 08:19:56 UTC"><span class="timeago" datetime="2026-08-10T08:19:56+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 10, 2026 08:19:56 UTC">2026-08-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 21, 2026 08:28:17 UTC"><span class="timeago" datetime="2026-08-21T08:28:17+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 21, 2026 08:28:17 UTC">2026-08-21</span>
   </span>
 
 
   
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/omop/minimum-dataset.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/edit/main/docs/omop/death.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
   
   
     
-    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/omop/minimum-dataset.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/HDRUK/cohort-discovery-service-docs/raw/main/docs/omop/death.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="minimum-omop-dataset">Minimum OMOP Dataset</h1>
-<p>This page defines the OMOP CDM requirements for making your data discoverable 
-via the Cohort Discovery Service.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Objective</p>
-<p>The minimum dataset represents basic information about a patient — their 
-condition, procedure, drug exposure, observations, and measurements — that 
-helps researchers find and access cohorts for further analysis.</p>
+<h1 id="death-cause-of-death-filtering">Death &amp; Cause-of-Death Filtering</h1>
+<div class="admonition info">
+<p class="admonition-title">Released in Bunny v1.9</p>
+<p>Death filtering is available from Bunny v1.9 onwards, gated behind the
+<code>OMOP_DEATH_ENABLED</code> flag. See the <a href="https://hutch.health/concepts/availability#death-filtering">Availability concept — Death filtering</a>
+page for the canonical Bunny-side documentation this page summarises.</p>
+</div>
+<p>Bunny can answer <strong>death-related</strong> cohort queries — "how many matching patients have died?",
+"...died of a specific cause?", or "...are still living?" — using the OMOP <code>DEATH</code> table,
+gated behind the <code>OMOP_DEATH_ENABLED</code> flag (default <code>false</code>), following the same
+optional-table pattern as <a href="../../bunny/configuration/#optional-feature-flags">Specimen</a> and
+<a href="../location/">Location</a>.</p>
+<hr />
+<h2 id="how-bunny-uses-the-death-table">How Bunny uses the Death table</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Available from</td>
+<td>Bunny v1.9</td>
+</tr>
+<tr>
+<td>OMOP CDM version</td>
+<td>No specific version required — <code>death_date</code>/<code>cause_concept_id</code> are standard across CDM 5.x (unlike <a href="../location/">Location</a>, which needs 5.4)</td>
+</tr>
+<tr>
+<td>Enable flag</td>
+<td><code>OMOP_DEATH_ENABLED</code> (default <code>false</code>)</td>
+</tr>
+<tr>
+<td>Rule shape</td>
+<td><code>varcat: "Death"</code>, <code>type: "TEXT"</code> — reuses the existing text rule type, unlike Location's new <code>GEO_RADIUS</code> type</td>
+</tr>
+<tr>
+<td>Fields used</td>
+<td><code>death_date</code> (age/temporal constraints), <code>cause_concept_id</code> (concept match)</td>
+</tr>
+<tr>
+<td>Fields modelled but not yet used</td>
+<td><code>death_type_concept_id</code> — present on the entity, not wired into any filter</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>Death</code> varcat rule targets the <code>DEATH</code> table <strong>alone</strong> — like Location, it bypasses the
+usual UNION with other clinical tables. The rationale, per the implementation's own docstring:
+a concept recorded as <code>cause_concept_id</code> describes what someone died of, which is not the same
+clinical fact as that concept appearing in their ongoing clinical history — unioning the two
+would conflate "has this condition" with "died of this condition."</p>
+<p>A <code>Death</code> rule can be combined with rules from other varcats in the same group using
+<code>rules_oper: "AND"</code> — e.g. "deceased <strong>and</strong> previously diagnosed with condition X."</p>
+<div class="admonition info">
+<p class="admonition-title">Explicit <code>varcat: Death</code> overrides the flag</p>
+<p>Same behaviour as Specimen and Location: a rule that explicitly sets <code>varcat: "Death"</code>
+queries the Death table regardless of <code>OMOP_DEATH_ENABLED</code>. The flag only governs whether
+Death is folded into general availability/distribution queries alongside other domains.</p>
 </div>
 <hr />
-<h2 id="omop-cdm-version-support">OMOP CDM Version Support</h2>
-<p>The Cohort Discovery Service supports OMOP CDM versions 5.3 and above. If you 
-are mapping data for the first time, version 5.4 is recommended. If you have an 
-existing 5.3 mapping, this is fully supported and no migration is required.</p>
-<p>Supported versions are ultimately constrained by Bunny's deployment requirements. 
-See the <a href="https://hutch.health/bunny">Bunny documentation</a> for the latest 
-information. If you are using a version older than 5.3, please contact 
-us before proceeding.</p>
-<div class="admonition note">
-<p class="admonition-title">Exception: Location (geo-radius) filtering</p>
-<p>One feature is the exception to "5.3 is fully supported": Bunny's Location table geo-radius filter (v1.8+) requires <strong>OMOP CDM v5.4</strong>, since <code>latitude</code>/<code>longitude</code> were not present on the Location table in 5.3. If you only need Location-based filtering, this is the one case that would require moving to 5.4. See <a href="https://hutch.health/concepts/availability#location-filtering">Availability — Location filtering</a>.</p>
-</div>
+<h2 id="example-rules">Example rules</h2>
+<p>Three shapes, per the <a href="https://hutch.health/concepts/availability#death-filtering">Availability concept — Death filtering</a> page:</p>
+<div class="language-json highlight"><span class="filename">Any deceased patient (any death record)</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">"varname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMOP"</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">"varcat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Death"</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">"oper"</span><span class="p">:</span><span class="w"> </span><span class="s2">"="</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-json highlight"><span class="filename">Living patients (excludes anyone with a death record)</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">"varname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMOP"</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">"varcat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Death"</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">"oper"</span><span class="p">:</span><span class="w"> </span><span class="s2">"!="</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-json highlight"><span class="filename">Died of a specific cause</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">"varname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMOP"</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">"varcat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Death"</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">"oper"</span><span class="p">:</span><span class="w"> </span><span class="s2">"="</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4329847"</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>An empty <code>value</code> matches on presence/absence of a death record; a populated <code>value</code> is a
+<code>cause_concept_id</code>, matched against <code>death.cause_concept_id</code> — the same concept vocabulary
+already used elsewhere in Cohort Discovery.</p>
 <hr />
-<h2 id="mandatory-data-requirements">Mandatory data requirements</h2>
-<p>Two tables are mandatory to be populated for all datasets:</p>
+<h2 id="disclosure-risk-cause-of-death-is-a-small-cell-risk-not-a-geographic-one">Disclosure risk: cause of death is a small-cell risk, not a geographic one</h2>
+<p>Location filtering needed a blurring step because a coordinate is directly identifying.
+Death doesn't have that problem — a death date and cause aren't geographic — but cause of
+death is itself a sensitive, often rare attribute. A narrow cause-of-death filter, even
+combined with a broad demographic filter, can shrink a matching cohort to a handful of
+people faster than most clinical filters do. There's nothing Death-specific to configure:
+the existing <a href="../../bunny/configuration/#obfuscation-settings">obfuscation settings</a> (low-number
+suppression, rounding) apply to Death-derived counts the same as any other query — but treat
+a specific cause-of-death filter the way you'd treat any rare condition: a candidate for
+suppression, not something to combine casually with other narrow filters.</p>
+<hr />
+<h2 id="populating-the-death-table">Populating the Death table</h2>
+<p><code>DEATH</code> is a standard OMOP CDM table, populated the same way as any other clinical table in
+your ETL. There's no blurring/anonymisation step analogous to
+<a href="../location/#the-recommended-approach-blur-to-an-lsoa-centroid">Location's centroid approach</a> —
+a person's own recorded death date and cause aren't the kind of identifier that needs coarsening.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>person_id</code></td>
+<td>Join key</td>
+</tr>
+<tr>
+<td><code>death_date</code></td>
+<td>Age/temporal constraints</td>
+</tr>
+<tr>
+<td><code>cause_concept_id</code></td>
+<td>Concept match (the <code>value</code> in a <code>Death</code> rule)</td>
+</tr>
+<tr>
+<td><code>death_type_concept_id</code>, <code>cause_source_value</code>, <code>cause_source_concept_id</code></td>
+<td>Modelled by Bunny, not currently used in filtering — populate them anyway if you have them, for forward compatibility (see <a href="../schema/#schema-compliance-notes">Schema compliance notes</a>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="see-also">See also</h2>
 <ul>
-<li><strong>Person</strong> — must be populated with <code>person_id</code>s for all individuals in the 
-dataset.</li>
-<li><strong>Concept</strong> — must be populated with the <code>concept_id</code>s for whatever clinical 
-concepts are in use.</li>
+<li><a href="../location/">Location &amp; Geo-radius Filtering</a> — the closest existing parallel: optional table, flag-gated, varcat bypasses the union</li>
+<li><a href="../schema/">CDM Schema Reference</a> — <code>LOCATION</code>/<code>Specimen</code> optional-table pattern this follows</li>
+<li><a href="../../bunny/configuration/">Bunny configuration</a> — <code>OMOP_DEATH_ENABLED</code></li>
+<li><a href="https://hutch.health/concepts/availability#death-filtering">Availability concept — Death filtering</a> — canonical Bunny-side documentation</li>
 </ul>
-<p>OHDSI defines the full <a class="md-button" href="https://ohdsi.github.io/CommonDataModel/cdm53.html">OMOP CDM definition for version 5.3</a> . Tables other than Person and Concept might be present but are optional for being populated. Which ones you populate will depend on the nature 
-of your dataset. </p>
-<hr />
-<h2 id="field-level-requirements">Field-Level Requirements</h2>
-<p>For full field-level detail — including data types, constraints, and descriptions 
-for each OMOP table — refer to the official OMOP CDM documentation maintained 
-by OHDSI:</p>
-<p><a class="md-button" href="https://ohdsi.github.io/CommonDataModel/">OMOP CDM Documentation (OHDSI)</a></p>
-<p>This is the authoritative reference for how each field should be populated across 
-all supported CDM versions. Use it alongside this guide when preparing your 
-OMOP mapping.</p>
-<hr />
-<h2 id="bunny-compatibility">Bunny Compatibility</h2>
-<p>The Cohort Discovery minimum dataset is fully aligned with Bunny's deployment 
-requirements. For field-level requirements specific to Bunny, see:</p>
-<p><a class="md-button" href="https://hutch.health/bunny/deployment/requirements">Bunny Deployment Requirements</a></p>
-<div class="admonition note">
-<p class="admonition-title">Unsupported tables</p>
-<p>Tables not yet supported by Bunny can still be included in your OMOP CDM, 
-but will only be surfaced by the Cohort Discovery Service after agreed adoption.</p>
-</div>
 
 
 
@@ -2086,7 +2205,7 @@ but will only be surfaced by the Cohort Discovery Service after agreed adoption.
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: OMOP Requirements">
+          <a href="../location/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Location &amp; Geo-radius">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2096,20 +2215,20 @@ but will only be surfaced by the Cohort Discovery Service after agreed adoption.
                 Previous
               </span>
               <div class="md-ellipsis">
-                OMOP Requirements
+                Location & Geo-radius
               </div>
             </div>
           </a>
         
         
           
-          <a href="../schema/" class="md-footer__link md-footer__link--next" aria-label="Next: CDM Schema Reference">
+          <a href="../../bunny/" class="md-footer__link md-footer__link--next" aria-label="Next: Connecting Query Retrieval Tools">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                CDM Schema Reference
+                Connecting Query Retrieval Tools
               </div>
             </div>
             <div class="md-footer__button md-icon">
