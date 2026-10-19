@@ -44,7 +44,7 @@ graph TD
 
 | Service | Repo | Stack | Dev Port | Role |
 |---------|------|-------|----------|------|
-| **Web** | `cohort-discovery-service-web` | Next.js 16, React 18, TypeScript | 3000 | Frontend UI — App Router, Server Actions, role-based views |
+| **Web** | `cohort-discovery-service-web` | Next.js 16, React 19, TypeScript | 3000 | Frontend UI — App Router, Server Actions, role-based views |
 | **API** | `cohort-discovery-service-api` | Laravel 12, PHP 8.2+, MySQL, Redis | 8100 | Core backend — queries, tasks, OMOP concepts, async jobs |
 | **NLP** | `cohort-discovery-service-nlp` | FastAPI, Python 3.11, RapidFuzz | 5001 | Free-text → OMOP concept extraction via fuzzy matching |
 | BUNNY | `hutch-bunny` (external — Univ. Nottingham) | Python 3.13+, SQLAlchemy | — | Custodian-side task resolver |
@@ -55,16 +55,13 @@ The **Web** layer calls the **API** only — it never contacts the NLP service o
 
 ## Deployment modes
 
-The platform runs in two modes, set via an environment variable in each service. Choose the right mode before you start.
+Run **standalone**: `APP_OPERATION_MODE=standalone` on the API, `APPLICATION_MODE=standalone` on the web app. It is self-contained — local accounts, Laravel Passport and a local JWT, with optional OIDC SSO in front — and it is what local development and every deployment outside HDR UK uses, including deployments that want single sign-on.
 
-| Mode | API (`APP_OPERATION_MODE`) | Web (`APPLICATION_MODE`) | Auth |
-|------|---------------------------|--------------------------|------|
-| **Standalone** | `standalone` | `standalone` | Laravel Passport + local JWT — self-contained, no external dependencies |
-| **Integrated** | `integrated` | `integrated` | HDR UK Gateway OAuth2 SSO — users authenticate via the Gateway |
+The only other value, `integrated`, delegates authentication to the HDR UK Gateway for HDR UK's own hosted deployment. It is not a general-purpose SSO mechanism and will not work with a third-party identity provider. Unless you are running that deployment, ignore it.
 
-Use **standalone** for local development. Use **integrated** for production deployments within the HDR UK Gateway.
+An unrecognised value refuses to boot rather than quietly defaulting to one or the other.
 
-[:octicons-arrow-right-24: Deployment Modes — full configuration walkthrough](modes.md)
+[:octicons-arrow-right-24: Deploying your own instance](deploying/index.md)
 
 ---
 
@@ -100,12 +97,12 @@ Use **standalone** for local development. Use **integrated** for production depl
 
     [:octicons-arrow-right-24: NLP Service](nlp.md)
 
-- :material-swap-horizontal: **Deployment Modes**
+- :material-rocket-launch-outline: **Deploying Your Own Instance**
 
     ---
-    Standalone vs Integrated — what changes and how to configure each.
+    Branding, your identity provider, claim mapping and access control policy.
 
-    [:octicons-arrow-right-24: Deployment Modes](modes.md)
+    [:octicons-arrow-right-24: Deploying Your Own Instance](deploying/index.md)
 
 - :material-flask: **Synthetic Data (somop)**
 

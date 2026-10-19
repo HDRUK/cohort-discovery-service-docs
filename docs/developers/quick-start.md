@@ -214,7 +214,8 @@ If those env vars are not set, check the seeder output or run `php artisan db:se
 ## Next steps
 
 - [API Service](api.md) — full environment variable reference, custom artisan commands, testing
-- [Web Service](web.md) — testing with Jest and Cypress, Storybook, project structure
+- [Web Service](web.md) — environment variables, testing with Jest and Cypress, project structure
+- [Deploying your own instance](deploying/index.md) — branding, identity providers, claim mapping and access control policy
 - [NLP Service](nlp.md) — tuning fuzzy matching, debugging concept resolution
-- [Deployment Modes](modes.md) — switching to integrated mode or wiring up the Gateway
+- [Integrated mode](hdruk/integrated.md) — HDR UK's own Gateway-hosted deployment only
 - [Synthetic Data (somop)](somop/index.md) — spin up a local BUNNY instance with synthetic OMOP data for end-to-end testing
