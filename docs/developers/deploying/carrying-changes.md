@@ -8,7 +8,7 @@ tags:
 
 # Carrying changes across upgrades
 
-Three files make a deployment its own — [`branding/`](branding.md) in the web repo, [`config/claimsaccesscontrol.php`](claim-mapping.md) in the API, and `config/sso.php` if you run more than one identity provider. All three live inside the upstream repos, so every deployment needs a way to keep its own versions across upgrades. **The recommended mechanism is not yet decided** — fork-and-rebase, a build-time overlay, and a mounted config each work, with different trade-offs, and this page will describe the chosen one once it exists.
+Three files make a deployment its own — [`branding/`](branding.md) in the web repo, [`config/claimsaccesscontrol.php`](claim-mapping.md) in the API, and `config/sso.php` if you run more than one identity provider. All three live inside the upstream repos, so every deployment needs a way to keep its own versions across upgrades. We have not settled on a recommended mechanism: fork-and-rebase, a build-time overlay and a mounted config all work.
 
 What is already fixed, whichever route you take:
 

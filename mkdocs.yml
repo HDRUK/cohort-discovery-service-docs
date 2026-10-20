@@ -145,9 +145,7 @@ nav:
           - 3. Mapping Claims to the Platform: developers/deploying/claim-mapping.md
           - 4. Access Control Policy: developers/deploying/access-control-policy.md
           - 5. Carrying Changes Across Upgrades: developers/deploying/carrying-changes.md
-          - Worked Examples:
-              - Keycloak: developers/deploying/examples/keycloak.md
-              - Microsoft Entra ID: developers/deploying/examples/entra-id.md
+          - Worked Example — Keycloak: developers/deploying/examples/keycloak.md
           - Reference:
               - SSO Environment Variables: developers/deploying/reference/sso-environment-variables.md
               - Running More Than One Provider: developers/deploying/reference/multiple-providers.md

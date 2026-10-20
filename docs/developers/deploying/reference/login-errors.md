@@ -13,7 +13,7 @@ Failures redirect the browser to `SSO_FRONTEND_ERROR_URL` with `?error=<code>`. 
 
 | Code | What the user is shown | What actually went wrong |
 |---|---|---|
-| `provider_not_configured` | This sign-in option is not available right now | Unknown or disabled slug; missing `issuer`, `client_id` or `client_secret`; discovery document's `issuer` does not match; a required endpoint is missing; or a discovered endpoint fails [the same-origin rule](../identity-provider.md#the-same-origin-rule) |
+| `provider_not_configured` | This sign-in option is not available right now | Unknown or disabled slug; missing `issuer`, `client_id` or `client_secret`; discovery document's `issuer` does not match; a required endpoint is missing; or the provider publishes endpoints on more than one hostname (see [what we support](../identity-provider.md#what-we-support)) |
 | `invalid_state` | Your sign-in session expired or was already used | The `state` is unknown, expired past `SSO_TXN_TTL_SECONDS`, already consumed, or was issued for a different provider |
 | `invalid_id_token` | We couldn't verify your identity | Token endpoint returned non-2xx or no `id_token`; signature, `iss`, `aud`, `azp`, `nonce` or `sub` check failed; JWKS empty or malformed; or userinfo reported a different `sub` |
 | `account_linking_failed` | We couldn't verify your email address | No `email` claim, or the email matches a local account and `email_verified` was not `true` |

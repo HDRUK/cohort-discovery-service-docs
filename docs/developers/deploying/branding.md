@@ -94,18 +94,12 @@ What each field actually drives, and where:
 | `legal.*.title` / `lastUpdated` | Legal page heading and "Last updated" line | |
 | `legal.*.sourceLabel` | Optional "this policy is sourced from X" banner | Omit it once the text is yours |
 
-!!! warning "`organisationName` does nothing in standalone mode"
-    The only place it renders is the footer's "Visit the *X* site" link, and `Footer.tsx` suppresses that link entirely when standalone:
-
-    ```typescript
-    const showOrganisationLink = !isStandalone;
-    ```
-
-    Set it anyway for correctness, but don't expect it on screen. See [Known gaps](#known-gaps).
+!!! note "`organisationName` does not render in standalone mode"
+    Its only consumer is the footer's organisation link, which standalone suppresses. Set it for correctness, but do not expect it on screen.
 
 ## `theme.ts`
 
-MUI `ThemeOptions`. There are **three** layers, not two, and the third one catches people out:
+MUI `ThemeOptions`. There are three layers:
 
 ```
 @hdruk/ui themeOptions          ← HDR UK brand palette, from the npm package
@@ -137,7 +131,7 @@ export const themeOptions: ThemeOptions = deepmerge(
 
 Anything you set wins; anything you omit falls through — **including to HDR UK's brand colours**.
 
-!!! danger "`primary` and `secondary` are not set by this app at all"
+!!! warning "Set `primary` and `secondary` yourself"
     Neither `src/config/theme.ts` nor the shipped `branding/theme.ts` defines `palette.primary` or `palette.secondary`. Both fall through to `@hdruk/ui`:
 
     ```javascript
@@ -264,19 +258,5 @@ For a third-party deployment the default is already correct: leave `hdrukChromeI
 
 Turning it on is all-or-nothing — the Gateway logo is rendered by the `@hdruk/ui` header itself, so you cannot take the two logos without also taking the Gateway footer.
 
-!!! warning "`hdruk-uk-theme` is not currently settable"
-    The table above describes the code's logic, but the flag is **not seeded by the API** — it is absent from `database/seeders/FeatureSeeder.php`, so no row exists for it and the web app falls back to `DEFAULT_FLAGS`, where it is hardcoded `true`. In practice the bottom row of that table is unreachable today. Use `hdrukChromeInStandalone: false` instead, which works. See [Known gaps](#known-gaps).
-
-
----
-
-## Known gaps
-
-!!! bug "`organisationName` is unreachable in standalone mode"
-    `Footer.tsx` gates the only consumer behind `!isStandalone`, so a standalone deployment can set `organisationName` and never see it. Either the footer should render an organisation link in standalone using `links.organisation`, or the field should be documented as integrated-only.
-
-!!! bug "The shipped `branding/theme.ts` omits `primary` and `secondary`"
-    The two colours that most define the look are absent from the file a deployment is told to edit, so they silently inherit HDR UK's brand palette from `@hdruk/ui`. Adding them to the shipped file — even set to their current effective values — would make the rebrand surface discoverable instead of something you have to trace through a node_modules bundle to find.
-
-!!! bug "`hdruk-uk-theme` cannot be turned off"
-    The flag is read by `useHdrukChrome()` and `SupportPopOut`, but it is not in `FeatureSeeder`, so no database row exists and the web app falls back to its hardcoded `true` default. The documented "set it false on the API to force neutral chrome" path does not work today.
+!!! note "`hdruk-uk-theme` cannot be set today"
+    The API does not seed this flag, so the web app always sees its default of `true`. Use `hdrukChromeInStandalone: false` instead.

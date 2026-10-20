@@ -83,7 +83,7 @@ php artisan key:generate
     | `JWT_SECRET` | — | JWT signing secret |
     | `STANDALONE_JWT_TTL_MINUTES` | `120` | Token lifetime |
     | `PASSPORT_TOKEN_EXPIRES_IN_DAYS` | `30` | Passport access token TTL |
-    | `AUTH_PASSWORD_LOGIN_ENABLED` | `true` | Toggle local password login — see [the SSO interlock](deploying/identity-provider.md#password-login-interlock) |
+    | `AUTH_PASSWORD_LOGIN_ENABLED` | `true` | Toggle local password login — see [the SSO interlock](deploying/identity-provider.md#password-login) |
 
 === "Auth (Standalone SSO)"
 

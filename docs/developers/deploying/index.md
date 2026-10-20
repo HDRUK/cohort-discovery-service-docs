@@ -101,14 +101,11 @@ Steps 2, 3 and 4 answer three different questions that are easy to confuse: *whi
 
 ---
 
-## Worked examples
+## Worked example
 
-Follow one end to end rather than assembling the steps yourself:
+[Keycloak](examples/keycloak.md) is verified end to end, from an empty realm to a working login. Follow it rather than assembling the steps yourself.
 
-- [Keycloak](examples/keycloak.md) — verified from an empty realm to a working login.
-- [Microsoft Entra ID](examples/entra-id.md) — app registration, app roles and group GUIDs. **Currently blocked** by a platform limitation; read the notice on the page first.
-
-If you are choosing a provider rather than configuring one you already have, start at [Will my IdP work?](identity-provider.md#will-my-idp-work).
+Using something else? [What we support](identity-provider.md#what-we-support) lists what a provider needs, and contributions adding another walkthrough are welcome.
 
 ---
 

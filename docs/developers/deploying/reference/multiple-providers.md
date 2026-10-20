@@ -9,19 +9,12 @@ tags:
 
 # Running more than one provider
 
-The schema supports it — `user_identities` is unique on `(provider, provider_sub)` and indexed on `(user_id, provider)`, so one person can hold an identity at several IdPs. Three behaviours catch people out, because claim sync was designed around a single provider.
+Add a second slot to the `providers` array in `config/sso.php`, keyed by its own slug, with its own `SSO_<SLUG>_*` variables and its own callback URL registered at that IdP.
 
-!!! warning "`first_login` means the user's first login, not their first login *here*"
-    `claims_synced_at` is a column on `users`, not on `user_identities`. Once any provider has synced claims for a user, that timestamp is set for good.
+One person can hold an identity at several providers. Claim sync, though, was built around a single one, so three things change:
 
-    So a user who signs in via provider A, then later via provider B, gets **no claim sync at all** from B under `CLAIM_SYNC_*=first_login` — including the [Mixed control](../access-control-policy.md#three-worked-configurations) shape, which uses `first_login` for workgroups. Use `always` if a second provider needs to grant anything.
+- **`first_login` means the user's first login anywhere**, not their first at this provider. A user who has already signed in via provider A gets no claim sync from provider B. Use `always` if the second provider needs to grant anything.
+- **`CLAIM_SYNC_*_AUTHORITATIVE` is global.** Under `always` and authoritative, whichever provider was used most recently replaces what the other granted. Keep the group vocabularies identical across providers, or do not run more than one authoritatively.
+- **Linking to an existing user needs `email_verified`.** Each `(provider, sub)` pair is a new identity, so a provider that does not assert a verified email can create new users but never attach to existing ones.
 
-!!! warning "Authoritative sync is global, not per provider"
-    `CLAIM_SYNC_*_AUTHORITATIVE` is a single setting across all providers. Under `always` + authoritative, whichever IdP a user most recently authenticated with replaces what the other granted — two IdPs with different group vocabularies will overwrite each other on every login.
-
-    Either keep the vocabularies identical across providers, or don't run more than one authoritatively.
-
-!!! danger "A second provider can only attach to an existing user if it asserts `email_verified`"
-    The identity is `(provider, sub)`, so signing in at provider B always looks like a new identity. To attach it to the user already linked to provider A, B has to go through the verified-email route — and that requires `email_verified: true`.
-
-    A provider that does not emit `email_verified` can still create *new* users, but can never link to one that already exists. In a multi-provider deployment that means the first such provider locks those users out of the second door permanently.
+This configuration is not one we have tested end to end — if you run it, we would welcome the feedback.
