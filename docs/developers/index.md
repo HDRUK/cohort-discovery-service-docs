@@ -100,7 +100,7 @@ An unrecognised value refuses to boot rather than quietly defaulting to one or t
 - :material-rocket-launch-outline: **Deploying Your Own Instance**
 
     ---
-    Branding, your identity provider, claim mapping and access control policy.
+    Running the three services, connecting your identity provider, claim mapping and branding.
 
     [:octicons-arrow-right-24: Deploying Your Own Instance](deploying/index.md)
 

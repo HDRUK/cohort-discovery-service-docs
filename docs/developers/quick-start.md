@@ -118,8 +118,10 @@ JWT_SECRET=a-long-random-string-for-local-dev
 **Primary app database:**
 ```bash
 mysql -u root -p -e "CREATE DATABASE cohort_discovery;"
-php artisan migrate:fresh --seed
+php artisan migrate:fresh --seeder=DevDatabaseSeeder
 ```
+
+`DevDatabaseSeeder` is the development one: reference data, demo users and sample collections. A plain `--seed` runs `DatabaseSeeder`, which has the reference data but no demo accounts to log in with.
 
 **OMOP vocabulary database (minimal — no Athena download required):**
 ```bash
@@ -200,14 +202,14 @@ Open [http://localhost:3000](http://localhost:3000). You should see the login pa
 
 ## Default demo credentials
 
-After `migrate:fresh --seed` (standalone mode), the `StandaloneDemoSeeder` creates:
+In standalone mode `DevDatabaseSeeder` runs `StandaloneDemoSeeder`, which creates:
 
 | Role | Email | Password |
 |------|-------|---------|
 | Admin | Set via `DEMO_USER_EMAIL` in `.env` | Set via `DEMO_USER_PASSWORD` |
 | Researcher | Set via `DEMO_RESEARCHER_EMAIL` in `.env` | Set via `DEMO_RESEARCHER_PASSWORD` |
 
-If those env vars are not set, check the seeder output or run `php artisan db:seed --class=StandaloneDemoSeeder` after setting them.
+Set those four variables before seeding. If you have already seeded without them, set them and run `php artisan db:seed --class=StandaloneDemoSeeder`.
 
 ---
 
@@ -215,7 +217,7 @@ If those env vars are not set, check the seeder output or run `php artisan db:se
 
 - [API Service](api.md) — full environment variable reference, custom artisan commands, testing
 - [Web Service](web.md) — environment variables, testing with Jest and Cypress, project structure
-- [Deploying your own instance](deploying/index.md) — branding, identity providers, claim mapping and access control policy
+- [Deploying your own instance](deploying/index.md) — running the services for real, identity providers, claim mapping and branding
 - [NLP Service](nlp.md) — tuning fuzzy matching, debugging concept resolution
 - [Integrated mode](hdruk/integrated.md) — HDR UK's own Gateway-hosted deployment only
 - [Synthetic Data (somop)](somop/index.md) — spin up a local BUNNY instance with synthetic OMOP data for end-to-end testing

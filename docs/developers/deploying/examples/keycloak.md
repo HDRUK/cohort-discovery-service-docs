@@ -46,8 +46,6 @@ That command assumes the API runs on your host, so `localhost:8080` means the sa
 
     Then make `keycloak.test` resolve to Keycloak from both places — a `/etc/hosts` entry pointing at `127.0.0.1` on your machine, and an `extra_hosts` entry (Compose), `hostAliases` (Kubernetes) or a cluster DNS record pointing at the container on the API side. Set `SSO_DEFAULT_ISSUER=http://keycloak.test:8080/realms/cohort-discovery-service`.
 
-    Resist the temptation to use a wildcard DNS service such as `*.localtest.me` here. It resolves to `127.0.0.1` everywhere, including *inside* the API container, where that is the container itself rather than Keycloak — so discovery fails with a connection error instead of an obvious name-resolution one.
-
     Setting `SSO_DEFAULT_DISCOVERY_URL` to an internal address does **not** avoid any of this: the token and JWKS URLs are read out of the discovery document and will still be the advertised public ones.
 
 ## Step 1: Create a realm
@@ -68,8 +66,6 @@ Create one group per workgroup you intend to grant, named to match the **values*
 - **Create group** → name `admin` → **Create**
 - Repeat for `default` and any others you need
 
-Equally, name the group whatever your organisation already uses and put that string on the right-hand side of the mapping instead — `'admin' => 'Cohort-Discovery-Admins'`.
-
 If you also want custodian membership driven by Keycloak, create one group per custodian, named to match that custodian's `name` in the database exactly (case-insensitively). Custodians have **no** mapping table, so this one really is match-by-name with no indirection available:
 
 - **Create group** → name `North Region TRE` → **Create**
@@ -84,9 +80,7 @@ Left nav → **Realm roles** → **Create role**. Name these to match the values
 - **Create role** → Role name `GENERAL_ACCESS` → **Save**
 - Repeat for `SYSTEM_ADMIN` and `CUSTODIAN`
 
-As with groups, the alternative is to keep your existing realm role names and point the mapping at them — `'admin' => 'Platform-Administrators'`. The left-hand side must stay as the local role name (`user`, `admin`, `custodian`), since that has to match a role that already exists in the database.
-
-Roles are kept as realm roles rather than being folded into the group structure so that each Keycloak object maps to exactly one app-side concern — groups drive `workgroup_mappings` (and optionally custodians), realm roles drive `role_mappings`.
+The left-hand side of `role_mappings` must stay as the local role name (`user`, `admin`, `custodian`), since that has to match a role that already exists in the database. The right-hand side is whatever your realm emits.
 
 ## Step 4: Create the client
 
@@ -168,9 +162,7 @@ With both saved, a user in the `admin` and `North Region TRE` groups holding the
 Pointing `SSO_DEFAULT_WORKGROUPS_CLAIM` and `SSO_DEFAULT_CUSTODIANS_CLAIM` both at `groups` resolves `admin` as a workgroup (it's in `workgroup_mappings`) and `North Region TRE` as a custodian (it matches a custodian's name), out of that one array.
 
 !!! warning "One group list feeding two subjects needs disjoint naming"
-    Because custodians match on name with no allow-list, a group named `admin` would also attach the user to a custodian literally called "admin", if one existed. Keeping the two vocabularies obviously distinct — short lowercase slugs for workgroups, full proper names for custodians — is what prevents overlap. If you would rather separate them properly, add a second `Group Membership` mapper with Token Claim Name `teams` and set `SSO_DEFAULT_CUSTODIANS_CLAIM=teams`.
-
-    Note that this does **not** filter anything: Keycloak's `Group Membership` mapper always emits *every* group the user belongs to, so two mappers give you the same full list under two different claim names, not a split. Scoping a mapper to one subtree needs a custom Keycloak SPI. What a group means is decided entirely by the mapping tables and custodian names on the API side.
+    Because custodians match on name with no allow-list, a group named `admin` would also attach the user to a custodian literally called "admin", if one existed. Keeping the two vocabularies obviously distinct — short lowercase slugs for workgroups, full proper names for custodians — is what prevents overlap.
 
 ## Step 6: Create a test user
 

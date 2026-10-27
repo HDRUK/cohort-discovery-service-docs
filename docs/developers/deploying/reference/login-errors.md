@@ -20,7 +20,7 @@ Failures redirect the browser to `SSO_FRONTEND_ERROR_URL` with `?error=<code>`. 
 | `idp_error` | Your organisation's login system rejected the attempt | The IdP itself returned `?error=` to the callback |
 | `invalid_callback` | That sign-in link is invalid | The callback was reached without a `code` or `state` |
 | `provider_unreachable` | *(generic message)* | Network failure reaching discovery, JWKS or the token endpoint |
-| `sso_failed` | *(generic message)* | Base error code; nothing raises it directly today |
+| `sso_failed` | *(generic message)* | Base error code |
 | `exchange_failed` | Your sign-in link expired or was already used | Raised by the web app, not the API: the handoff code was already redeemed or is older than `SSO_HANDOFF_CODE_TTL_SECONDS` |
 
 `provider_unreachable` and `sso_failed` have no entry in the web app's message table, so both fall through to "Something went wrong while signing you in." Seeing the generic message therefore means one of those two — check the API log.

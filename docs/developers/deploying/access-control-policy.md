@@ -61,19 +61,11 @@ Three subjects, each with the same two levers: *trust* decides when the claim is
 | `CLAIM_PROVISION_DEFAULTS_ON_CREATE` | `true` | Give new users sane defaults at creation, independent of sync |
 
 !!! warning "An unrecognised `trust` value means `never`, silently"
-    The three `CLAIM_SYNC_*` trust variables accept exactly `never`, `first_login` or `always`. Anything else — a typo, a `true`, or the wrong case as in `Always` — is treated as `never`, with no error raised and nothing written to the log.
-
-    If an entire subject is being ignored, check these values character by character before looking anywhere else.
+    These variables accept exactly `never`, `first_login` or `always`. Anything else — a typo, a `true`, or `Always` — is treated as `never`, with nothing written to the log. If a whole subject is being ignored, check the spelling here first.
 
 ### Absent is not empty
 
-| Token contains | Authoritative sync does |
-|---|---|
-| no `groups` key at all | nothing — "this IdP has no opinion" |
-| `"groups": []` | clears every workgroup |
-| `"groups": [{...}]` | clears every workgroup — objects filter to empty |
-
-A dropped claim fails safe; a claim sent empty does not.
+A claim that is missing entirely is read as "this IdP has no opinion" and changes nothing. A claim present but empty is read as "none", and under an authoritative sync that clears the subject.
 
 ### Floors
 
@@ -168,7 +160,7 @@ All three assume a single identity provider. If you run more than one, read [Run
     **Consequence:** every assignment is made locally and persists. New users are created on first SSO login with the `DEFAULT` workgroup and the `user` role — or nothing at all, if `CLAIM_PROVISION_DEFAULTS_ON_CREATE=false` — and an admin takes it from there.
 
     !!! note "`never` is what disables sync, not an unset claim name"
-        `SSO_DEFAULT_WORKGROUPS_CLAIM` falls back to `eduperson_entitlement` when unset rather than disabling workgroup sync, so leaving it blank is **not** how you turn workgroups off. Only `CLAIM_SYNC_WORKGROUPS=never` does that. Roles and custodians do behave the other way — unset claim names skip those subjects entirely.
+        `SSO_DEFAULT_WORKGROUPS_CLAIM` falls back to `eduperson_entitlement` when unset, so leaving it blank is **not** how you turn workgroups off — only `CLAIM_SYNC_WORKGROUPS=never` does that. Unset roles and custodians claims do skip those subjects.
 
 ---
 
@@ -182,5 +174,3 @@ All three assume a single identity provider. If you run more than one, read [Run
     ```
 
 These settings supersede the per-provider `claim_mapping.enabled` / `authority` / `role_map` keys from earlier builds, and replace the `sso-ensure-defaults-on-jit` feature flag. `CLAIM_PROVISION_DEFAULTS_ON_CREATE` is the direct replacement.
-
-There is no web UI for any of this. The admin Users view is read-only; changes are made via environment variables and require a deploy.

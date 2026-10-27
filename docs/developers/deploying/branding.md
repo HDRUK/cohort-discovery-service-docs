@@ -8,12 +8,10 @@ tags:
 
 # Branding the web app
 
-Everything organisation-specific in the web app lives in one directory you replace wholesale. No application code changes, no environment variables.
+Everything organisation-specific in the web app lives in one directory at the repo root. No application code changes, no environment variables.
 
 !!! info "Branding needs a rebuild, not a restart"
     `branding/` is bundled into the Next.js build, so it is the one customisation that cannot be mounted into a running container — see [Carrying changes across upgrades](carrying-changes.md).
-
-Everything organisation-specific lives in one directory at the repo root:
 
 ```
 branding/
@@ -36,7 +34,7 @@ A TypeScript path alias makes it swappable — application code imports `@brandi
 }
 ```
 
-Replace the directory's contents and the app is yours. No application code changes, no environment variables.
+Replace the directory's contents and the app is yours.
 
 ## `branding.config.ts`
 
@@ -83,7 +81,7 @@ What each field actually drives, and where:
 | `productLongName` | `<title>` on every page (`layout.tsx`), and `"<page> \| <productLongName>"` on legal pages | This is the browser tab text, not `productName` |
 | `productName` | Login page body copy ("Sign in to your *X* workspace"), legal-page source banner | Short form, used in sentences |
 | `description` | `<meta name="description">` | |
-| `organisationName` | Footer link label, "Visit the *X* site" | **Integrated mode only** — see the gap below |
+| `organisationName` | Footer link label, "Visit the *X* site" | **Integrated mode only** — [not rendered in standalone](limitations.md#branding) |
 | `logoAlt` | `alt` on the header logo | Accessibility only, not visible |
 | `loginTitle` | Two-line login heading (`LoginLanding.tsx`) | Exactly two strings |
 | `loginHeadline` / `loginSubheadline` | Login brand panel (`LoginBrandPanel.tsx`) | `loginHeadline` is exactly two strings |
@@ -93,9 +91,6 @@ What each field actually drives, and where:
 | `links.cookieNotice` / `links.accessibilityStatement` | Footer secondary links | Standalone: shown only if set. Integrated: always shown, derived from the organisation URL |
 | `legal.*.title` / `lastUpdated` | Legal page heading and "Last updated" line | |
 | `legal.*.sourceLabel` | Optional "this policy is sourced from X" banner | Omit it once the text is yours |
-
-!!! note "`organisationName` does not render in standalone mode"
-    Its only consumer is the footer's organisation link, which standalone suppresses. Set it for correctness, but do not expect it on screen.
 
 ## `theme.ts`
 
@@ -107,26 +102,6 @@ MUI `ThemeOptions`. There are three layers:
 src/config/theme.ts             ← app-wide component and typography defaults
   ↓ deepmerge (branding wins)
 branding/theme.ts               ← yours
-```
-
-The first merge happens inside `HdrukUiProvider`, which the app wraps everything in via `ThemeRegistry`. From the published bundle:
-
-```javascript
-const mergedTheme = useMemo(() => {
-  const theme2 = createTheme(deepmerge(themeOptions, themeOptions2));
-  return responsiveFontSizes(theme2);
-}, [themeOptions2]);
-```
-
-`themeOptions` is the package's own HDR UK palette; `themeOptions2` is what the app passes in.
-
-The second is in `src/config/theme.ts`:
-
-```typescript
-export const themeOptions: ThemeOptions = deepmerge(
-  baseThemeOptions,
-  brandingTheme,
-);
 ```
 
 Anything you set wins; anything you omit falls through — **including to HDR UK's brand colours**.
@@ -222,41 +197,13 @@ any cohort summary the platform returns.
 Questions about these terms: [legal@example.org](mailto:legal@example.org).
 ```
 
-The source banner appears only when `sourceLabel` is set — `sourceHref` is derived automatically:
-
-```typescript
-sourceHref={sourceLabel ? externalLinks.termsAndConditions : undefined}
-```
+The source banner appears only when `sourceLabel` is set.
 
 !!! danger "Replace the legal text before you deploy"
     `branding/legal/` ships HDR UK's own terms and privacy policy, naming HDR UK as the data controller and giving its company number and contact details. Serving those unchanged from a deployment HDR UK does not operate is wrong, and very likely a data protection problem. Write your own, and clear `sourceLabel` so the "sourced from" banner disappears.
 
 ## HDR UK chrome
 
-The `@hdruk/ui` header and footer embed the Gateway logo and an HDR UK copyright line that `branding/` **cannot** override. Three things decide whether they render:
+The `@hdruk/ui` header and footer embed the Gateway logo and an HDR UK copyright line that `branding/` **cannot** override. For a third-party deployment the default is already correct: leave `hdrukChromeInStandalone` at `false` and replace `branding/assets/logo.svg`.
 
-```typescript
-// src/hooks/useHdrukChrome.ts
-const useHdrukChrome = (): boolean => {
-  const { hdrukTheme: hdrukThemeEnabled } = useFeatures();
-  const { isStandalone } = useApplicationMode();
-
-  return (
-    hdrukThemeEnabled && (!isStandalone || branding.hdrukChromeInStandalone)
-  );
-};
-```
-
-| `hdruk-uk-theme` | Mode | `hdrukChromeInStandalone` | Result |
-|---|---|---|---|
-| `true` | integrated | ignored | Gateway chrome |
-| `true` | standalone | `false` *(default)* | Your chrome only |
-| `true` | standalone | `true` | Your logo **and** Gateway logo, plus Gateway footer |
-| `false` | either | ignored | Neutral chrome |
-
-For a third-party deployment the default is already correct: leave `hdrukChromeInStandalone` at `false` and replace `branding/assets/logo.svg`.
-
-Turning it on is all-or-nothing — the Gateway logo is rendered by the `@hdruk/ui` header itself, so you cannot take the two logos without also taking the Gateway footer.
-
-!!! note "`hdruk-uk-theme` cannot be set today"
-    The API does not seed this flag, so the web app always sees its default of `true`. Use `hdrukChromeInStandalone: false` instead.
+Turning it on is all-or-nothing — the Gateway logo is rendered by the `@hdruk/ui` header itself, so you cannot take the two logos without also taking the Gateway footer. The `hdruk-uk-theme` feature flag that would otherwise disable the whole lot [is not seeded today](limitations.md#branding).

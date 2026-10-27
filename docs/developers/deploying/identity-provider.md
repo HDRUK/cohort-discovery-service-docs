@@ -72,8 +72,6 @@ The handoff code is single-use and short-lived — the real access token never r
 | `POST /api/auth/sso/exchange` | Web swaps the handoff code for the access token |
 | `GET /api/auth/sso/{slug}/logout` | RP-initiated logout |
 
-In integrated mode every `/auth/sso/*` route 404s.
-
 ---
 
 ## Provider configuration

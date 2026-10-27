@@ -27,13 +27,13 @@ The left-hand side of each table is a **local** name that must already exist. Th
 
 === "Workgroups"
 
-    Seeded by `WorkgroupSeeder`:
+    Created by `WorkgroupSeeder`, and already on the left of the shipped `workgroup_mappings`:
 
     `admin` · `default` · `custodian` · `non-uk-industry` · `non-uk-research` · `other` · `uk-industry` · `uk-research` · `nhs-sde`
 
 === "Roles"
 
-    Seeded by `RolesAndPermissionsSeeder`:
+    Created by `RolesAndPermissionsSeeder`:
 
     `user` · `admin` · `custodian` · `default`
 

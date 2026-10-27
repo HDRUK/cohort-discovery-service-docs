@@ -11,66 +11,27 @@ tags:
 
 The Cohort Discovery Service as a fully self-contained platform: its own user database, its own authentication, no Gateway dependency. This is what every deployment outside HDR UK runs, and everything in this section assumes it.
 
-!!! info "This is the default mode"
-    Set `APP_OPERATION_MODE=standalone` on the API and `APPLICATION_MODE=standalone` on the web app. The only other value, `integrated`, exists solely so the HDR UK Gateway can act as identity provider for HDR UK's own hosted deployment — it is not a general-purpose SSO mechanism and will not work with a third-party IdP. If you want SSO, you want this section, not that one.
-
-## Minimum configuration
-
-=== "API"
-
-    ```dotenv
-    APP_OPERATION_MODE=standalone
-
-    JWT_SECRET=a-long-random-secret-for-local-dev
-    STANDALONE_JWT_TTL_MINUTES=120
-
-    PASSPORT_TOKEN_EXPIRES_IN_DAYS=30
-    PASSPORT_REFRESH_TOKEN_EXPIRES_IN_DAYS=60
-    ```
-
-=== "Web"
-
-    ```dotenv
-    APPLICATION_MODE=standalone
-    NEXT_PUBLIC_LOGIN_URL=http://localhost:3000/auth/login
-    ```
-
-=== "Demo users"
-
-    ```bash
-    php artisan db:seed --class=StandaloneDemoSeeder
-    ```
-
-    Set credentials before seeding:
-
-    ```dotenv
-    DEMO_USER_EMAIL=admin@example.com
-    DEMO_USER_PASSWORD=YourPassword1!
-    DEMO_RESEARCHER_EMAIL=researcher@example.com
-    DEMO_RESEARCHER_PASSWORD=YourPassword1!
-    ```
-
-That is a working platform with local accounts. Everything below makes it yours.
+How you host it is up to you. The platform is three services, MySQL and Redis; nothing beyond that is prescribed.
 
 ---
 
 ## Making it your own
 
-Five steps, in the order they make sense. Only the first is needed by every deployment; steps 2 to 4 are the single-sign-on path, and each one is a prerequisite for the next.
+Six steps, in the order they make sense. The first gets a working platform with local accounts; steps 2 to 4 are the single-sign-on path, and each is a prerequisite for the next.
 
 <div class="grid cards" markdown>
 
-- :material-palette-swatch: **1 · Branding the web app**
+- :material-server-network: **1 · Running the services**
 
     ---
-    Product name, colours, logo, legal pages and chrome — one directory you replace wholesale.
+    The three repos, what each needs, and the order to bring them up.
 
-    [:octicons-arrow-right-24: Branding](branding.md)
+    [:octicons-arrow-right-24: Running the services](running.md)
 
 - :material-login-variant: **2 · Connecting an identity provider**
 
     ---
-    Will your IdP work, how the login flow runs, and what goes in `config/sso.php`.
+    What a provider needs to work here, how the login flow runs, and what goes in `config/sso.php`.
 
     [:octicons-arrow-right-24: Identity provider](identity-provider.md)
 
@@ -88,10 +49,17 @@ Five steps, in the order they make sense. Only the first is needed by every depl
 
     [:octicons-arrow-right-24: Access control policy](access-control-policy.md)
 
-- :material-source-branch-sync: **5 · Carrying changes across upgrades**
+- :material-palette-swatch: **5 · Branding the web app**
 
     ---
-    All three files live in the upstream repos. Keeping your versions is an open question.
+    Product name, colours, logo, legal pages and chrome — one directory you replace wholesale.
+
+    [:octicons-arrow-right-24: Branding](branding.md)
+
+- :material-source-branch-sync: **6 · Carrying changes across upgrades**
+
+    ---
+    Your branding and config files live in the upstream repos. Keeping them is an open question.
 
     [:octicons-arrow-right-24: Carrying changes](carrying-changes.md)
 
@@ -105,8 +73,8 @@ Steps 2, 3 and 4 answer three different questions that are easy to confuse: *whi
 
 [Keycloak](examples/keycloak.md) is verified end to end, from an empty realm to a working login. Follow it rather than assembling the steps yourself.
 
-Using something else? [What we support](identity-provider.md#what-we-support) lists what a provider needs, and contributions adding another walkthrough are welcome.
+Using something else? [What we support](identity-provider.md#what-we-support) lists what a provider needs, and a walkthrough for another one is the most useful contribution you could make here.
 
 ---
 
-Upgrading from the removed DP-934 resource-server integration? See [Migrating from the old OIDC integration](migrating-from-dp-934.md).
+Before you start, [Known limitations](limitations.md) is a short list of what is not finished yet. Upgrading from the removed DP-934 resource-server integration? See [Migrating from the old OIDC integration](migrating-from-dp-934.md).
