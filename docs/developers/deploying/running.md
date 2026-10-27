@@ -51,7 +51,7 @@ A deployment is three services you run yourself, plus MySQL and Redis. **How you
     ```
 
     Point `DB_*` in its `.env` at the OMOP vocabulary database.
-    Health check: `GET /` returns `{"status":"ok"}`.
+    Health check: `GET /health/ready` returns 503 while concepts load, then 200.
 
     ## API
 
@@ -84,7 +84,7 @@ A deployment is three services you run yourself, plus MySQL and Redis. **How you
     A queue worker is needed as well as the HTTP process:
     `php artisan queue:work`.
 
-    Health check: `GET /api/v1/ping` returns `{"pong":true}`.
+    Health check: `GET /up` returns 200.
 
     ## Web
 
@@ -114,9 +114,9 @@ A deployment is three services you run yourself, plus MySQL and Redis. **How you
 
 | Service | Repo | Stack | Port | Health check |
 |---|---|---|---|---|
-| **API** | [`cohort-discovery-service-api`](https://github.com/HDRUK/cohort-discovery-service-api) | Laravel 12, PHP 8.2+ | 8100 | `GET /api/v1/ping` |
+| **API** | [`cohort-discovery-service-api`](https://github.com/HDRUK/cohort-discovery-service-api) | Laravel 12, PHP 8.2+ | 8100 | `GET /up` |
 | **Web** | [`cohort-discovery-service-web`](https://github.com/HDRUK/cohort-discovery-service-web) | Next.js 16, Node 24+ | 3000 | `GET /` |
-| **NLP** | [`cohort-discovery-service-nlp`](https://github.com/HDRUK/cohort-discovery-service-nlp) | FastAPI, Python 3.11 | 5001 | `GET /` |
+| **NLP** | [`cohort-discovery-service-nlp`](https://github.com/HDRUK/cohort-discovery-service-nlp) | FastAPI, Python 3.11 | 5001 | `GET /health/ready` |
 
 Alongside them you need **MySQL 8** and **Redis 7**, and two MySQL databases: the application database, and a second holding the OMOP vocabulary that the API and NLP service both read.
 
