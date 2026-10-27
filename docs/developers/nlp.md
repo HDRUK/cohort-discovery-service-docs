@@ -82,9 +82,9 @@ The `--reload` flag restarts the server on code changes. Omit it for a productio
 
 ## API endpoints
 
-### `GET /`
+### `GET /health/ready`
 
-Health check. Returns `{"status":"ok"}` when the service is running and the concept store has loaded.
+Readiness check. Returns 503 with `"status": "warming"` until the core concept store has loaded, then 200 with `"degraded"` while acronyms, synonyms and ancestors are still loading, and `"ready"` once everything is warm.
 
 ### `POST /extract`
 

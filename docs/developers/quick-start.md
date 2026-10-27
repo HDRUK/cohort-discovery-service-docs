@@ -77,7 +77,7 @@ Start the service:
 uvicorn app:app --host=0.0.0.0 --port=5001 --reload
 ```
 
-Verify: `curl http://localhost:5001/` — should return `{"status":"ok"}`.
+Verify: `curl http://localhost:5001/health/ready` — 503 while concepts load, then 200 with `"status": "ready"`.
 
 ---
 
@@ -160,7 +160,7 @@ This runs four processes concurrently:
 - `php artisan pail --timeout=0` — log streaming
 - `npm run dev` — Vite asset compilation
 
-Verify: `curl http://localhost:8100/api/v1/ping` should return `{"pong":true}`.
+Verify: `curl -i http://localhost:8100/up` should return 200.
 
 ---
 
@@ -194,8 +194,8 @@ Open [http://localhost:3000](http://localhost:3000). You should see the login pa
 
 | Service | Check | Expected |
 |---------|-------|---------|
-| NLP | `curl http://localhost:5001/` | `{"status":"ok"}` |
-| API | `curl http://localhost:8100/api/v1/ping` | `{"pong":true}` |
+| NLP | `curl http://localhost:5001/health/ready` | 200, `"status": "ready"` |
+| API | `curl -i http://localhost:8100/up` | 200 |
 | Web | Open `http://localhost:3000` | Login page loads |
 
 ---
