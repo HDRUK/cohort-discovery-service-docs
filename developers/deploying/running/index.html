@@ -2665,7 +2665,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="October 27, 2026 15:25:38 UTC"><span class="timeago" datetime="2026-10-27T15:25:38+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="October 27, 2026 15:25:38 UTC">2026-10-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="October 27, 2026 16:54:46 UTC"><span class="timeago" datetime="2026-10-27T16:54:46+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="October 27, 2026 16:54:46 UTC">2026-10-27</span>
   </span>
 
 
@@ -2724,7 +2724,7 @@
 </span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="sb">```</span>
 </span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
 </span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>Point <span class="sb">`DB_*`</span> in its <span class="sb">`.env`</span> at the OMOP vocabulary database.
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>Health check: <span class="sb">`GET /`</span> returns <span class="sb">`{"status":"ok"}`</span>.
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>Health check: <span class="sb">`GET /health/ready`</span> returns 503 while concepts load, then 200.
 </span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
 </span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="gu">## API</span>
 </span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
@@ -2757,7 +2757,7 @@
 </span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>A queue worker is needed as well as the HTTP process:
 </span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="sb">`php artisan queue:work`</span>.
 </span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>
-</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>Health check: <span class="sb">`GET /api/v1/ping`</span> returns <span class="sb">`{"pong":true}`</span>.
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>Health check: <span class="sb">`GET /up`</span> returns 200.
 </span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>
 </span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="gu">## Web</span>
 </span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>
@@ -2799,7 +2799,7 @@
 <td><a href="https://github.com/HDRUK/cohort-discovery-service-api"><code>cohort-discovery-service-api</code></a></td>
 <td>Laravel 12, PHP 8.2+</td>
 <td>8100</td>
-<td><code>GET /api/v1/ping</code></td>
+<td><code>GET /up</code></td>
 </tr>
 <tr>
 <td><strong>Web</strong></td>
@@ -2813,7 +2813,7 @@
 <td><a href="https://github.com/HDRUK/cohort-discovery-service-nlp"><code>cohort-discovery-service-nlp</code></a></td>
 <td>FastAPI, Python 3.11</td>
 <td>5001</td>
-<td><code>GET /</code></td>
+<td><code>GET /health/ready</code></td>
 </tr>
 </tbody>
 </table>
