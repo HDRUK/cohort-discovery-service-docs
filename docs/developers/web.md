@@ -13,7 +13,7 @@ The Web service is a Next.js 16 application using the App Router. It renders the
 
 - **Repo:** `cohort-discovery-service-web`
 - **Port:** 3000 (dev)
-- **Stack:** Next.js 16, React 18, TypeScript, Material-UI, Zustand, Storybook
+- **Stack:** Next.js 16, React 19, TypeScript, MUI 7, Zustand, TanStack Query
 
 ---
 
@@ -31,14 +31,26 @@ cp .env.example .env
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
 | `API_BASE_URL` | Yes | `http://localhost:8100` | API service URL — used by Server Actions |
-| `APPLICATION_MODE` | Yes | `integrated` | `standalone` or `integrated` — see [Deployment Modes](modes.md) |
-| `NEXT_PUBLIC_LOGIN_URL` | Yes | — | Redirect URL when unauthenticated |
-| `NEXT_PUBLIC_TASK_URL` | No | `http://localhost:8100/api/v1` | Task API endpoint |
+| `APPLICATION_MODE` | Yes | `integrated` | `standalone` or `integrated` — see [Deployment modes](index.md#deployment-modes) |
+| `NEXT_PUBLIC_LOGIN_URL` | Yes | — | Redirect URL when unauthenticated. Also the base for outbound organisation links; falls back to `links.organisation` in the branding config |
+| `NEXT_PUBLIC_TASK_URL` | Yes | `http://localhost:8000/api` | Task endpoints, and the base for the footer's API-docs link |
 | `NEXT_PUBLIC_USE_EXAMPLE_QUERY` | No | `false` | Enable example query helpers (debug) |
 | `NEXT_PUBLIC_USE_DEBUG_LOGS` | No | `false` | Enable client-side debug logging |
-| `CONFIG_SERVICE_DESK_URL` | No | — | Service desk URL for support links |
-| `DEFAULT_TABLE_REFRESH_INTERVAL` | No | — | Table auto-refresh interval in ms |
-| `DEFAULT_SEARCH_WAIT_TIME` | No | — | Debounce delay before search fires (ms) |
+| `COOKIE_TOKEN_NAME` | No | `token` | Name of the session cookie |
+| `HIDE_NAV` | No | — | Set to `1` to hide the header and top menu, for embedding in an iframe |
+| `CONFIG_SUPPORT_URL` | No | — | Support site used by the support pop-out |
+| `CONFIG_SERVICE_DESK_URL` | No | — | Service desk base URL |
+| `CONFIG_SERVICE_DESK_SUPPORT_SUFFIX` | No | — | Path appended for support requests |
+| `CONFIG_SERVICE_DESK_REPORT_BUG_SUFFIX` | No | — | Path appended for bug reports |
+| `DEFAULT_TABLE_REFRESH_INTERVAL` | No | — | Table auto-refresh interval (ms) |
+| `DEFAULT_MAX_INVALID_REASONS` | No | — | Maximum invalid-reason messages shown at once |
+| `DEFAULT_SEARCH_PREFETCH` | No | — | Search prefetch threshold |
+| `DEFAULT_SEARCH_WAIT_TIME` | No | — | Search debounce (ms) |
+| `DEFAULT_SEARCH_SUGGESTION_ROTATION` | No | — | Search suggestion rotation interval (ms) |
+| `DEFAULT_LOCATION_MIN_RADIUS` | No | — | Minimum location search radius (metres) |
+
+!!! info "Build-time vs per-request"
+    Every `NEXT_PUBLIC_*` value is inlined into the client bundle at **build** time and needs a rebuild to change. `CONFIG_*` and `DEFAULT_*` are server-only and read **per request** in `src/providers/ServerDefaultProvider.tsx`, so they can be changed without rebuilding.
 
 !!! tip "Standalone mode login URL"
     For local standalone development, set:
@@ -47,7 +59,28 @@ cp .env.example .env
     ```
     For integrated mode, this points to the Gateway login endpoint.
 
+!!! info "OIDC / SSO needs no web env vars"
+    Standalone-mode SSO is configured entirely on the API (`config/sso.php`) — the web app just renders whatever `GET /api/auth/methods` returns and never holds IdP credentials itself. See [Connecting an identity provider](deploying/identity-provider.md).
+
+The admin Users view (`src/modules/ViewUser/ViewUser.tsx`) shows a user's Details, Sign-in (linked identities, with icons from `ssoProviders.ts`), **Roles**, and **Workgroups** — the latter two as read-only chip lists (`src/components/ChipList/`). `UserTable.tsx` can show the same as columns in the users list. All of it is display-only: role/workgroup assignment is config-driven on the API side (`config/claimsaccesscontrol.php`) — there's no edit UI here. See [Access control policy](deploying/access-control-policy.md).
+
 ---
+
+## Branding and customisation
+
+Everything organisation-specific — product name, colours, logo, legal pages, and whether HDR UK chrome appears — lives in one swappable directory at the repo root:
+
+```
+branding/
+├── branding.config.ts
+├── theme.ts
+├── assets/logo.svg
+└── legal/*.mdx
+```
+
+A `@branding/*` → `./branding/*` path alias in `tsconfig.json` is what makes it swappable: application code imports `@branding/branding.config` and `@branding/theme`, never a relative path. Replacing the directory's contents re-skins the app with no code changes and no environment variables.
+
+[:octicons-arrow-right-24: Branding the web app](deploying/branding.md) — full field reference, worked examples, theme tokens, legal pages and the HDR UK chrome switch.
 
 ## npm scripts
 
@@ -65,13 +98,9 @@ npm run lint             # ESLint
 npm run lint:fix         # ESLint with auto-fix
 npm run lint:workflows   # GitHub Actions workflow lint (requires actionlint)
 
-# Unit & component tests
+# Unit tests
 npm run test             # Jest — all tests
 npm run test:watch       # Jest watch mode
-
-# Storybook
-npm run storybook        # Component explorer on port 6006
-npm run build-storybook  # Build static Storybook output
 
 # E2E tests
 npm run mock-api:start   # Start mock API server on port 8100
@@ -79,7 +108,15 @@ npm run cy:open          # Cypress interactive runner
 npm run cy:run           # Cypress headless
 npm run e2e              # Full pipeline: production build → Cypress
 npm run e2e:dev          # Full pipeline: dev server → Cypress
+
+# E2E against a throwaway IdP (standalone SSO)
+npm run oidc-mock:start  # Start oidc-server-mock via docker compose
+npm run cy:run:oidc      # Run only the *.idp.cy.ts specs
+npm run e2e:oidc         # Full pipeline: mock IdP → build → Cypress → teardown
+npm run oidc-mock:stop   # Tear the mock IdP down
 ```
+
+`e2e`, `e2e:dev` and `e2e:oidc` all force `APPLICATION_MODE=standalone`.
 
 ---
 
@@ -117,20 +154,21 @@ npm run e2e:dev          # Full pipeline: dev server → Cypress
     - Videos and screenshots on failure are enabled
     - JWT token generation tasks are available for role-based test scenarios
 
-=== "Storybook"
+    `cypress/e2e/auth/oidc-login.cy.ts` covers the sign-in options list and SSO error handling (session expired, invalid callback, IdP error passthrough). `cypress/e2e/auth/oidc-login.idp.cy.ts` covers the real round-trip against a throwaway IdP (`oidc-server-mock`, started via `.github/oidc-mock/docker-compose.yml`) — sign-in, cookie set, wrong credentials.
 
-    Storybook documents and visually tests isolated components:
-
-    ```bash
-    npm run storybook        # Open at http://localhost:6006
-    npm run build-storybook  # Build for static hosting
-    ```
+    SSO cookie-setting logic lives in `src/lib/authCookie.ts` and is fully covered by Jest at `src/lib/__tests__/authCookie.test.ts`.
 
 ---
 
 ## Project structure
 
 ```
+branding/                    Swappable deployment branding — see Customising your deployment
+├── branding.config.ts
+├── theme.ts
+├── assets/logo.svg
+└── legal/*.mdx
+
 src/
 ├── app/                     Next.js App Router
 │   ├── (protected)/         Authenticated routes (admin, custodian, researcher views)
@@ -149,10 +187,15 @@ src/
 │   ├── Table/               Use via useTable() hook
 │   ├── TabsShell/           Page-level tab navigation
 │   ├── Modal/               Dialogs
-│   └── SquareCheckbox/      MUI Checkbox wrapper
+│   ├── SquareCheckbox/      MUI Checkbox wrapper
+│   ├── ChipList/            Read-only chip list — used for roles/workgroups display
+│   └── UserTable/
+│       └── userFilters.ts  Shared filtering logic for user lists
 ├── hooks/                   Shared React hooks (useTable, useSearchParams, …)
 ├── lib/                     API client helpers and auth logic
 │   └── api.ts               apiGet, apiPost, apiPut, apiDelete
+├── utils/
+│   └── ssoProviders.ts       Provider slug → icon map for the SSO login buttons
 ├── config/
 │   └── routes.ts            Centralised route builders — always use this for URLs
 ├── types/                   TypeScript type definitions
@@ -235,7 +278,7 @@ npm run build
 npm run lint:workflows   # requires: brew install actionlint
 ```
 
-For component-heavy changes, also run:
+For changes touching standalone SSO, also run the IdP round-trip:
 ```bash
-npm run build-storybook
+npm run e2e:oidc
 ```

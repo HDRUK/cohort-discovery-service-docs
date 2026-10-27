@@ -59,6 +59,10 @@ extra:
   version:
     provider: mike
 
+validation:
+  links:
+    anchors: warn
+
 plugins:
   - git-revision-date-localized:
       type: timeago
@@ -130,16 +134,33 @@ nav:
   - Developer Guide:
       - developers/index.md
       - Quick Start: developers/quick-start.md
-      - API Service: developers/api.md
-      - Web Service: developers/web.md
-      - NLP Service: developers/nlp.md
-      - Deployment Modes: developers/modes.md
+      - Services:
+          - API Service: developers/api.md
+          - Web Service: developers/web.md
+          - NLP Service: developers/nlp.md
+      - Deploying Your Own Instance:
+          - developers/deploying/index.md
+          - 1. Running the Services: developers/deploying/running.md
+          - 2. Connecting an Identity Provider: developers/deploying/identity-provider.md
+          - 3. Mapping Claims to the Platform: developers/deploying/claim-mapping.md
+          - 4. Access Control Policy: developers/deploying/access-control-policy.md
+          - 5. Branding the Web App: developers/deploying/branding.md
+          - 6. Carrying Changes Across Upgrades: developers/deploying/carrying-changes.md
+          - Worked Example — Keycloak: developers/deploying/examples/keycloak.md
+          - Reference:
+              - SSO Environment Variables: developers/deploying/reference/sso-environment-variables.md
+              - Running More Than One Provider: developers/deploying/reference/multiple-providers.md
+              - When a Login Fails: developers/deploying/reference/login-errors.md
+          - Known Limitations: developers/deploying/limitations.md
+          - Migrating from the Old OIDC Integration: developers/deploying/migrating-from-dp-934.md
       - Synthetic Data (somop):
           - developers/somop/index.md
           - Installation: developers/somop/installation.md
           - Configuration: developers/somop/configuration.md
           - CLI Reference: developers/somop/cli.md
       - Contributing: developers/contributing.md
+      - HDR UK Only:
+          - Integrated Mode: developers/hdruk/integrated.md
   - Workstreams:
       - workstreams/index.md
       - Governance: workstreams/governance.md
