@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block footer %}
+  {{ super() }}
+  {% if config.extra.contact_us_url %}
+    <a href="{{ config.extra.contact_us_url }}" class="cds-contact-us" target="_blank" rel="noopener noreferrer">
+      Contact us
+    </a>
+  {% endif %}
+{% endblock %}

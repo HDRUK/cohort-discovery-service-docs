@@ -58,6 +58,7 @@ extra:
       name: HDR UK Website
   version:
     provider: mike
+  contact_us_url: https://hdruk.atlassian.net/servicedesk/customer/portal/7/group/14/create/243?customfield_10752=11727
 
 validation:
   links:
