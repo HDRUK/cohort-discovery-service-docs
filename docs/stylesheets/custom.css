@@ -119,6 +119,13 @@ h4, h5, h6 { font-size: 0.9rem !important; }
     outline-offset: 2px;
 }
 
+/* ─── Screenshots: border and shadow so they stand out on white ─────────── */
+.md-typeset img.screenshot {
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
 @media print {
     .cds-contact-us {
         display: none;

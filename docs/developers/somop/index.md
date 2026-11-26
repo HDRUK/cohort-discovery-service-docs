@@ -70,7 +70,7 @@ To get synthetic collections without running somop yourself, the [Cohort Discove
 
 `somop` generates the data, but it doesn't tell Cohort Discovery that the data is synthetic. You do that on the Collection: set its **Collection Type** to **Synthetic**. Do this for any Collection whose data isn't real patient records, whether it came from `somop`, another generator, or test data made during onboarding ([step D3](../../workstreams/data.md#d3-create-synthetic-data-recommended)).
 
-<!-- TODO(DP-850): add a screenshot of the Collection Type options with Synthetic selected, e.g. ![The Collection Type options on the collection page, with Synthetic selected](../../images/screenshots/collection-type-synthetic.png) -->
+![The Collection Type options on the collection page, with Synthetic selected](../../images/screenshots/collection-type-synthetic.png){ .screenshot }
 
 1. Open the Collection's page in Cohort Discovery:
     - **New Collection:** follow [Step 5 of the Bunny setup guide](../../bunny/setup.md#step-5-create-a-data-collection). The Collection Type options become available once you have selected a **Collection Host**.
