@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -2515,7 +2515,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="October 27, 2026 15:25:38 UTC"><span class="timeago" datetime="2026-10-27T15:25:38+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="October 27, 2026 15:25:38 UTC">2026-10-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 26, 2026 10:26:59 UTC"><span class="timeago" datetime="2026-11-26T10:26:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 26, 2026 10:26:59 UTC">2026-11-26</span>
   </span>
 
 
@@ -2537,6 +2537,10 @@
 <h1 id="deploying-your-own-instance">Deploying your own instance</h1>
 <p>The Cohort Discovery Service as a fully self-contained platform: its own user database, its own authentication, no Gateway dependency. This is what every deployment outside HDR UK runs, and everything in this section assumes it.</p>
 <p>How you host it is up to you. The platform is three services, MySQL and Redis; nothing beyond that is prescribed.</p>
+<div class="admonition tip">
+<p class="admonition-title">A worked deployment</p>
+<p>The <a href="https://hdruk.github.io/cohort-discovery-service-stack/">Cohort Discovery Service stack</a> runs everything in this section on Kubernetes: a Helm chart, a bundled Keycloak, synthetic collections, and one folder for everything a deployer changes. Use it as it is, or as a reference for your own hosting.</p>
+</div>
 <hr />
 <h2 id="making-it-your-own">Making it your own</h2>
 <p>Six steps, in the order they make sense. The first gets a working platform with local accounts; steps 2 to 4 are the single-sign-on path, and each is a prerequisite for the next.</p>
@@ -2703,7 +2707,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

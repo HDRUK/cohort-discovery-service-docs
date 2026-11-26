@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -2470,7 +2470,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="June 23, 2026 13:52:09 UTC"><span class="timeago" datetime="2026-06-23T13:52:09+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="June 23, 2026 13:52:09 UTC">2026-06-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 26, 2026 10:26:59 UTC"><span class="timeago" datetime="2026-11-26T10:26:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 26, 2026 10:26:59 UTC">2026-11-26</span>
   </span>
 
 
@@ -2507,6 +2507,10 @@
 <dd><strong>CaRROT-Mapper</strong>. A web-tool that enables the mapping of a White Rabbit Scan Report to OMOP CDM, generating a JSON Mapping File that defines the ETL guidelines for the dataset. See <a href="https://carrot4omop.ac.uk/Carrot-Mapper/">carrot4omop.ac.uk/Carrot-Mapper</a>.</dd>
 <dt><code>Carrot-CDM</code></dt>
 <dd>An ETL tool that automates the extraction of pseudonymised data, transformation to OMOP CDM, and loading to Bunny or a similar query tool. See <a href="https://carrot4omop.ac.uk/CaRROT-CDM/">carrot4omop.ac.uk/CaRROT-CDM</a>.</dd>
+<dt><code>Collection</code></dt>
+<dd>A dataset a Data Custodian makes available for cohort discovery. Queries against it are answered by the Bunny that polls for it, and researchers can query it only if it is shared with one of their workgroups.</dd>
+<dt><code>Collection host</code></dt>
+<dd>One set of credentials (a client ID and secret) that a Bunny uses to poll the Cohort Discovery Service for a collection's tasks. It is not a machine.</dd>
 <dt><code>Data Controller</code></dt>
 <dd>The natural or legal person, public authority, agency, or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data. Responsible for complying with GDPR and demonstrating compliance with data protection principles.</dd>
 <dt><code>Data Curation</code></dt>
@@ -2525,6 +2529,8 @@
 <dd>A natural or legal person, public authority, agency, or other body which processes personal data on behalf of a Data Controller.</dd>
 <dt><code>Dataset</code></dt>
 <dd>A collection of data. In tabular form, a dataset corresponds to one or more database tables, where every column represents a particular variable and each row corresponds to a given record.</dd>
+<dt><code>Distribution</code></dt>
+<dd>The demographics and concepts summaries a collection's Bunny returns on a schedule. They seed the concepts and demographics researchers see when building a query.</dd>
 <dt><code>DPIA</code></dt>
 <dd><strong>Data Protection Impact Assessment</strong>. A process to identify and assess project data risks. Data Custodians are <strong>not required</strong> to complete a DPIA for participation in the Cohort Discovery Service. If one is carried out, it would typically return that GDPR does not apply given the anonymisation and controls in place.</dd>
 <dt><code>ETL</code></dt>
@@ -2557,10 +2563,14 @@
 <dd>The process of mapping source field values from one database to standard OMOP vocabulary.</dd>
 <dt><code>TRE</code></dt>
 <dd><strong>Trusted Research Environment</strong>. Highly secure spaces for researchers accessing sensitive data. Based on the principle that researchers access and use data within a single secure environment — the data resides in one secure location and researchers interrogate it from there, with no data movement.</dd>
+<dt><code>Type A / Type B Bunny</code></dt>
+<dd>The two kinds of Bunny instance, set by <code>TASK_API_TYPE</code>. Type A (<code>a</code>) answers researchers' availability queries in real time; type B (<code>b</code>) runs the scheduled distribution jobs. See <a href="../../bunny/two-instance-pattern/">Two-instance pattern</a>.</dd>
 <dt><code>Virtual Machine (VM)</code></dt>
 <dd>A computer resource that uses software instead of a physical computer to run programs and deploy applications. Multiple VMs can run on one physical host, each running its own operating system and functioning separately.</dd>
 <dt><code>White Rabbit</code></dt>
 <dd>A Java tool developed by OHDSI to help prepare ETLs of longitudinal healthcare databases into the OMOP CDM. The main function is to scan source data and provide detailed information on tables, fields, and values. Typically the first tool used in the ETL process.</dd>
+<dt><code>Workgroup</code></dt>
+<dd>A group of users. Collections are shared with workgroups, and a user can query the collections shared with their workgroups.</dd>
 </dl>
 
 
@@ -2678,7 +2688,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       
