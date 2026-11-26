@@ -68,7 +68,7 @@ graph TD
     |------|-------------|-------------|
     | **D1** | Extract a subset of raw identifiable data | Data Custodian |
     | **D2** | Map extracted subset to OMOP CDM | Data Custodian (HDR UK can assist) |
-    | **D3** | Create synthetic data for testing | Data Custodian (optional but recommended) |
+    | **D3** | Create synthetic data for testing, and [mark its Collection as synthetic](../developers/somop/index.md#marking-a-dataset-as-synthetic) | Data Custodian (optional but recommended) |
     | **D4** | ETL extracted data to create OMOP database | Data Custodian |
 
     [:octicons-arrow-right-24: Data Workstream](../workstreams/data.md)

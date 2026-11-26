@@ -85,6 +85,8 @@ Synthetic data allows you to:
 !!! tip "Test with synthetic data first"
     HDR UK strongly recommends using synthetic data for all testing until G1 (Data Controller Consent) is complete.
 
+When you onboard a synthetic Collection, set its **Collection Type** to **Synthetic** so researchers can tell it apart from real data. See [Marking a dataset as synthetic](../developers/somop/index.md#marking-a-dataset-as-synthetic). [`somop`](../developers/somop/index.md) is one way to generate synthetic OMOP data.
+
 ---
 
 ## D4 — ETL to create the OMOP database

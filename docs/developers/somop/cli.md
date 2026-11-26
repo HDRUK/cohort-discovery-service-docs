@@ -113,6 +113,10 @@ somop run \
   --api-password yourpassword
 ```
 
+!!! tip "Mark the Collection as synthetic"
+    `somop` doesn't mark the Collection you pass in `--collection-id` as synthetic. Set its
+    **Collection Type** to **Synthetic** in Cohort Discovery. See [Marking a dataset as synthetic](index.md#marking-a-dataset-as-synthetic).
+
 **Options:**
 
 | Option | Default | Description |
