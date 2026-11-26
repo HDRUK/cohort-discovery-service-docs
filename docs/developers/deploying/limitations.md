@@ -34,4 +34,4 @@ None of them are architectural. All are places where a pull request would be wel
 
 ## Deployment
 
-**No published images and no general-purpose Helm chart.** Each repo has a `Dockerfile` you can build from; the `chart/` directories are scaffolding for HDR UK's own pipeline. [Running the services](running.md) covers what a deployment needs.
+**No published images.** Each repo has a `Dockerfile` you build from; the `chart/` directories are scaffolding for HDR UK's own pipeline. [Running the services](running.md) covers what a deployment needs, and the [Cohort Discovery Service stack](https://hdruk.github.io/cohort-discovery-service-stack/) is a Helm chart that builds and runs all of it on Kubernetes.

@@ -46,6 +46,8 @@ That command assumes the API runs on your host, so `localhost:8080` means the sa
 
     Then make `keycloak.test` resolve to Keycloak from both places — a `/etc/hosts` entry pointing at `127.0.0.1` on your machine, and an `extra_hosts` entry (Compose), `hostAliases` (Kubernetes) or a cluster DNS record pointing at the container on the API side. Set `SSO_DEFAULT_ISSUER=http://keycloak.test:8080/realms/cohort-discovery-service`.
 
+    The [Cohort Discovery Service stack](https://hdruk.github.io/cohort-discovery-service-stack/) takes the other way round on a local cluster: Keycloak keeps the same `localhost` URL on both sides, and a small forwarding sidecar in the API pod sends the API's `localhost:<port>` to the Keycloak service. See its [Sign-in](https://hdruk.github.io/cohort-discovery-service-stack/deploying/sign-in/) page.
+
     Setting `SSO_DEFAULT_DISCOVERY_URL` to an internal address does **not** avoid any of this: the token and JWKS URLs are read out of the discovery document and will still be the advertised public ones.
 
 ## Step 1: Create a realm

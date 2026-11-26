@@ -14,6 +14,8 @@ tags:
 
 Its primary use case is standing up a local BUNNY instance with an OMOP database for end-to-end integration testing of the Cohort Discovery Service.
 
+To get synthetic collections without running somop yourself, the [Cohort Discovery Service stack](https://hdruk.github.io/cohort-discovery-service-stack/getting-started/) starts a synthetic database and a BUNNY for each one automatically.
+
 <div class="grid cards" markdown>
 
 - :material-download: **Installation**
