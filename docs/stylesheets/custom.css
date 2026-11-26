@@ -7,6 +7,8 @@
     --md-footer-bg-color:        #3db28c;
     --md-footer-bg-color--dark:  #2b7e61;
     --md-accent-fg-color:        #475da7;
+    --cds-yellow:                #f4e751;
+    --cds-yellow-contrast:       #3c3c3b;
 }
 
 /* ─── Header: white background, teal underline, larger logo ─────────────── */
@@ -86,4 +88,39 @@ h4, h5, h6 { font-size: 0.9rem !important; }
 .md-typeset .grid.cards > ol > li,
 .md-typeset .grid.cards > ul > li {
     border-top: 3px solid #3db28c;
+}
+
+/* ─── Contact us button (matches the CDS web "Need support?" button) ──────── */
+.cds-contact-us {
+    position: fixed;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    z-index: 3; /* above "back to top" (2), below the header (4) and mobile nav drawer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 0.2rem;
+    background-color: var(--cds-yellow);
+    color: var(--cds-yellow-contrast);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: var(--md-shadow-z2);
+}
+.cds-contact-us:hover,
+.cds-contact-us:focus {
+    color: var(--cds-yellow-contrast);
+    text-decoration: underline;
+}
+.cds-contact-us:focus-visible {
+    outline: 2px solid var(--md-accent-fg-color);
+    outline-offset: 2px;
+}
+
+@media print {
+    .cds-contact-us {
+        display: none;
+    }
 }

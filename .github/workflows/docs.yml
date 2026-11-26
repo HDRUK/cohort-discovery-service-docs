@@ -19,4 +19,8 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install -r requirements.txt
-      - run: mkdocs gh-deploy --force
+      # PRs only check that the site builds. Deploying is left to pushes to main (i.e. after merge).
+      - if: github.event_name == 'pull_request'
+        run: mkdocs build
+      - if: github.event_name == 'push'
+        run: mkdocs gh-deploy --force
