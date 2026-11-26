@@ -208,6 +208,8 @@ So every deployment builds its own web image — [branding](branding.md) cannot 
 
 Each repo has a `Dockerfile` at its root. We do not publish images to a public registry, so build your own from the tag you want to run. The `chart/` directory in each repo is scaffolding for HDR UK's own deployment pipeline rather than a general-purpose Helm chart — treat it as a reference, not something to install.
 
+For a worked Kubernetes deployment, the [Cohort Discovery Service stack](https://hdruk.github.io/cohort-discovery-service-stack/) is a Helm chart that builds the three services from source and configures them entirely through values and mounted files. See its [Install with Helm](https://hdruk.github.io/cohort-discovery-service-stack/deploying/) page.
+
 Beyond that, deployment is yours. Nothing in the platform assumes Kubernetes, a particular ingress or a particular secret store.
 
 ---

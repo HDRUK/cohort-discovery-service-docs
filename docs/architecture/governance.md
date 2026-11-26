@@ -61,7 +61,7 @@ Only **metadata and aggregated results** leave the Data Custodian's control. Two
 
     Counts above the suppression threshold are rounded to the nearest 10. The recommended setting is:
 
-    - Counts of **5 to 10** → rounded to nearest 10
+    - Counts of **10 and above** → rounded to the nearest 10
 
 !!! info "Differencing attacks"
     It is not possible to query the ID of an individual person in the Cohort Discovery query builder. This means **differencing attacks are not possible**.

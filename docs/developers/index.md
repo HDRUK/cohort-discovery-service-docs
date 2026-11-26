@@ -57,6 +57,8 @@ The **Web** layer calls the **API** only — it never contacts the NLP service o
 
 Run **standalone**: `APP_OPERATION_MODE=standalone` on the API, `APPLICATION_MODE=standalone` on the web app. It is self-contained — local accounts, Laravel Passport and a local JWT, with optional OIDC SSO in front — and it is what local development and every deployment outside HDR UK uses, including deployments that want single sign-on.
 
+To run standalone with no setup, the [Cohort Discovery Service stack](https://hdruk.github.io/cohort-discovery-service-stack/getting-started/) brings up the whole service on a local Kubernetes cluster, with Keycloak and synthetic collections.
+
 The only other value, `integrated`, delegates authentication to the HDR UK Gateway for HDR UK's own hosted deployment. It is not a general-purpose SSO mechanism and will not work with a third-party identity provider. Unless you are running that deployment, ignore it.
 
 An unrecognised value refuses to boot rather than quietly defaulting to one or the other.

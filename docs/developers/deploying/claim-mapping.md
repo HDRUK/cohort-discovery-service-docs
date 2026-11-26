@@ -62,7 +62,7 @@ Left is **local**, right is **what arrives in the claim**.
 |---|---|
 | Only listed values are honoured | An unlisted claim value is ignored, so an unexpected IdP group can never become a grant |
 | Both sides match case-insensitively | |
-| Many local names per IdP value, not the reverse | The array is keyed by local name, so keys cannot repeat |
+| Many local names per IdP value, and many IdP values per local name | The array is keyed by local name, so keys cannot repeat, but a value can be a list (API v1.18.0 and later) |
 
 ## Two worked deployments
 
@@ -96,6 +96,14 @@ Left is **local**, right is **what arrives in the claim**.
         'default' => 'staff',
         'uk-research' => 'staff',
         'admin' => 'platform-admins',
+    ],
+    ```
+
+    The other way round, a value can be a list. Any one of these groups grants `uk-research` (API v1.18.0 and later):
+
+    ```php
+    'workgroup_mappings' => [
+        'uk-research' => ['ukri', 'breathe', 'ncs'],
     ],
     ```
 

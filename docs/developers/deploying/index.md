@@ -13,6 +13,9 @@ The Cohort Discovery Service as a fully self-contained platform: its own user da
 
 How you host it is up to you. The platform is three services, MySQL and Redis; nothing beyond that is prescribed.
 
+!!! tip "A worked deployment"
+    The [Cohort Discovery Service stack](https://hdruk.github.io/cohort-discovery-service-stack/) runs everything in this section on Kubernetes: a Helm chart, a bundled Keycloak, synthetic collections, and one folder for everything a deployer changes. Use it as it is, or as a reference for your own hosting.
+
 ---
 
 ## Making it your own

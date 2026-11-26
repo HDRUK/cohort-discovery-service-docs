@@ -33,6 +33,12 @@ Definitions of key terms used throughout the Cohort Discovery Service documentat
 `Carrot-CDM`
 :   An ETL tool that automates the extraction of pseudonymised data, transformation to OMOP CDM, and loading to Bunny or a similar query tool. See [carrot4omop.ac.uk/CaRROT-CDM](https://carrot4omop.ac.uk/CaRROT-CDM/).
 
+`Collection`
+:   A dataset a Data Custodian makes available for cohort discovery. Queries against it are answered by the Bunny that polls for it, and researchers can query it only if it is shared with one of their workgroups.
+
+`Collection host`
+:   One set of credentials (a client ID and secret) that a Bunny uses to poll the Cohort Discovery Service for a collection's tasks. It is not a machine.
+
 `Data Controller`
 :   The natural or legal person, public authority, agency, or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data. Responsible for complying with GDPR and demonstrating compliance with data protection principles.
 
@@ -59,6 +65,9 @@ Definitions of key terms used throughout the Cohort Discovery Service documentat
 
 `Dataset`
 :   A collection of data. In tabular form, a dataset corresponds to one or more database tables, where every column represents a particular variable and each row corresponds to a given record.
+
+`Distribution`
+:   The demographics and concepts summaries a collection's Bunny returns on a schedule. They seed the concepts and demographics researchers see when building a query.
 
 `DPIA`
 :   **Data Protection Impact Assessment**. A process to identify and assess project data risks. Data Custodians are **not required** to complete a DPIA for participation in the Cohort Discovery Service. If one is carried out, it would typically return that GDPR does not apply given the anonymisation and controls in place.
@@ -108,8 +117,14 @@ Definitions of key terms used throughout the Cohort Discovery Service documentat
 `TRE`
 :   **Trusted Research Environment**. Highly secure spaces for researchers accessing sensitive data. Based on the principle that researchers access and use data within a single secure environment — the data resides in one secure location and researchers interrogate it from there, with no data movement.
 
+`Type A / Type B Bunny`
+:   The two kinds of Bunny instance, set by `TASK_API_TYPE`. Type A (`a`) answers researchers' availability queries in real time; type B (`b`) runs the scheduled distribution jobs. See [Two-instance pattern](../bunny/two-instance-pattern.md).
+
 `Virtual Machine (VM)`
 :   A computer resource that uses software instead of a physical computer to run programs and deploy applications. Multiple VMs can run on one physical host, each running its own operating system and functioning separately.
 
 `White Rabbit`
 :   A Java tool developed by OHDSI to help prepare ETLs of longitudinal healthcare databases into the OMOP CDM. The main function is to scan source data and provide detailed information on tables, fields, and values. Typically the first tool used in the ETL process.
+
+`Workgroup`
+:   A group of users. Collections are shared with workgroups, and a user can query the collections shared with their workgroups.
