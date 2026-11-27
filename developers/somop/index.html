@@ -2405,6 +2405,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#marking-a-dataset-as-synthetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Marking a dataset as synthetic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Marking a dataset as synthetic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-synthetic-collections-appear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How synthetic Collections appear
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2544,7 +2572,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 26, 2026 10:26:59 UTC"><span class="timeago" datetime="2026-11-26T10:26:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 26, 2026 10:26:59 UTC">2026-11-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 26, 2026 16:51:55 UTC"><span class="timeago" datetime="2026-11-26T16:51:55+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 26, 2026 16:51:55 UTC">2026-11-26</span>
   </span>
 
 
@@ -2630,6 +2658,27 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="marking-a-dataset-as-synthetic">Marking a dataset as synthetic</h2>
+<p><code>somop</code> generates the data, but it doesn't tell Cohort Discovery that the data is synthetic. You do that on the Collection: set its <strong>Collection Type</strong> to <strong>Synthetic</strong>. Do this for any Collection whose data isn't real patient records, whether it came from <code>somop</code>, another generator, or test data made during onboarding (<a href="../../workstreams/data/#d3-create-synthetic-data-recommended">step D3</a>).</p>
+<p><img alt="The Collection Type options on the collection page, with Synthetic selected" class="screenshot" src="../../images/screenshots/collection-type-synthetic.png" /></p>
+<ol>
+<li>Open the Collection's page in Cohort Discovery:<ul>
+<li><strong>New Collection:</strong> follow <a href="../../bunny/setup/#step-5-create-a-data-collection">Step 5 of the Bunny setup guide</a>. The Collection Type options become available once you have selected a <strong>Collection Host</strong>.</li>
+<li><strong>Existing Collection:</strong> select it in your organisation's <strong>Collections</strong> tab and click the <strong>lock icon</strong> to unlock the right-hand panel.</li>
+</ul>
+</li>
+<li>Under <strong>Collection Type</strong>, select <strong>Synthetic</strong>. The default is <strong>Non-synthetic</strong>.</li>
+<li>Click <strong>Create</strong> (new Collection) or the <strong>lock icon</strong> again (existing Collection) to save.</li>
+</ol>
+<p>You can change the Collection Type at any time.</p>
+<h3 id="how-synthetic-collections-appear">How synthetic Collections appear</h3>
+<p>Once a Collection is marked as synthetic:</p>
+<ul>
+<li>An <strong>S</strong> chip appears next to it, with the tooltip <em>"This collection has been marked as being synthetic data"</em>. Researchers see it in the dataset picker when choosing which Collections to query, and you see it in your organisation's <strong>Collections</strong> list.</li>
+<li>Researchers can select or clear all synthetic Collections at once with the <strong>synthetic</strong> filter. Synthetic Collections are listed after real ones, and depending on the user's access they may not be selected by default.</li>
+<li>A concept found <strong>only</strong> in synthetic Collections shows an <strong>S</strong> chip (<em>"This concept is only available in synthetic data"</em>). Concept search and free-text query search both leave these concepts out unless a synthetic Collection is selected.</li>
+</ul>
 <hr />
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
