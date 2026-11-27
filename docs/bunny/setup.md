@@ -105,7 +105,8 @@ A **Collection** represents a single dataset that Bunny will surface to Cohort D
     | Quarterly | Data changes quarterly |
     | Biannually | Data changes infrequently |
 
-16. Click **Create**
+16. Under **Collection Type**, select **Synthetic** if the Collection holds synthetic data rather than real patient records. The default is **Non-synthetic**, and you can change it later. See [Marking a dataset as synthetic](../developers/somop/index.md#marking-a-dataset-as-synthetic).
+17. Click **Create**
 
 ---
 
@@ -113,9 +114,9 @@ A **Collection** represents a single dataset that Bunny will surface to Cohort D
 
 Your new Collection appears in the All Collections list. Click **Draft Collections** in the left panel for a shorter list.
 
-17. Click on your Collection to open the right-hand panel
-18. Click the **lock icon** to unlock the panel if you need to edit
-19. Note the following credentials — you will enter these into Bunny in the next step:
+18. Click on your Collection to open the right-hand panel
+19. Click the **lock icon** to unlock the panel if you need to edit
+20. Note the following credentials — you will enter these into Bunny in the next step:
 
 | Value | Description |
 |-------|-------------|
@@ -149,10 +150,10 @@ See [bunny/configuration.md](configuration.md) for the full list of configuratio
 
 Once Bunny is connected and you are satisfied with your setup:
 
-20. Navigate to your organisation's **Collections** tab
-21. Select your draft Collection from the list
-22. Click the **lock icon** to unlock the right-hand panel. Click **Run now** against **Demographics** and **Concepts** to seed the concept terms required for querying.
-23. Click **Request to make active**
+21. Navigate to your organisation's **Collections** tab
+22. Select your draft Collection from the list
+23. Click the **lock icon** to unlock the right-hand panel. Click **Run now** against **Demographics** and **Concepts** to seed the concept terms required for querying.
+24. Click **Request to make active**
 
 !!! tip "Testing before activation"
     While your Collection is in **Draft**, you can run queries against it that are only visible to you. On the **New Query** tab, click **Filter Collections** (top-right) and select your draft Collection(s). This lets you verify queries work before going live.

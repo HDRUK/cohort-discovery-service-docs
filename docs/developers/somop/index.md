@@ -66,6 +66,30 @@ To get synthetic collections without running somop yourself, the [Cohort Discove
 
 ---
 
+## Marking a dataset as synthetic
+
+`somop` generates the data, but it doesn't tell Cohort Discovery that the data is synthetic. You do that on the Collection: set its **Collection Type** to **Synthetic**. Do this for any Collection whose data isn't real patient records, whether it came from `somop`, another generator, or test data made during onboarding ([step D3](../../workstreams/data.md#d3-create-synthetic-data-recommended)).
+
+![The Collection Type options on the collection page, with Synthetic selected](../../images/screenshots/collection-type-synthetic.png){ .screenshot }
+
+1. Open the Collection's page in Cohort Discovery:
+    - **New Collection:** follow [Step 5 of the Bunny setup guide](../../bunny/setup.md#step-5-create-a-data-collection). The Collection Type options become available once you have selected a **Collection Host**.
+    - **Existing Collection:** select it in your organisation's **Collections** tab and click the **lock icon** to unlock the right-hand panel.
+2. Under **Collection Type**, select **Synthetic**. The default is **Non-synthetic**.
+3. Click **Create** (new Collection) or the **lock icon** again (existing Collection) to save.
+
+You can change the Collection Type at any time.
+
+### How synthetic Collections appear
+
+Once a Collection is marked as synthetic:
+
+- An **S** chip appears next to it, with the tooltip *"This collection has been marked as being synthetic data"*. Researchers see it in the dataset picker when choosing which Collections to query, and you see it in your organisation's **Collections** list.
+- Researchers can select or clear all synthetic Collections at once with the **synthetic** filter. Synthetic Collections are listed after real ones, and depending on the user's access they may not be selected by default.
+- A concept found **only** in synthetic Collections shows an **S** chip (*"This concept is only available in synthetic data"*). Concept search and free-text query search both leave these concepts out unless a synthetic Collection is selected.
+
+---
+
 ## Prerequisites
 
 - Python 3.9+

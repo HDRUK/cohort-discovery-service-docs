@@ -111,6 +111,9 @@ Definitions of key terms used throughout the Cohort Discovery Service documentat
 `SSH`
 :   **Secure Shell**. A secure remote management protocol that allows network services to be operated over an unsecured connection.
 
+`Synthetic data`
+:   Artificially generated data that looks like real patient data but is not about any real person. Used for testing before real data can be connected. A Collection of synthetic data should have its **Collection Type** set to **Synthetic**. See [Marking a dataset as synthetic](../developers/somop/index.md#marking-a-dataset-as-synthetic).
+
 `Term Mapping`
 :   The process of mapping source field values from one database to standard OMOP vocabulary.
 
