@@ -119,6 +119,11 @@ h4, h5, h6 { font-size: 0.9rem !important; }
     outline-offset: 2px;
 }
 
+/* ─── Links: underline so they stand out from the near-black body text ──── */
+.md-typeset a:not(.md-button):not(.headerlink):not(.md-tag) {
+    text-decoration: underline;
+}
+
 /* ─── Screenshots: border and shadow so they stand out on white ─────────── */
 .md-typeset img.screenshot {
     border: 1px solid var(--md-default-fg-color--lightest);
